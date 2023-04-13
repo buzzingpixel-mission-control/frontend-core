@@ -1,0 +1,44 @@
+{
+    "name": "buzzingpixel/mission-control-frontend-core",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2",
+        "ext-redis": "*",
+        "buzzingpixel/container": "^1.1",
+        "buzzingpixel/minify-middleware": "^1.1",
+        "buzzingpixel/php-template-engine": "^1.0",
+        "buzzingpixel/valueobject-ext": "^1.0",
+        "crell/tukio": "^1.4",
+        "funeralzone/valueobjects": "^0.5.0",
+        "httpsoft/http-cookie": "^1.0",
+        "lcobucci/clock": "^3.1",
+        "monolog/monolog": "^3.3",
+        "psr/clock": "^1.0",
+        "psr/container": "^2.0",
+        "psr/event-dispatcher": "^1.0",
+        "psr/log": "^2.0",
+        "slim/psr7": "^1.6",
+        "slim/slim": "^4.11"
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "^11.0.0",
+        "filp/whoops": "^2.14",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/var-dumper": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "MissionControlFrontend\\": "src"
+        }
+    },
+    "config": {
+        "bin-compat": "full",
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

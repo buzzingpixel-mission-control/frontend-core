@@ -1,0 +1,10 @@
+*-debug.log
+*-error.log
+/.nyc_output
+/lib
+/package-lock.json
+/tmp
+/dist
+/node_modules
+oclif.manifest.json
+.latest-build-hash
