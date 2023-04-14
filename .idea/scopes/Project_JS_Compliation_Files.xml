@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Project JS Compliation Files" pattern="file[frontend-core]:assets/js//*.js||file[frontend-core]:assets/js//*.jsx||file[frontend-core]:assets/js//*.ts||file[frontend-core]:assets/js//*.tsx" />
+</component>

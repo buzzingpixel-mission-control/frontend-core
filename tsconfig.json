@@ -1,0 +1,16 @@
+{
+    "include": [
+        "assets/js/**/*"
+    ],
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "jsx": "react",
+        "skipLibCheck": true,
+        "lib": [
+            "dom",
+            "es5",
+            "scripthost",
+            "es2015.promise"
+        ]
+    }
+}

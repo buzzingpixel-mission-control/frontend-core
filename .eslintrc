@@ -1,0 +1,64 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "globals": {
+        "axios": true
+    },
+    "parserOptions": {
+        "parser": "babel-eslint"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    },
+    "rules": {
+        "no-param-reassign": 0,
+        "import/extensions": [
+            "error",
+            "never"
+        ],
+        "indent": ["error", 4, {
+            "SwitchCase": 1,
+            "VariableDeclarator": 1,
+            "outerIIFEBody": 1,
+            "FunctionDeclaration": {
+                "parameters": 1,
+                "body": 1
+            },
+            "FunctionExpression": {
+                "parameters": 1,
+                "body": 1
+            },
+            "CallExpression": {
+                "arguments": 1
+            },
+            "ArrayExpression": 1,
+            "ObjectExpression": 1,
+            "ImportDeclaration": 1,
+            "flatTernaryExpressions": false,
+            "ignoredNodes": ["JSXElement", "JSXElement > *", "JSXAttribute", "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression", "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement", "JSXClosingElement", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"],
+            "ignoreComments": false
+        }],
+        "space-before-function-paren": ["error", {
+            "anonymous": "always",
+            "named": "always",
+            "asyncArrow": "always"
+        }]
+    }
+}
