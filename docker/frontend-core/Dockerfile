@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libjpeg-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
-    libpq-dev \
     libonig-dev \
     libssl-dev \
     libwebp-dev \
