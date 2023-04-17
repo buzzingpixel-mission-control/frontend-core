@@ -13,10 +13,12 @@ function classNames (...classes) {
 
 const Shell = (
     {
+        pageName,
         menuItems,
         children,
     }:
     {
+        pageName: string,
         menuItems?: Array<MenuItem>;
         children: | JSX.Element | JSX.Element[] | string | string[];
     },
@@ -31,22 +33,6 @@ const Shell = (
         sidebarOpen,
         setSidebarOpen,
     ] = useState(false);
-
-    let pageName = '';
-
-    menuItems.forEach((item) => {
-        if (pageName) {
-            return;
-        }
-
-        const isCurrent = rootPath === item.href;
-
-        if (!isCurrent) {
-            return;
-        }
-
-        pageName = item.pageName || item.name;
-    });
 
     return (
         <>

@@ -35,23 +35,12 @@ function classNames() {
     return classes.filter(Boolean).join(' ');
 }
 var Shell = function (_a) {
-    var menuItems = _a.menuItems, children = _a.children;
+    var pageName = _a.pageName, menuItems = _a.menuItems, children = _a.children;
     var location = (0, react_router_dom_1.useLocation)();
     var locationArray = location.pathname.split('/');
     var rootPath = "/".concat(locationArray[1]);
     menuItems = menuItems || [];
     var _b = (0, react_1.useState)(false), sidebarOpen = _b[0], setSidebarOpen = _b[1];
-    var pageName = '';
-    menuItems.forEach(function (item) {
-        if (pageName) {
-            return;
-        }
-        var isCurrent = rootPath === item.href;
-        if (!isCurrent) {
-            return;
-        }
-        pageName = item.pageName || item.name;
-    });
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("div", null,
             react_1.default.createElement(react_2.Transition.Root, { show: sidebarOpen, as: react_1.Fragment },
