@@ -17,7 +17,7 @@ const NotFoundPage = (
         <p className="mt-6 text-base leading-7 text-gray-600">Something seems to be wrong, we weren’t able to find that
             page.</p>
         <div className="mt-10">
-            <Link to="/projects" className="text-sm font-semibold leading-7 text-indigo-600">
+            <Link to="/projects" className="text-sm font-semibold leading-7 text-cyan-600">
                 <span aria-hidden="true">&larr;</span> Go to projects
             </Link>
         </div>

@@ -34,7 +34,7 @@ var NotFoundPage = function (_a) {
         react_1.default.createElement("h1", { className: "mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl" }, "Page not found"),
         react_1.default.createElement("p", { className: "mt-6 text-base leading-7 text-gray-600" }, "Something seems to be wrong, we weren\u2019t able to find that page."),
         react_1.default.createElement("div", { className: "mt-10" },
-            react_1.default.createElement(react_router_dom_1.Link, { to: "/projects", className: "text-sm font-semibold leading-7 text-indigo-600" },
+            react_1.default.createElement(react_router_dom_1.Link, { to: "/projects", className: "text-sm font-semibold leading-7 text-cyan-600" },
                 react_1.default.createElement("span", { "aria-hidden": "true" }, "\u2190"),
                 " Go to projects")));
 };
