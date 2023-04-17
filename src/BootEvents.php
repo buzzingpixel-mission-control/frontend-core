@@ -18,11 +18,11 @@ readonly class BootEvents
     public function registerEvents(
         callable|null $register = null,
     ): BootApplication {
-        RegisterEvents::register($this->eventProvider);
-
         if ($register !== null) {
             $register($this->eventProvider);
         }
+
+        RegisterEvents::register($this->eventProvider);
 
         return $this->bootApplication;
     }

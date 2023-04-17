@@ -1,0 +1,53 @@
+<?php
+
+/** @noinspection PhpUndefinedVariableInspection */
+
+declare(strict_types=1);
+
+// phpcs:disable Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace
+// phpcs:disable Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore
+// phpcs:disable Generic.Files.InlineHTML.Found
+
+use BuzzingPixel\Templating\TemplateEngine;
+use MissionControlFrontend\Http\HttpConfig;
+
+/** @phpstan-ignore-next-line */
+assert($this instanceof TemplateEngine);
+
+/** @phpstan-ignore-next-line */
+assert($config instanceof HttpConfig);
+
+?>
+
+<!doctype html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+    <title>Mission Control</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php foreach ($config->cssTags as $cssTag) : ?>
+        <link
+            rel="stylesheet"
+            href="<?= $cssTag->href->toNative() ?>"
+        >
+    <?php endforeach;
+
+ ?>
+</head>
+<body class="h-full">
+    <div data-react="app">
+        <div class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-300 opacity-75 flex flex-col items-center justify-center">
+            <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+        </div>
+    </div>
+
+    <?php foreach ($config->scriptTags as $scriptTag) : ?>
+        <script
+            src="<?= $scriptTag->src->toNative() ?>"
+            type="<?= $scriptTag->type->toNative() ?>"
+        ></script>
+    <?php endforeach;
+
+ ?>
+</body>

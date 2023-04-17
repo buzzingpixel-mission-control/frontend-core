@@ -59,6 +59,8 @@
             "anonymous": "always",
             "named": "always",
             "asyncArrow": "always"
-        }]
+        }],
+        "import/prefer-default-export": 0,
+        "max-len": 0
     }
 }
