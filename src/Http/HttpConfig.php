@@ -30,6 +30,12 @@ readonly class HttpConfig
     public function __construct(
         array $cssTags = [],
         array $scriptTags = [],
+        public string $appUrl = '',
+        public string $idpOauthUrl = '',
+        public string $webClientId = '',
+        public string $webClientSecret = '',
+        public string $webClientRedirectUri = '',
+        public string $accessTokenPostUrl = '',
     ) {
         $this->cssTags = array_values(array_map(
             static fn (CssTag $t) => $t,
@@ -79,5 +85,37 @@ readonly class HttpConfig
             $this->scriptTags,
             [$scriptTag],
         ));
+    }
+
+    public function withAppUrl(string $appUrl): HttpConfig
+    {
+        return $this->with(appUrl: $appUrl);
+    }
+
+    public function withIdpOauthUrl(string $idpOauthUrl): HttpConfig
+    {
+        return $this->with(idpOauthUrl: $idpOauthUrl);
+    }
+
+    public function withWebClientId(string $webClientId): HttpConfig
+    {
+        return $this->with(webClientId: $webClientId);
+    }
+
+    public function withWebClientSecret(string $webClientSecret): HttpConfig
+    {
+        return $this->with(webClientSecret: $webClientSecret);
+    }
+
+    public function withWebClientRedirectUri(
+        string $webClientRedirectUri,
+    ): HttpConfig {
+        return $this->with(webClientRedirectUri: $webClientRedirectUri);
+    }
+
+    public function withAccessTokenPostUrl(
+        string $accessTokenPostUrl,
+    ): HttpConfig {
+        return $this->with(accessTokenPostUrl: $accessTokenPostUrl);
     }
 }

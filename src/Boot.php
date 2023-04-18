@@ -13,6 +13,7 @@ use function class_exists;
 use function error_reporting;
 use function ini_set;
 use function mb_strtolower;
+use function session_start;
 
 use const E_ALL;
 use const PHP_SAPI;
@@ -21,6 +22,8 @@ readonly class Boot
 {
     public function start(CoreConfig $coreConfig): BootContainer
     {
+        session_start();
+
         if ($coreConfig->useWhoopsErrorHandling) {
             $this->registerDevErrorHandling();
         }

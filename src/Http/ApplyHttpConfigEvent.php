@@ -47,4 +47,58 @@ class ApplyHttpConfigEvent
 
         return $this;
     }
+
+    public function addAppUrl(string $appUrl): self
+    {
+        $this->config = $this->config->withAppUrl($appUrl);
+
+        return $this;
+    }
+
+    public function addIdpOauthUrl(string $idpOauthUrl): self
+    {
+        $this->config = $this->config->withIdpOauthUrl(
+            $idpOauthUrl,
+        );
+
+        return $this;
+    }
+
+    public function addWebClientId(string $webClientId): self
+    {
+        $this->config = $this->config->withWebClientId(
+            $webClientId,
+        );
+
+        return $this;
+    }
+
+    public function addWebClientSecret(string $webClientSecret): self
+    {
+        $this->config = $this->config->withWebClientSecret(
+            $webClientSecret,
+        );
+
+        return $this;
+    }
+
+    public function addWebClientRedirectUri(
+        string $webClientRedirectUri,
+    ): self {
+        $this->config = $this->config->withWebClientRedirectUri(
+            $webClientRedirectUri,
+        );
+
+        return $this;
+    }
+
+    public function addAccessTokenPostUrl(
+        string $accessTokenPostUrl,
+    ): self {
+        $this->config = $this->config->withAccessTokenPostUrl(
+            $accessTokenPostUrl,
+        );
+
+        return $this;
+    }
 }

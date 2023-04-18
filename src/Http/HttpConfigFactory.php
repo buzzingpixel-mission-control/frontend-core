@@ -43,6 +43,54 @@ readonly class HttpConfigFactory
             ]));
         }
 
+        if ($config->appUrl === '') {
+            throw new RuntimeException(implode(' ', [
+                'You must listen for the event',
+                ApplyHttpConfigEvent::class,
+                'and add appUrl',
+            ]));
+        }
+
+        if ($config->idpOauthUrl === '') {
+            throw new RuntimeException(implode(' ', [
+                'You must listen for the event',
+                ApplyHttpConfigEvent::class,
+                'and add idpOauthUrl',
+            ]));
+        }
+
+        if ($config->webClientId === '') {
+            throw new RuntimeException(implode(' ', [
+                'You must listen for the event',
+                ApplyHttpConfigEvent::class,
+                'and add webClientId',
+            ]));
+        }
+
+        if ($config->webClientSecret === '') {
+            throw new RuntimeException(implode(' ', [
+                'You must listen for the event',
+                ApplyHttpConfigEvent::class,
+                'and add webClientSecret',
+            ]));
+        }
+
+        if ($config->webClientRedirectUri === '') {
+            throw new RuntimeException(implode(' ', [
+                'You must listen for the event',
+                ApplyHttpConfigEvent::class,
+                'and add webClientRedirectUri',
+            ]));
+        }
+
+        if ($config->accessTokenPostUrl === '') {
+            throw new RuntimeException(implode(' ', [
+                'You must listen for the event',
+                ApplyHttpConfigEvent::class,
+                'and add accessTokenPostUrl',
+            ]));
+        }
+
         return $config;
     }
 }

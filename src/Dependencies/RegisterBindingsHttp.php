@@ -7,6 +7,8 @@ namespace MissionControlFrontend\Dependencies;
 use MissionControlFrontend\ContainerBindings;
 use MissionControlFrontend\Http\HttpConfig;
 use MissionControlFrontend\Http\HttpConfigFactory;
+use MissionControlFrontend\Url\AppUrlGenerator;
+use MissionControlFrontend\Url\UrlGenerator;
 use Psr\Container\ContainerInterface;
 
 use function assert;
@@ -24,6 +26,11 @@ class RegisterBindingsHttp
 
                 return $factory->create();
             },
+        );
+
+        $containerBindings->addBinding(
+            UrlGenerator::class,
+            AppUrlGenerator::class,
         );
     }
 }

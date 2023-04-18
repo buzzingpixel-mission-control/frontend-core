@@ -11,6 +11,7 @@ class RegisterBindings
     public static function register(ContainerBindings $containerBindings): void
     {
         RegisterBindingsEvents::register($containerBindings);
+        RegisterBindingsCookies::register($containerBindings);
         RegisterBindingsHttp::register($containerBindings);
         RegisterBindingsLogging::register($containerBindings);
         RegisterBindingsResponse::register($containerBindings);
