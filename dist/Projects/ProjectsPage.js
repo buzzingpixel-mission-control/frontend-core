@@ -26,9 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var ProjectsPage = function (_a) {
     var setPageName = _a.setPageName;
-    (0, react_1.useEffect)(function () {
-        setPageName('Projects');
-    }, []);
+    (0, react_1.useEffect)(function () { return setPageName('Projects'); }, []);
     return react_1.default.createElement(react_1.default.Fragment, null, "Projects Page Content");
 };
 exports.default = ProjectsPage;

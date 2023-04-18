@@ -30,6 +30,8 @@ var react_1 = __importStar(require("react"));
 var react_router_dom_1 = require("react-router-dom");
 var Shell_1 = __importDefault(require("./Shell"));
 var NotFoundPage_1 = __importDefault(require("./NotFound/NotFoundPage"));
+var Auth_1 = __importDefault(require("./Auth/Auth"));
+var RuntimeContext_1 = __importDefault(require("./RuntimeContext"));
 var App = function (_a) {
     var appConfig = _a.appConfig;
     var _b = (0, react_1.useState)(''), pageName = _b[0], setPageName = _b[1];
@@ -40,10 +42,15 @@ var App = function (_a) {
         }
         document.title = documentTitle;
     }, [pageName]);
-    return react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
-        react_1.default.createElement(Shell_1.default, { menuItems: appConfig.menuItems(), pageName: pageName },
-            react_1.default.createElement(react_router_dom_1.Routes, null,
-                appConfig.routes(setPageName),
-                react_1.default.createElement(react_router_dom_1.Route, { path: "*", element: react_1.default.createElement(NotFoundPage_1.default, { setPageName: setPageName }) }))));
+    var todo = appConfig.appContainer.dataset.todo;
+    return react_1.default.createElement(RuntimeContext_1.default.Provider, { value: {
+            todo: todo,
+        } },
+        react_1.default.createElement(Auth_1.default, null,
+            react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
+                react_1.default.createElement(Shell_1.default, { menuItems: appConfig.menuItems(), pageName: pageName },
+                    react_1.default.createElement(react_router_dom_1.Routes, null,
+                        appConfig.routes(setPageName),
+                        react_1.default.createElement(react_router_dom_1.Route, { path: "*", element: react_1.default.createElement(NotFoundPage_1.default, { setPageName: setPageName }) }))))));
 };
 exports.default = App;

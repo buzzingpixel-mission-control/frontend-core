@@ -22,18 +22,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var react_router_dom_1 = require("react-router-dom");
-var NotFoundPage = function (_a) {
-    var setPageName = _a.setPageName;
-    (0, react_1.useEffect)(function () { return setPageName('404'); }, []);
-    return react_1.default.createElement("div", null,
-        react_1.default.createElement("h1", { className: "mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl" }, "Page not found"),
-        react_1.default.createElement("p", { className: "mt-6 text-base leading-7 text-gray-600" }, "Something seems to be wrong, we weren\u2019t able to find that page."),
-        react_1.default.createElement("div", { className: "mt-10" },
-            react_1.default.createElement(react_router_dom_1.Link, { to: "/projects", className: "text-sm font-semibold leading-7 text-cyan-600" },
-                react_1.default.createElement("span", { "aria-hidden": "true" }, "\u2190"),
-                " Go to projects")));
+var react_cookie_1 = require("react-cookie");
+var FullPageLoading_1 = __importDefault(require("../FullPageLoading"));
+var Auth = function (_a) {
+    var children = _a.children;
+    var cookies = (0, react_cookie_1.useCookies)(['auth_token'])[0];
+    if (!cookies.auth_token) {
+        var query_1 = new URLSearchParams({
+            authReturn: encodeURI(window.location.href),
+        });
+        (0, react_1.useEffect)(function () {
+            window.location.href = "/oauth2/authorize?".concat(query_1.toString());
+        }, []);
+        return react_1.default.createElement(FullPageLoading_1.default, null);
+    }
+    return react_1.default.createElement(react_1.default.Fragment, null, children);
 };
-exports.default = NotFoundPage;
+exports.default = Auth;

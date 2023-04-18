@@ -104,13 +104,18 @@ const Shell = (
                                                                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                                                                         )}
                                                                     >
-                                                                        <item.icon
-                                                                            className={classNames(
-                                                                                isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
-                                                                                'h-6 w-6 shrink-0',
-                                                                            )}
-                                                                            aria-hidden="true"
-                                                                        />
+                                                                        {(() => {
+                                                                            if (!item.icon) {
+                                                                                return null;
+                                                                            }
+                                                                            return <item.icon
+                                                                                className={classNames(
+                                                                                    isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
+                                                                                    'h-6 w-6 shrink-0',
+                                                                                )}
+                                                                                aria-hidden="true"
+                                                                            />;
+                                                                        })()}
                                                                         {item.name}
                                                                     </Link>
                                                                 </li>
@@ -152,13 +157,18 @@ const Shell = (
                                                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                                                         )}
                                                     >
-                                                        <item.icon
-                                                            className={classNames(
-                                                                isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
-                                                                'h-6 w-6 shrink-0',
-                                                            )}
-                                                            aria-hidden="true"
-                                                        />
+                                                        {(() => {
+                                                            if (!item.icon) {
+                                                                return null;
+                                                            }
+                                                            return <item.icon
+                                                                className={classNames(
+                                                                    isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
+                                                                    'h-6 w-6 shrink-0',
+                                                                )}
+                                                                aria-hidden="true"
+                                                            />;
+                                                        })()}
                                                         {item.name}
                                                     </Link>
                                                 </li>

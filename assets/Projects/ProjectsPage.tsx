@@ -7,9 +7,7 @@ const ProjectsPage = (
         setPageName: Dispatch<SetStateAction<string>>
     },
 ) => {
-    useEffect(() => {
-        setPageName('Projects');
-    }, []);
+    useEffect(() => setPageName('Projects'), []);
 
     return <>Projects Page Content</>;
 };

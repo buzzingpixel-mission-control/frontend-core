@@ -8,9 +8,7 @@ const NotFoundPage = (
         setPageName: Dispatch<SetStateAction<string>>
     },
 ) => {
-    useEffect(() => {
-        setPageName('404');
-    }, []);
+    useEffect(() => setPageName('404'), []);
 
     return <div>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>

@@ -68,7 +68,12 @@ var Shell = function (_a) {
                                                             }, className: classNames(isCurrent
                                                                 ? 'bg-gray-200 text-cyan-600'
                                                                 : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold') },
-                                                            react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" }),
+                                                            (function () {
+                                                                if (!item.icon) {
+                                                                    return null;
+                                                                }
+                                                                return react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" });
+                                                            })(),
                                                             item.name)));
                                                 }))))))))))),
             react_1.default.createElement("div", { className: "hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col" },
@@ -83,7 +88,12 @@ var Shell = function (_a) {
                                         react_1.default.createElement(react_router_dom_1.Link, { to: item.href, className: classNames(isCurrent
                                                 ? 'bg-gray-200 text-cyan-600'
                                                 : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold') },
-                                            react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" }),
+                                            (function () {
+                                                if (!item.icon) {
+                                                    return null;
+                                                }
+                                                return react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" });
+                                            })(),
                                             item.name)));
                                 }))),
                             react_1.default.createElement("li", { className: "-mx-6 mt-auto" },
