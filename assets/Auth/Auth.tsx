@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useCookies } from 'react-cookie';
 import FullPageLoading from '../FullPageLoading';
-import redirectToSignIn from '../redirectToSignIn';
+import redirectToSignIn from './redirectToSignIn';
 
 const Auth = (
     {

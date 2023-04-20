@@ -1,7 +1,7 @@
 import { QueryKey, UseQueryOptions } from '@tanstack/react-query';
 import { ZodType } from 'zod';
-import ApiParams from './ApiParams';
-import ApiError from './ApiError';
+import ApiParams from './Api/ApiParams';
+import ApiError from './Api/ApiError';
 declare const useApiQuery: <Props>(queryKey: QueryKey, apiParams: ApiParams, options?: Omit<UseQueryOptions<Props | {
     error: string;
 }, ApiError, Props, QueryKey>, "queryKey" | "queryFn" | "initialData"> & {

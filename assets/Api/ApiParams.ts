@@ -1,4 +1,4 @@
-import QueryParams from './QueryParams';
+import QueryParams from '../QueryParams';
 import RequestMethod from './RequestMethod';
 
 interface ApiParams {

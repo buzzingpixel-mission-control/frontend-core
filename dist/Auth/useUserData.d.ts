@@ -10,7 +10,7 @@ declare const useUserData: () => {
         name?: string;
         isAdmin?: boolean;
     };
-    error: import("./Api/ApiError").default;
+    error: import("../Api/ApiError").default;
     isError: true;
     isLoading: false;
     isLoadingError: false;
@@ -20,7 +20,7 @@ declare const useUserData: () => {
     dataUpdatedAt: number;
     errorUpdatedAt: number;
     failureCount: number;
-    failureReason: import("./Api/ApiError").default;
+    failureReason: import("../Api/ApiError").default;
     errorUpdateCount: number;
     isFetched: boolean;
     isFetchedAfterMount: boolean;
@@ -35,7 +35,7 @@ declare const useUserData: () => {
         emailAddress?: string;
         name?: string;
         isAdmin?: boolean;
-    }, import("./Api/ApiError").default>>;
+    }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 } | {
@@ -60,7 +60,7 @@ declare const useUserData: () => {
     dataUpdatedAt: number;
     errorUpdatedAt: number;
     failureCount: number;
-    failureReason: import("./Api/ApiError").default;
+    failureReason: import("../Api/ApiError").default;
     errorUpdateCount: number;
     isFetched: boolean;
     isFetchedAfterMount: boolean;
@@ -75,7 +75,7 @@ declare const useUserData: () => {
         emailAddress?: string;
         name?: string;
         isAdmin?: boolean;
-    }, import("./Api/ApiError").default>>;
+    }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 } | {
@@ -86,7 +86,7 @@ declare const useUserData: () => {
         isAdmin?: boolean;
     }) => void;
     data: undefined;
-    error: import("./Api/ApiError").default;
+    error: import("../Api/ApiError").default;
     isError: true;
     isLoading: false;
     isLoadingError: true;
@@ -96,7 +96,7 @@ declare const useUserData: () => {
     dataUpdatedAt: number;
     errorUpdatedAt: number;
     failureCount: number;
-    failureReason: import("./Api/ApiError").default;
+    failureReason: import("../Api/ApiError").default;
     errorUpdateCount: number;
     isFetched: boolean;
     isFetchedAfterMount: boolean;
@@ -111,7 +111,7 @@ declare const useUserData: () => {
         emailAddress?: string;
         name?: string;
         isAdmin?: boolean;
-    }, import("./Api/ApiError").default>>;
+    }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 } | {
@@ -132,7 +132,7 @@ declare const useUserData: () => {
     dataUpdatedAt: number;
     errorUpdatedAt: number;
     failureCount: number;
-    failureReason: import("./Api/ApiError").default;
+    failureReason: import("../Api/ApiError").default;
     errorUpdateCount: number;
     isFetched: boolean;
     isFetchedAfterMount: boolean;
@@ -147,7 +147,7 @@ declare const useUserData: () => {
         emailAddress?: string;
         name?: string;
         isAdmin?: boolean;
-    }, import("./Api/ApiError").default>>;
+    }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 };

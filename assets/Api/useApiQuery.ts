@@ -3,7 +3,7 @@ import {
 } from '@tanstack/react-query';
 import { ZodType } from 'zod';
 import ApiParams from './ApiParams';
-import MakeApiRequest from './MakeApiRequest';
+import MakeApiRequest from '../MakeApiRequest';
 import ApiError from './ApiError';
 
 const useApiQuery = <Props>(

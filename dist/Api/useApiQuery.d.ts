@@ -1,8 +1,8 @@
 import { QueryKey, UseQueryOptions } from '@tanstack/react-query';
 import { ZodType } from 'zod';
-import ApiParams from './Api/ApiParams';
-import ApiError from './Api/ApiError';
-declare const useApiQueryWithSignInRedirect: <Props>(queryKey: QueryKey, apiParams: ApiParams, options?: Omit<UseQueryOptions<Props | {
+import ApiParams from './ApiParams';
+import ApiError from './ApiError';
+declare const useApiQuery: <Props>(queryKey: QueryKey, apiParams: ApiParams, options?: Omit<UseQueryOptions<Props | {
     error: string;
 }, ApiError, Props, QueryKey>, "queryKey" | "queryFn" | "initialData"> & {
     initialData?: () => undefined;
@@ -121,4 +121,4 @@ declare const useApiQueryWithSignInRedirect: <Props>(queryKey: QueryKey, apiPara
     remove: () => void;
     fetchStatus: import("@tanstack/react-query").FetchStatus;
 };
-export default useApiQueryWithSignInRedirect;
+export default useApiQuery;

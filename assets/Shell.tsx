@@ -4,7 +4,7 @@ import { Bars3Icon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/outlin
 import { Link, useLocation } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import FullPageLoading from './FullPageLoading';
-import useUserData from './useUserData';
+import useUserData from './Auth/useUserData';
 
 function classNames (...classes) {
     return classes.filter(Boolean).join(' ');

@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
-var useApiQuery_1 = __importDefault(require("./Api/useApiQuery"));
-var redirectToSignIn_1 = __importDefault(require("./redirectToSignIn"));
+var useApiQuery_1 = __importDefault(require("./useApiQuery"));
+var redirectToSignIn_1 = __importDefault(require("../Auth/redirectToSignIn"));
 var useApiQueryWithSignInRedirect = function (queryKey, apiParams, options) {
     var queryResult = (0, useApiQuery_1.default)(queryKey, apiParams, options);
     (0, react_1.useEffect)(function () {

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import ApiParams from './ApiParams';
 import ApiError from './ApiError';
 import useApiQuery from './useApiQuery';
-import redirectToSignIn from './redirectToSignIn';
+import redirectToSignIn from '../Auth/redirectToSignIn';
 
 const useApiQueryWithSignInRedirect = <Props>(
     queryKey: QueryKey,

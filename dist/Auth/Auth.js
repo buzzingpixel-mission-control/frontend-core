@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_cookie_1 = require("react-cookie");
 var FullPageLoading_1 = __importDefault(require("../FullPageLoading"));
-var redirectToSignIn_1 = __importDefault(require("../redirectToSignIn"));
+var redirectToSignIn_1 = __importDefault(require("./redirectToSignIn"));
 var Auth = function (_a) {
     var children = _a.children;
     var cookies = (0, react_cookie_1.useCookies)(['auth_token'])[0];

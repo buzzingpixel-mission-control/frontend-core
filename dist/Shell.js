@@ -31,7 +31,7 @@ var react_2 = require("@headlessui/react");
 var outline_1 = require("@heroicons/react/24/outline");
 var react_router_dom_1 = require("react-router-dom");
 var FullPageLoading_1 = __importDefault(require("./FullPageLoading"));
-var useUserData_1 = __importDefault(require("./useUserData"));
+var useUserData_1 = __importDefault(require("./Auth/useUserData"));
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {

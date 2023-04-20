@@ -1,7 +1,7 @@
-import ApiParams from './ApiParams';
-import RequestMethod from './RequestMethod';
+import ApiParams from './Api/ApiParams';
+import RequestMethod from './Api/RequestMethod';
 import EncodeQueryParamsFromObject from './EncodeQueryParamsFromObject';
-import ApiError from './ApiError';
+import ApiError from './Api/ApiError';
 
 const MakeApiRequest = async <Props>({
     uri,

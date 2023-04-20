@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import useApiQueryWithSignInRedirect from './useApiQueryWithSignInRedirect';
+import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect';
 
 const UserDataSchema = z.object({
     emailAddress: z.string().min(1).email(),

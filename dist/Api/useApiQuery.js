@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,56 +50,61 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var RequestMethod_1 = __importDefault(require("./Api/RequestMethod"));
-var EncodeQueryParamsFromObject_1 = __importDefault(require("./EncodeQueryParamsFromObject"));
-var ApiError_1 = __importDefault(require("./Api/ApiError"));
-var MakeApiRequest = function (_a) {
-    var uri = _a.uri, queryParams = _a.queryParams, method = _a.method, payload = _a.payload;
-    return __awaiter(void 0, void 0, void 0, function () {
-        var options, urlStr, url, queryString, response, data;
-        var _b;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+var react_query_1 = require("@tanstack/react-query");
+var MakeApiRequest_1 = __importDefault(require("../MakeApiRequest"));
+var useApiQuery = function (queryKey, apiParams, options) {
+    var _a;
+    if (!options) {
+        options = {};
+    }
+    if (options.retry === undefined) {
+        options.retry = false;
+    }
+    var zodValidator = options.zodValidator;
+    if (zodValidator) {
+        var originalOnSuccess_1 = options.onSuccess;
+        options.onSuccess = function (data) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            if (!data.error) {
+                zodValidator.parse(data);
+            }
+            if (originalOnSuccess_1) {
+                originalOnSuccess_1(data);
+            }
+        };
+    }
+    var queryClient = (0, react_query_1.useQueryClient)();
+    var useQueryResult = (0, react_query_1.useQuery)([queryKey], function () { return __awaiter(void 0, void 0, void 0, function () {
+        var error_1, err;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    queryParams = queryParams || {};
-                    method = (method || RequestMethod_1.default.GET);
-                    options = {
-                        redirect: 'manual',
-                        method: String(method),
-                    };
-                    if (payload !== undefined) {
-                        options.body = JSON.stringify(payload);
-                        options.headers = new Headers({
-                            'Content-Type': 'application/json',
-                            Accept: 'application/json',
-                        });
-                    }
-                    else {
-                        options.headers = new Headers({
-                            Accept: 'application/json',
-                        });
-                    }
-                    urlStr = "".concat(window.location.protocol, "//").concat(window.location.host);
-                    if (window.location.port) {
-                        urlStr += ":".concat(window.location.port);
-                    }
-                    url = "".concat(urlStr, "/api/request").concat(uri);
-                    queryString = (0, EncodeQueryParamsFromObject_1.default)(queryParams);
-                    if (queryString) {
-                        url += "?".concat(queryString);
-                    }
-                    return [4 /*yield*/, fetch(String(url), options)];
-                case 1:
-                    response = _c.sent();
-                    return [4 /*yield*/, response.json()];
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, (0, MakeApiRequest_1.default)(apiParams)];
+                case 1: return [2 /*return*/, _a.sent()];
                 case 2:
-                    data = _c.sent();
-                    if (response.ok) {
-                        return [2 /*return*/, data];
+                    error_1 = _a.sent();
+                    err = error_1;
+                    if (err.statusCode === 401) {
+                        return [2 /*return*/, { error: 'access_denied' }];
                     }
-                    return [2 /*return*/, Promise.reject(new ApiError_1.default(data, response.status, response.statusText, (_b = data.message) !== null && _b !== void 0 ? _b : undefined))];
+                    if (options === null || options === void 0 ? void 0 : options.ignoreErrors) {
+                        return [2 /*return*/, {
+                                error: err.message,
+                            }];
+                    }
+                    return [2 /*return*/, Promise.reject(error_1)];
+                case 3: return [2 /*return*/];
             }
         });
-    });
+    }); }, __assign(__assign({}, options), { useErrorBoundary: true }));
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    var accessDenied = ((_a = useQueryResult.data) === null || _a === void 0 ? void 0 : _a.error) === 'access_denied';
+    var setData = function (newData) {
+        queryClient.setQueryData([queryKey], newData);
+    };
+    return __assign(__assign({}, useQueryResult), { accessDenied: accessDenied, setData: setData });
 };
-exports.default = MakeApiRequest;
+exports.default = useApiQuery;
