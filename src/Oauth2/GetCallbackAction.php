@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace MissionControlFrontend\Oauth2;
 
+use DateInterval;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\RequestOptions;
 use HttpSoft\Cookie\CookieManagerInterface;
 use MissionControlFrontend\ApplyRoutesEvent;
 use MissionControlFrontend\Cookies\CookieCreator;
 use MissionControlFrontend\Cookies\CookieValueRetriever;
 use MissionControlFrontend\Http\HttpConfig;
 use MissionControlFrontend\Url\UrlGenerator;
+use Psr\Clock\ClockInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\HttpBadRequestException;
@@ -25,6 +28,7 @@ readonly class GetCallbackAction
 
     public function __construct(
         private Client $guzzle,
+        private ClockInterface $clock,
         private HttpConfig $httpConfig,
         private UrlGenerator $urlGenerator,
         private CookieCreator $cookieCreator,
@@ -50,10 +54,11 @@ readonly class GetCallbackAction
             throw new HttpBadRequestException($request);
         }
 
-        $request = $this->guzzle->post(
+        $httpResponse = $this->guzzle->post(
             $this->httpConfig->accessTokenPostUrl,
             [
-                'form_params' => [
+                RequestOptions::HTTP_ERRORS => false,
+                RequestOptions::FORM_PARAMS => [
                     'grant_type' => 'authorization_code',
                     'client_id' => $this->httpConfig->webClientId,
                     'client_secret' => $this->httpConfig->webClientSecret,
@@ -71,7 +76,8 @@ readonly class GetCallbackAction
 
         $this->cookieManager->set($this->cookieCreator->create(
             'auth_token',
-            $request->getBody()->getContents(),
+            $httpResponse->getBody()->getContents(),
+            $this->clock->now()->add(new DateInterval('P1Y')),
             httpOnly: false,
         ));
 

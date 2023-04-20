@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import {
-    Bars3Icon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, useLocation } from 'react-router-dom';
 import MenuItem from './MenuItem';
+import useApiQueryWithSignInRedirect from './useApiQueryWithSignInRedirect';
+import FullPageLoading from './FullPageLoading';
+import RequestMethod from './RequestMethod';
 
 function classNames (...classes) {
     return classes.filter(Boolean).join(' ');
@@ -33,6 +33,21 @@ const Shell = (
         sidebarOpen,
         setSidebarOpen,
     ] = useState(false);
+
+    const {
+        status,
+        data,
+    } = useApiQueryWithSignInRedirect(
+        ['user-info'],
+        { uri: '/user-info' },
+        { staleTime: Infinity },
+    );
+
+    if (status === 'loading') {
+        return <FullPageLoading />;
+    }
+
+    console.log(data);
 
     return (
         <>

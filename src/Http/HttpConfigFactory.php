@@ -91,6 +91,14 @@ readonly class HttpConfigFactory
             ]));
         }
 
+        if ($config->apiUrl === '') {
+            throw new RuntimeException(implode(' ', [
+                'You must listen for the event',
+                ApplyHttpConfigEvent::class,
+                'and add apiUrl',
+            ]));
+        }
+
         return $config;
     }
 }

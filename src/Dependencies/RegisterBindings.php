@@ -10,6 +10,7 @@ class RegisterBindings
 {
     public static function register(ContainerBindings $containerBindings): void
     {
+        RegisterBindingsClock::register($containerBindings);
         RegisterBindingsEvents::register($containerBindings);
         RegisterBindingsCookies::register($containerBindings);
         RegisterBindingsHttp::register($containerBindings);

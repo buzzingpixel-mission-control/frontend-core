@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useCookies } from 'react-cookie';
 import FullPageLoading from '../FullPageLoading';
+import redirectToSignIn from '../redirectToSignIn';
 
 const Auth = (
     {
@@ -15,12 +16,8 @@ const Auth = (
     );
 
     if (!cookies.auth_token) {
-        const query = new URLSearchParams({
-            authReturn: encodeURI(window.location.href),
-        });
-
         useEffect(() => {
-            window.location.href = `/oauth2/authorize?${query.toString()}`;
+            redirectToSignIn();
         }, []);
 
         return <FullPageLoading />;

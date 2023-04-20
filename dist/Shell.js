@@ -22,11 +22,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_2 = require("@headlessui/react");
 var outline_1 = require("@heroicons/react/24/outline");
 var react_router_dom_1 = require("react-router-dom");
+var useApiQueryWithSignInRedirect_1 = __importDefault(require("./useApiQueryWithSignInRedirect"));
+var FullPageLoading_1 = __importDefault(require("./FullPageLoading"));
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -41,6 +46,11 @@ var Shell = function (_a) {
     var rootPath = "/".concat(locationArray[1]);
     menuItems = menuItems || [];
     var _b = (0, react_1.useState)(false), sidebarOpen = _b[0], setSidebarOpen = _b[1];
+    var _c = (0, useApiQueryWithSignInRedirect_1.default)(['user-info'], { uri: '/user-info' }, { staleTime: Infinity }), status = _c.status, data = _c.data;
+    if (status === 'loading') {
+        return react_1.default.createElement(FullPageLoading_1.default, null);
+    }
+    console.log(data);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("div", null,
             react_1.default.createElement(react_2.Transition.Root, { show: sidebarOpen, as: react_1.Fragment },

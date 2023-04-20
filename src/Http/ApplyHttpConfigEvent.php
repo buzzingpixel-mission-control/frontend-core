@@ -82,9 +82,8 @@ class ApplyHttpConfigEvent
         return $this;
     }
 
-    public function addWebClientRedirectUri(
-        string $webClientRedirectUri,
-    ): self {
+    public function addWebClientRedirectUri(string $webClientRedirectUri): self
+    {
         $this->config = $this->config->withWebClientRedirectUri(
             $webClientRedirectUri,
         );
@@ -92,12 +91,18 @@ class ApplyHttpConfigEvent
         return $this;
     }
 
-    public function addAccessTokenPostUrl(
-        string $accessTokenPostUrl,
-    ): self {
+    public function addAccessTokenPostUrl(string $accessTokenPostUrl): self
+    {
         $this->config = $this->config->withAccessTokenPostUrl(
             $accessTokenPostUrl,
         );
+
+        return $this;
+    }
+
+    public function addApiUrl(string $apiUrl): self
+    {
+        $this->config = $this->config->withApiUrl($apiUrl);
 
         return $this;
     }

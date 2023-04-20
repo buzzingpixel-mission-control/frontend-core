@@ -36,6 +36,7 @@ readonly class HttpConfig
         public string $webClientSecret = '',
         public string $webClientRedirectUri = '',
         public string $accessTokenPostUrl = '',
+        public string $apiUrl = '',
     ) {
         $this->cssTags = array_values(array_map(
             static fn (CssTag $t) => $t,
@@ -117,5 +118,10 @@ readonly class HttpConfig
         string $accessTokenPostUrl,
     ): HttpConfig {
         return $this->with(accessTokenPostUrl: $accessTokenPostUrl);
+    }
+
+    public function withApiUrl(string $apiUrl): HttpConfig
+    {
+        return $this->with(apiUrl: $apiUrl);
     }
 }
