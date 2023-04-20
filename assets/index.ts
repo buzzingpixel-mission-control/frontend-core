@@ -15,3 +15,4 @@ export { default as RuntimeContext } from './RuntimeContext';
 export { default as Shell } from './Shell';
 export { default as useApiQuery } from './useApiQuery';
 export { default as useRuntimeContext } from './useRuntimeContext';
+export { default as useUserData } from './useUserData';

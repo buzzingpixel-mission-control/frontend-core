@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useRuntimeContext = exports.useApiQuery = exports.Shell = exports.RuntimeContext = exports.RequestMethods = exports.redirectToSignIn = exports.MakeApiRequest = exports.FullPageLoading = exports.FrontEndCoreRoutes = exports.FrontEndCoreMenuItems = exports.EncodeQueryParamsFromObject = exports.Auth = exports.App = void 0;
+exports.useUserData = exports.useRuntimeContext = exports.useApiQuery = exports.Shell = exports.RuntimeContext = exports.RequestMethods = exports.redirectToSignIn = exports.MakeApiRequest = exports.FullPageLoading = exports.FrontEndCoreRoutes = exports.FrontEndCoreMenuItems = exports.EncodeQueryParamsFromObject = exports.Auth = exports.App = void 0;
 var App_1 = require("./App");
 Object.defineProperty(exports, "App", { enumerable: true, get: function () { return __importDefault(App_1).default; } });
 var Auth_1 = require("./Auth/Auth");
@@ -30,3 +30,5 @@ var useApiQuery_1 = require("./useApiQuery");
 Object.defineProperty(exports, "useApiQuery", { enumerable: true, get: function () { return __importDefault(useApiQuery_1).default; } });
 var useRuntimeContext_1 = require("./useRuntimeContext");
 Object.defineProperty(exports, "useRuntimeContext", { enumerable: true, get: function () { return __importDefault(useRuntimeContext_1).default; } });
+var useUserData_1 = require("./useUserData");
+Object.defineProperty(exports, "useUserData", { enumerable: true, get: function () { return __importDefault(useUserData_1).default; } });

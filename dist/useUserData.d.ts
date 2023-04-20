@@ -1,0 +1,154 @@
+declare const useUserData: () => {
+    accessDenied: boolean;
+    setData: (newData: {
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }) => void;
+    data: {
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    };
+    error: import("./ApiError").default;
+    isError: true;
+    isLoading: false;
+    isLoadingError: false;
+    isRefetchError: true;
+    isSuccess: false;
+    status: "error";
+    dataUpdatedAt: number;
+    errorUpdatedAt: number;
+    failureCount: number;
+    failureReason: import("./ApiError").default;
+    errorUpdateCount: number;
+    isFetched: boolean;
+    isFetchedAfterMount: boolean;
+    isFetching: boolean;
+    isInitialLoading: boolean;
+    isPaused: boolean;
+    isPlaceholderData: boolean;
+    isPreviousData: boolean;
+    isRefetching: boolean;
+    isStale: boolean;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }, import("./ApiError").default>>;
+    remove: () => void;
+    fetchStatus: import("@tanstack/query-core").FetchStatus;
+} | {
+    accessDenied: boolean;
+    setData: (newData: {
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }) => void;
+    data: {
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    };
+    error: null;
+    isError: false;
+    isLoading: false;
+    isLoadingError: false;
+    isRefetchError: false;
+    isSuccess: true;
+    status: "success";
+    dataUpdatedAt: number;
+    errorUpdatedAt: number;
+    failureCount: number;
+    failureReason: import("./ApiError").default;
+    errorUpdateCount: number;
+    isFetched: boolean;
+    isFetchedAfterMount: boolean;
+    isFetching: boolean;
+    isInitialLoading: boolean;
+    isPaused: boolean;
+    isPlaceholderData: boolean;
+    isPreviousData: boolean;
+    isRefetching: boolean;
+    isStale: boolean;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }, import("./ApiError").default>>;
+    remove: () => void;
+    fetchStatus: import("@tanstack/query-core").FetchStatus;
+} | {
+    accessDenied: boolean;
+    setData: (newData: {
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }) => void;
+    data: undefined;
+    error: import("./ApiError").default;
+    isError: true;
+    isLoading: false;
+    isLoadingError: true;
+    isRefetchError: false;
+    isSuccess: false;
+    status: "error";
+    dataUpdatedAt: number;
+    errorUpdatedAt: number;
+    failureCount: number;
+    failureReason: import("./ApiError").default;
+    errorUpdateCount: number;
+    isFetched: boolean;
+    isFetchedAfterMount: boolean;
+    isFetching: boolean;
+    isInitialLoading: boolean;
+    isPaused: boolean;
+    isPlaceholderData: boolean;
+    isPreviousData: boolean;
+    isRefetching: boolean;
+    isStale: boolean;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }, import("./ApiError").default>>;
+    remove: () => void;
+    fetchStatus: import("@tanstack/query-core").FetchStatus;
+} | {
+    accessDenied: boolean;
+    setData: (newData: {
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }) => void;
+    data: undefined;
+    error: null;
+    isError: false;
+    isLoading: true;
+    isLoadingError: false;
+    isRefetchError: false;
+    isSuccess: false;
+    status: "loading";
+    dataUpdatedAt: number;
+    errorUpdatedAt: number;
+    failureCount: number;
+    failureReason: import("./ApiError").default;
+    errorUpdateCount: number;
+    isFetched: boolean;
+    isFetchedAfterMount: boolean;
+    isFetching: boolean;
+    isInitialLoading: boolean;
+    isPaused: boolean;
+    isPlaceholderData: boolean;
+    isPreviousData: boolean;
+    isRefetching: boolean;
+    isStale: boolean;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+        emailAddress?: string;
+        name?: string;
+        isAdmin?: boolean;
+    }, import("./ApiError").default>>;
+    remove: () => void;
+    fetchStatus: import("@tanstack/query-core").FetchStatus;
+};
+export default useUserData;

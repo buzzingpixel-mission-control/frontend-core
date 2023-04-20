@@ -30,8 +30,8 @@ var react_1 = __importStar(require("react"));
 var react_2 = require("@headlessui/react");
 var outline_1 = require("@heroicons/react/24/outline");
 var react_router_dom_1 = require("react-router-dom");
-var useApiQueryWithSignInRedirect_1 = __importDefault(require("./useApiQueryWithSignInRedirect"));
 var FullPageLoading_1 = __importDefault(require("./FullPageLoading"));
+var useUserData_1 = __importDefault(require("./useUserData"));
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -46,11 +46,10 @@ var Shell = function (_a) {
     var rootPath = "/".concat(locationArray[1]);
     menuItems = menuItems || [];
     var _b = (0, react_1.useState)(false), sidebarOpen = _b[0], setSidebarOpen = _b[1];
-    var _c = (0, useApiQueryWithSignInRedirect_1.default)(['user-info'], { uri: '/user-info' }, { staleTime: Infinity }), status = _c.status, data = _c.data;
+    var _c = (0, useUserData_1.default)(), status = _c.status, userData = _c.data;
     if (status === 'loading') {
         return react_1.default.createElement(FullPageLoading_1.default, null);
     }
-    console.log(data);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("div", null,
             react_1.default.createElement(react_2.Transition.Root, { show: sidebarOpen, as: react_1.Fragment },
@@ -107,18 +106,18 @@ var Shell = function (_a) {
                                             item.name)));
                                 }))),
                             react_1.default.createElement("li", { className: "-mx-6 mt-auto" },
-                                react_1.default.createElement("a", { href: "#", className: "flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50" },
-                                    react_1.default.createElement("img", { className: "h-8 w-8 rounded-full bg-gray-50", src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80", alt: "" }),
+                                react_1.default.createElement(react_router_dom_1.Link, { to: "/account", className: "flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50" },
+                                    react_1.default.createElement(outline_1.UserCircleIcon, { className: "h-8 w-8 rounded-full bg-gray-50" }),
                                     react_1.default.createElement("span", { className: "sr-only" }, "Your profile"),
-                                    react_1.default.createElement("span", { "aria-hidden": "true" }, "Tom Cook"))))))),
+                                    react_1.default.createElement("span", { "aria-hidden": "true" }, userData.name))))))),
             react_1.default.createElement("div", { className: "sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden" },
                 react_1.default.createElement("button", { type: "button", className: "-m-2.5 p-2.5 text-gray-700 lg:hidden", onClick: function () { return setSidebarOpen(true); } },
                     react_1.default.createElement("span", { className: "sr-only" }, "Open sidebar"),
                     react_1.default.createElement(outline_1.Bars3Icon, { className: "h-6 w-6", "aria-hidden": "true" })),
                 react_1.default.createElement("div", { className: "flex-1 text-sm font-semibold leading-6 text-gray-900" }, pageName),
-                react_1.default.createElement("a", { href: "#" },
+                react_1.default.createElement(react_router_dom_1.Link, { to: "/account" },
                     react_1.default.createElement("span", { className: "sr-only" }, "Your profile"),
-                    react_1.default.createElement("img", { className: "h-8 w-8 rounded-full bg-gray-50", src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80", alt: "" }))),
+                    react_1.default.createElement(outline_1.UserCircleIcon, { className: "h-8 w-8 rounded-full bg-gray-50" }))),
             react_1.default.createElement("main", { className: "pt-4 pb-10 lg:pl-72" },
                 react_1.default.createElement("h1", { className: "px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block" }, pageName),
                 react_1.default.createElement("div", { className: "px-4 sm:px-6 lg:px-8" }, children)))));

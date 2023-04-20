@@ -1,11 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Link, useLocation } from 'react-router-dom';
 import MenuItem from './MenuItem';
-import useApiQueryWithSignInRedirect from './useApiQueryWithSignInRedirect';
 import FullPageLoading from './FullPageLoading';
-import RequestMethod from './RequestMethod';
+import useUserData from './useUserData';
 
 function classNames (...classes) {
     return classes.filter(Boolean).join(' ');
@@ -36,18 +35,12 @@ const Shell = (
 
     const {
         status,
-        data,
-    } = useApiQueryWithSignInRedirect(
-        ['user-info'],
-        { uri: '/user-info' },
-        { staleTime: Infinity },
-    );
+        data: userData,
+    } = useUserData();
 
     if (status === 'loading') {
         return <FullPageLoading />;
     }
-
-    console.log(data);
 
     return (
         <>
@@ -192,18 +185,14 @@ const Shell = (
                                     </ul>
                                 </li>
                                 <li className="-mx-6 mt-auto">
-                                    <a
-                                        href="#"
+                                    <Link
+                                        to="/account"
                                         className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
                                     >
-                                        <img
-                                            className="h-8 w-8 rounded-full bg-gray-50"
-                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            alt=""
-                                        />
+                                        <UserCircleIcon className="h-8 w-8 rounded-full bg-gray-50" />
                                         <span className="sr-only">Your profile</span>
-                                        <span aria-hidden="true">Tom Cook</span>
-                                    </a>
+                                        <span aria-hidden="true">{userData.name}</span>
+                                    </Link>
                                 </li>
                             </ul>
                         </nav>
@@ -216,14 +205,10 @@ const Shell = (
                         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </button>
                     <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">{pageName}</div>
-                    <a href="#">
+                    <Link to="/account">
                         <span className="sr-only">Your profile</span>
-                        <img
-                            className="h-8 w-8 rounded-full bg-gray-50"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
-                        />
-                    </a>
+                        <UserCircleIcon className="h-8 w-8 rounded-full bg-gray-50" />
+                    </Link>
                 </div>
 
                 <main className="pt-4 pb-10 lg:pl-72">

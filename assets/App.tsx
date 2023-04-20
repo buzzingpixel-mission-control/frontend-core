@@ -7,6 +7,8 @@ import AppConfig from './AppConfig';
 import NotFoundPage from './NotFound/NotFoundPage';
 import Auth from './Auth/Auth';
 import RuntimeContext from './RuntimeContext';
+import FrontEndCoreRoutes from './FrontEndCoreRoutes';
+import FrontEndCoreMenuItems from './FrontEndCoreMenuItems';
 
 const queryClient = new QueryClient();
 
@@ -42,10 +44,13 @@ const App = (
         <QueryClientProvider client={queryClient}>
             <Auth>
                 <Router>
-                    <Shell menuItems={appConfig.menuItems()} pageName={pageName}>
+                    <Shell menuItems={[
+                        ...FrontEndCoreMenuItems(),
+                        ...appConfig.menuItems(),
+                    ]} pageName={pageName}>
                         <Routes>
                             {appConfig.routes(setPageName)}
-                            <Route path="*" element={<NotFoundPage setPageName={setPageName} />}/>
+                            {FrontEndCoreRoutes(setPageName)}
                         </Routes>
                     </Shell>
                 </Router>
