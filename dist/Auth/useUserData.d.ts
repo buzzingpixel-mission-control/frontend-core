@@ -3,11 +3,13 @@ declare const useUserData: () => {
     setData: (newData: {
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }) => void;
     data: {
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     };
     error: import("../Api/ApiError").default;
@@ -34,6 +36,7 @@ declare const useUserData: () => {
     refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }, import("../Api/ApiError").default>>;
     remove: () => void;
@@ -43,11 +46,13 @@ declare const useUserData: () => {
     setData: (newData: {
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }) => void;
     data: {
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     };
     error: null;
@@ -74,6 +79,7 @@ declare const useUserData: () => {
     refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }, import("../Api/ApiError").default>>;
     remove: () => void;
@@ -83,6 +89,7 @@ declare const useUserData: () => {
     setData: (newData: {
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }) => void;
     data: undefined;
@@ -110,6 +117,7 @@ declare const useUserData: () => {
     refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }, import("../Api/ApiError").default>>;
     remove: () => void;
@@ -119,6 +127,7 @@ declare const useUserData: () => {
     setData: (newData: {
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }) => void;
     data: undefined;
@@ -146,6 +155,7 @@ declare const useUserData: () => {
     refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
         emailAddress?: string;
         name?: string;
+        nameOrEmail?: string;
         isAdmin?: boolean;
     }, import("../Api/ApiError").default>>;
     remove: () => void;

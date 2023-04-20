@@ -3,7 +3,8 @@ import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect'
 
 const UserDataSchema = z.object({
     emailAddress: z.string().min(1).email(),
-    name: z.string().min(1),
+    name: z.string(),
+    nameOrEmail: z.string().min(1),
     isAdmin: z.boolean(),
 });
 

@@ -109,7 +109,7 @@ var Shell = function (_a) {
                                 react_1.default.createElement(react_router_dom_1.Link, { to: "/account", className: "flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50" },
                                     react_1.default.createElement(outline_1.UserCircleIcon, { className: "h-8 w-8 rounded-full bg-gray-50" }),
                                     react_1.default.createElement("span", { className: "sr-only" }, "Your profile"),
-                                    react_1.default.createElement("span", { "aria-hidden": "true" }, userData.name))))))),
+                                    react_1.default.createElement("span", { "aria-hidden": "true" }, userData.nameOrEmail))))))),
             react_1.default.createElement("div", { className: "sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden" },
                 react_1.default.createElement("button", { type: "button", className: "-m-2.5 p-2.5 text-gray-700 lg:hidden", onClick: function () { return setSidebarOpen(true); } },
                     react_1.default.createElement("span", { className: "sr-only" }, "Open sidebar"),
@@ -120,6 +120,6 @@ var Shell = function (_a) {
                     react_1.default.createElement(outline_1.UserCircleIcon, { className: "h-8 w-8 rounded-full bg-gray-50" }))),
             react_1.default.createElement("main", { className: "pt-4 pb-10 lg:pl-72" },
                 react_1.default.createElement("h1", { className: "px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block" }, pageName),
-                react_1.default.createElement("div", { className: "px-4 sm:px-6 lg:px-8" }, children)))));
+                react_1.default.createElement("div", { className: "px-4 sm:px-6 lg:px-8 relative" }, children)))));
 };
 exports.default = Shell;

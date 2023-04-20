@@ -191,7 +191,7 @@ const Shell = (
                                     >
                                         <UserCircleIcon className="h-8 w-8 rounded-full bg-gray-50" />
                                         <span className="sr-only">Your profile</span>
-                                        <span aria-hidden="true">{userData.name}</span>
+                                        <span aria-hidden="true">{userData.nameOrEmail}</span>
                                     </Link>
                                 </li>
                             </ul>
@@ -215,7 +215,7 @@ const Shell = (
                     <h1 className="px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block">
                         {pageName}
                     </h1>
-                    <div className="px-4 sm:px-6 lg:px-8">
+                    <div className="px-4 sm:px-6 lg:px-8 relative">
                         {children}
                     </div>
                 </main>
