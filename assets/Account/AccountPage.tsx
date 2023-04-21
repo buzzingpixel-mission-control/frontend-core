@@ -29,13 +29,13 @@ const AccountPage = (
             title: 'Name',
             content: userData.name,
             renderEditor: SingleInputEditor,
-            editAction: '/api/user-info/edit/name',
+            editAction: '/api/request/user-info/edit/name',
         },
         {
             title: 'Email Address',
             content: userData.emailAddress,
             renderEditor: SingleInputEditor,
-            editAction: '/api/user-info/edit/email',
+            editAction: '/api/request/user-info/edit/email',
             editorInputType: 'email',
         },
         {
@@ -43,7 +43,7 @@ const AccountPage = (
             content: '****',
             renderEditor: PasswordEditor,
             editText: 'Update Password',
-            editAction: '/api/user-info/edit/password',
+            editAction: '/api/request/user-info/edit/password',
         },
     ] as Array<ListItem>;
 

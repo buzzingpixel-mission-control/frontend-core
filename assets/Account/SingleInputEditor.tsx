@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import EditorParams from './EditorParams';
 import EditorShell from '../EditorShell';
 import FetchOptionsBuilder from '../FetchOptionsBuilder';
@@ -10,6 +11,8 @@ const SingleInputEditor = (
         setContent,
     }: EditorParams,
 ) => {
+    const queryClient = useQueryClient();
+
     const [
         value,
         setValue,
@@ -55,6 +58,10 @@ const SingleInputEditor = (
                 }
 
                 setEditorIsOpen(false);
+
+                await queryClient.invalidateQueries(
+                    { queryKey: [['user-info']] },
+                );
             })
             .catch(() => {
                 setIsSaving(false);

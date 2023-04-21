@@ -39,6 +39,7 @@ var react_1 = __importStar(require("react"));
 var react_router_dom_1 = require("react-router-dom");
 var query_core_1 = require("@tanstack/query-core");
 var react_query_1 = require("@tanstack/react-query");
+var react_query_devtools_1 = require("@tanstack/react-query-devtools");
 var Shell_1 = __importDefault(require("./Shell"));
 var Auth_1 = __importDefault(require("./Auth/Auth"));
 var RuntimeContext_1 = __importDefault(require("./RuntimeContext"));
@@ -65,6 +66,7 @@ var App = function (_a) {
                     react_1.default.createElement(Shell_1.default, { menuItems: __spreadArray(__spreadArray([], (0, FrontEndCoreMenuItems_1.default)(), true), appConfig.menuItems(), true), pageName: pageName },
                         react_1.default.createElement(react_router_dom_1.Routes, null,
                             appConfig.routes(setPageName),
-                            (0, FrontEndCoreRoutes_1.default)(setPageName)))))));
+                            (0, FrontEndCoreRoutes_1.default)(setPageName))))),
+            react_1.default.createElement(react_query_devtools_1.ReactQueryDevtools, null)));
 };
 exports.default = App;

@@ -42,6 +42,8 @@ const Shell = (
         return <FullPageLoading />;
     }
 
+    console.log(userData);
+
     return (
         <>
             <div>

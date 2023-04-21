@@ -50,6 +50,7 @@ var Shell = function (_a) {
     if (status === 'loading') {
         return react_1.default.createElement(FullPageLoading_1.default, null);
     }
+    console.log(userData);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("div", null,
             react_1.default.createElement(react_2.Transition.Root, { show: sidebarOpen, as: react_1.Fragment },

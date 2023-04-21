@@ -44,13 +44,13 @@ var AccountPage = function (_a) {
             title: 'Name',
             content: userData.name,
             renderEditor: SingleInputEditor_1.default,
-            editAction: '/api/user-info/edit/name',
+            editAction: '/api/request/user-info/edit/name',
         },
         {
             title: 'Email Address',
             content: userData.emailAddress,
             renderEditor: SingleInputEditor_1.default,
-            editAction: '/api/user-info/edit/email',
+            editAction: '/api/request/user-info/edit/email',
             editorInputType: 'email',
         },
         {
@@ -58,7 +58,7 @@ var AccountPage = function (_a) {
             content: '****',
             renderEditor: PasswordEditor_1.default,
             editText: 'Update Password',
-            editAction: '/api/user-info/edit/password',
+            editAction: '/api/request/user-info/edit/password',
         },
     ];
     return react_1.default.createElement("div", { className: "max-w-4xl" },
