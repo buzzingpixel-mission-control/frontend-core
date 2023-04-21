@@ -7,6 +7,7 @@ namespace MissionControlFrontend\Events\EventListeners;
 use MissionControlFrontend\ApplyRoutesEvent;
 use MissionControlFrontend\Http\Api\AuthToken\Api\ApiRequestAction;
 use MissionControlFrontend\Http\FinalRoute;
+use MissionControlFrontend\MustNotBeJsonRequestMiddleware;
 use MissionControlFrontend\Oauth2\GetAuthorizeAction;
 use MissionControlFrontend\Oauth2\GetCallbackAction;
 
@@ -20,6 +21,7 @@ class ApplyRoutesEventListener
 
         GetCallbackAction::registerRoute($event);
 
-        $event->any('{route:.*?}', FinalRoute::class);
+        $event->any('{route:.*?}', FinalRoute::class)
+            ->add(MustNotBeJsonRequestMiddleware::class);
     }
 }
