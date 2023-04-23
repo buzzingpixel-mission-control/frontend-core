@@ -42,8 +42,6 @@ const Shell = (
         return <FullPageLoading />;
     }
 
-    console.log(userData);
-
     return (
         <>
             <div>
@@ -98,6 +96,10 @@ const Shell = (
                                                 <li>
                                                     <ul role="list" className="-mx-2 space-y-1">
                                                         {menuItems.map((item) => {
+                                                            if (item.requiresAdminPrivileges && !userData.isAdmin) {
+                                                                return null;
+                                                            }
+
                                                             const isCurrent = rootPath === item.href;
 
                                                             return (
@@ -154,6 +156,10 @@ const Shell = (
                                 <li>
                                     <ul role="list" className="-mx-2 space-y-1">
                                         {menuItems.map((item) => {
+                                            if (item.requiresAdminPrivileges && !userData.isAdmin) {
+                                                return null;
+                                            }
+
                                             const isCurrent = rootPath === item.href;
 
                                             return (

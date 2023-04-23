@@ -50,7 +50,6 @@ var Shell = function (_a) {
     if (status === 'loading') {
         return react_1.default.createElement(FullPageLoading_1.default, null);
     }
-    console.log(userData);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("div", null,
             react_1.default.createElement(react_2.Transition.Root, { show: sidebarOpen, as: react_1.Fragment },
@@ -71,6 +70,9 @@ var Shell = function (_a) {
                                         react_1.default.createElement("ul", { role: "list", className: "flex flex-1 flex-col gap-y-7" },
                                             react_1.default.createElement("li", null,
                                                 react_1.default.createElement("ul", { role: "list", className: "-mx-2 space-y-1" }, menuItems.map(function (item) {
+                                                    if (item.requiresAdminPrivileges && !userData.isAdmin) {
+                                                        return null;
+                                                    }
                                                     var isCurrent = rootPath === item.href;
                                                     return (react_1.default.createElement("li", { key: item.name },
                                                         react_1.default.createElement(react_router_dom_1.Link, { to: item.href, onClick: function () {
@@ -93,6 +95,9 @@ var Shell = function (_a) {
                         react_1.default.createElement("ul", { role: "list", className: "flex flex-1 flex-col gap-y-7" },
                             react_1.default.createElement("li", null,
                                 react_1.default.createElement("ul", { role: "list", className: "-mx-2 space-y-1" }, menuItems.map(function (item) {
+                                    if (item.requiresAdminPrivileges && !userData.isAdmin) {
+                                        return null;
+                                    }
                                     var isCurrent = rootPath === item.href;
                                     return (react_1.default.createElement("li", { key: item.name },
                                         react_1.default.createElement(react_router_dom_1.Link, { to: item.href, className: classNames(isCurrent

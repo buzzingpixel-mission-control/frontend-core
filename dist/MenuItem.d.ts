@@ -7,5 +7,6 @@ type MenuItem = {
         title?: string;
         titleId?: string;
     } & React.RefAttributes<SVGSVGElement>>;
+    requiresAdminPrivileges?: boolean;
 };
 export default MenuItem;

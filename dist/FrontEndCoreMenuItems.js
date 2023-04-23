@@ -7,5 +7,11 @@ var FrontEndCoreMenuItems = function () { return [
         href: '/projects',
         icon: outline_1.ClipboardDocumentListIcon,
     },
+    {
+        name: 'User Admin',
+        href: '/user-admin',
+        icon: outline_1.UserGroupIcon,
+        requiresAdminPrivileges: true,
+    },
 ]; };
 exports.default = FrontEndCoreMenuItems;
