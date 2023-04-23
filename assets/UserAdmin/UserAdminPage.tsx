@@ -8,13 +8,21 @@ import PartialPageLoading from '../PartialPageLoading';
 import { UsersSchema } from './Users';
 import AddUserOverlay from './AddUserOverlay';
 import MinutesToMilliseconds from '../MinutesToMilliseconds';
+import EditUserOverlay from './EditUserOverlay';
+import editUserOverlay from './EditUserOverlay';
 
 const UserAdminPage = () => {
     setPageName('Users');
+
     const [
         addUserIsOpen,
         setAddUserIsOpen,
     ] = useState<boolean>(false);
+
+    const [
+        editUser,
+        setEditUser,
+    ] = useState<boolean|User>(false);
 
     const {
         status,
@@ -36,6 +44,18 @@ const UserAdminPage = () => {
         if (addUserIsOpen) {
             return createPortal(
                 <AddUserOverlay setIsOpen={setAddUserIsOpen} />,
+                document.body,
+            );
+        }
+
+        if (editUser) {
+            return createPortal(
+                <EditUserOverlay
+                    /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+                    // @ts-ignore
+                    user={editUser}
+                    setEditUser={setEditUser}
+                />,
                 document.body,
             );
         }
@@ -124,8 +144,7 @@ const UserAdminPage = () => {
                                                 href="#"
                                                 className="text-cyan-600 hover:text-cyan-900"
                                                 onClick={() => {
-                                                    // setEditUser(user);
-                                                    console.log('edit user');
+                                                    setEditUser(user);
                                                 }}
                                             >
                                                 Edit<span className="sr-only">, {user.name || user.emailAddress}</span>

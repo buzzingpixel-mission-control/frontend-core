@@ -35,19 +35,30 @@ var PartialPageLoading_1 = __importDefault(require("../PartialPageLoading"));
 var Users_1 = require("./Users");
 var AddUserOverlay_1 = __importDefault(require("./AddUserOverlay"));
 var MinutesToMilliseconds_1 = __importDefault(require("../MinutesToMilliseconds"));
+var EditUserOverlay_1 = __importDefault(require("./EditUserOverlay"));
 var UserAdminPage = function () {
     (0, setPageName_1.default)('Users');
     var _a = (0, react_1.useState)(false), addUserIsOpen = _a[0], setAddUserIsOpen = _a[1];
-    var _b = (0, useApiQueryWithSignInRedirect_1.default)(['admin-user-list'], { uri: '/user-admin/all-users' }, {
+    var _b = (0, react_1.useState)(false), editUser = _b[0], setEditUser = _b[1];
+    var _c = (0, useApiQueryWithSignInRedirect_1.default)(['admin-user-list'], { uri: '/user-admin/all-users' }, {
         staleTime: (0, MinutesToMilliseconds_1.default)(5),
         zodValidator: Users_1.UsersSchema,
-    }), status = _b.status, users = _b.data;
+    }), status = _c.status, users = _c.data;
     if (status === 'loading') {
         return react_1.default.createElement(PartialPageLoading_1.default, null);
     }
     var portals = function () {
         if (addUserIsOpen) {
             return (0, react_dom_1.createPortal)(react_1.default.createElement(AddUserOverlay_1.default, { setIsOpen: setAddUserIsOpen }), document.body);
+        }
+        if (editUser) {
+            return (0, react_dom_1.createPortal)(react_1.default.createElement(EditUserOverlay_1.default
+            /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+            // @ts-ignore
+            , { 
+                /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+                // @ts-ignore
+                user: editUser, setEditUser: setEditUser }), document.body);
         }
         return null;
     };
@@ -95,8 +106,7 @@ var UserAdminPage = function () {
                                     react_1.default.createElement("td", { className: "whitespace-nowrap px-3 py-4 text-sm text-gray-500" }, user.timezone),
                                     react_1.default.createElement("td", { className: "relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6" },
                                         react_1.default.createElement("a", { href: "#", className: "text-cyan-600 hover:text-cyan-900", onClick: function () {
-                                                // setEditUser(user);
-                                                console.log('edit user');
+                                                setEditUser(user);
                                             } },
                                             "Edit",
                                             react_1.default.createElement("span", { className: "sr-only" },
