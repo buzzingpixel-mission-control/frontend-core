@@ -66,12 +66,12 @@ var react_1 = __importStar(require("react"));
 var react_select_1 = __importDefault(require("react-select"));
 var FetchOptionsBuilder_1 = __importDefault(require("../FetchOptionsBuilder"));
 var EditorShell_1 = __importDefault(require("../EditorShell"));
+var useApiQuery_1 = __importDefault(require("../Api/useApiQuery"));
 var TimezoneEditor = function (_a) {
     var setEditorIsOpen = _a.setEditorIsOpen, item = _a.item, setContent = _a.setContent;
-    var _b = (0, react_1.useState)(null), timeZoneList = _b[0], setTimeZoneList = _b[1];
-    var _c = (0, react_1.useState)(item.content), value = _c[0], setValue = _c[1];
-    var _d = (0, react_1.useState)(false), isSaving = _d[0], setIsSaving = _d[1];
-    var _e = (0, react_1.useState)(''), errorMessage = _e[0], setErrorMessage = _e[1];
+    var _b = (0, react_1.useState)(item.content), value = _b[0], setValue = _b[1];
+    var _c = (0, react_1.useState)(false), isSaving = _c[0], setIsSaving = _c[1];
+    var _d = (0, react_1.useState)(''), errorMessage = _d[0], setErrorMessage = _d[1];
     var saveHandler = function () {
         if (isSaving) {
             return;
@@ -120,29 +120,15 @@ var TimezoneEditor = function (_a) {
         window.addEventListener('keydown', handler);
         return function () { return window.removeEventListener('keydown', handler); };
     });
-    (0, react_1.useEffect)(function () {
-        fetch('/api/request/utility/timezone-list')
-            .then(function (resp) { return __awaiter(void 0, void 0, void 0, function () {
-            var json;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, resp.json()];
-                    case 1:
-                        json = _a.sent();
-                        setTimeZoneList(json);
-                        return [2 /*return*/];
-                }
-            });
-        }); });
-    }, []);
-    if (timeZoneList === null) {
+    var _e = (0, useApiQuery_1.default)(['timezone-list'], { uri: '/utility/timezone-list' }, { staleTime: Infinity }), timezoneListStatus = _e.status, timezoneListData = _e.data;
+    if (timezoneListStatus === 'loading') {
         return react_1.default.createElement(EditorShell_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
             react_1.default.createElement("div", { className: "inline-block align-middle h-3 w-3 animate-spin rounded-full border-2 border-solid border-current border-r-transparent text-info motion-reduce:animate-[spin_1.5s_linear_infinite] opacity-100 text-cyan-600", role: "status" },
                 react_1.default.createElement("span", { className: "!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]" }, "Loading...")));
     }
     return react_1.default.createElement(EditorShell_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
         react_1.default.createElement("div", { className: "text-left" },
-            react_1.default.createElement(react_select_1.default, { options: timeZoneList, value: timeZoneList.filter(function (option) { return option.value === value; })[0], onChange: function (selected) {
+            react_1.default.createElement(react_select_1.default, { options: timezoneListData, value: timezoneListData.filter(function (option) { return option.value === value; })[0], onChange: function (selected) {
                     setValue(selected.value);
                 }, className: "react-select-control" })));
 };

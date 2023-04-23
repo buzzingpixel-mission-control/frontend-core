@@ -3,6 +3,7 @@ import Select from 'react-select';
 import EditorParams from './EditorParams';
 import FetchOptionsBuilder from '../FetchOptionsBuilder';
 import EditorShell from '../EditorShell';
+import useApiQuery from '../Api/useApiQuery';
 
 type Option = {
     value: string,
@@ -18,11 +19,6 @@ const TimezoneEditor = (
         setContent,
     }: EditorParams,
 ) => {
-    const [
-        timeZoneList,
-        setTimeZoneList,
-    ] = useState<Options | null>(null);
-
     const [
         value,
         setValue,
@@ -92,16 +88,16 @@ const TimezoneEditor = (
         return () => window.removeEventListener('keydown', handler);
     });
 
-    useEffect(() => {
-        fetch('/api/request/utility/timezone-list')
-            .then(async (resp) => {
-                const json = await resp.json();
+    const {
+        status: timezoneListStatus,
+        data: timezoneListData,
+    } = useApiQuery<Options>(
+        ['timezone-list'],
+        { uri: '/utility/timezone-list' },
+        { staleTime: Infinity },
+    );
 
-                setTimeZoneList(json);
-            });
-    }, []);
-
-    if (timeZoneList === null) {
+    if (timezoneListStatus === 'loading') {
         return <EditorShell
             title={`Edit ${item.title}`}
             isSaving={isSaving}
@@ -131,8 +127,8 @@ const TimezoneEditor = (
     >
         <div className="text-left">
             <Select
-                options={timeZoneList}
-                value={timeZoneList.filter((option) => option.value === value)[0]}
+                options={timezoneListData}
+                value={timezoneListData.filter((option) => option.value === value)[0]}
                 onChange={(selected: Option) => {
                     setValue(selected.value);
                 }}
