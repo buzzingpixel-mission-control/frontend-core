@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import FullPageLoading from './FullPageLoading';
 import useUserData from './Auth/useUserData';
+import usePageName from './PageName/usePageName';
 
 function classNames (...classes) {
     return classes.filter(Boolean).join(' ');
@@ -12,12 +13,10 @@ function classNames (...classes) {
 
 const Shell = (
     {
-        pageName,
         menuItems,
         children,
     }:
     {
-        pageName: string,
         menuItems?: Array<MenuItem>;
         children: | JSX.Element | JSX.Element[] | string | string[];
     },
@@ -25,6 +24,7 @@ const Shell = (
     const location = useLocation();
     const locationArray = location.pathname.split('/');
     const rootPath = `/${locationArray[1]}`;
+    const pageName = usePageName();
 
     menuItems = menuItems || [];
 

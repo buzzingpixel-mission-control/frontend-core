@@ -1,13 +1,8 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React from 'react';
+import setPageName from '../PageName/setPageName';
 
-const ProjectsPage = (
-    {
-        setPageName,
-    }:{
-        setPageName: Dispatch<SetStateAction<string>>
-    },
-) => {
-    useEffect(() => setPageName('Projects'), []);
+const ProjectsPage = () => {
+    setPageName('Projects');
 
     return <>Projects Page Content</>;
 };

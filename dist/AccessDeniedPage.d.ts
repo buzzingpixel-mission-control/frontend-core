@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-declare const AccessDeniedPage: ({ setPageName, }: {
-    setPageName: Dispatch<SetStateAction<string>>;
-}) => JSX.Element;
+/// <reference types="react" />
+declare const AccessDeniedPage: () => JSX.Element;
 export default AccessDeniedPage;

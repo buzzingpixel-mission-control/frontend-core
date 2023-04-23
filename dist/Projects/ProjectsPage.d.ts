@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-declare const ProjectsPage: ({ setPageName, }: {
-    setPageName: Dispatch<SetStateAction<string>>;
-}) => JSX.Element;
+/// <reference types="react" />
+declare const ProjectsPage: () => JSX.Element;
 export default ProjectsPage;

@@ -1,13 +1,8 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React from 'react';
+import setPageName from '../PageName/setPageName';
 
-const UserAdminPage = (
-    {
-        setPageName,
-    }:{
-        setPageName: Dispatch<SetStateAction<string>>
-    },
-) => {
-    useEffect(() => setPageName('User Admin'), []);
+const UserAdminPage = () => {
+    setPageName('User Admin');
 
     return <>UserAdminPage</>;
 };

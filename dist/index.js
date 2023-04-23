@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AccessDeniedPage = exports.NotFoundPage = exports.RequireAdmin = exports.PartialPageLoading = exports.useUserData = exports.useRuntimeContext = exports.useApiQuery = exports.Shell = exports.RuntimeContext = exports.RequestMethods = exports.redirectToSignIn = exports.MakeApiRequest = exports.FullPageLoading = exports.FrontEndCoreRoutes = exports.FrontEndCoreMenuItems = exports.EncodeQueryParamsFromObject = exports.Auth = exports.App = void 0;
+exports.setPageName = exports.usePageName = exports.AccessDeniedPage = exports.NotFoundPage = exports.RequireAdmin = exports.PartialPageLoading = exports.useUserData = exports.useRuntimeContext = exports.useApiQuery = exports.Shell = exports.RuntimeContext = exports.RequestMethods = exports.redirectToSignIn = exports.MakeApiRequest = exports.FullPageLoading = exports.FrontEndCoreRoutes = exports.FrontEndCoreMenuItems = exports.EncodeQueryParamsFromObject = exports.Auth = exports.App = void 0;
 var App_1 = require("./App");
 Object.defineProperty(exports, "App", { enumerable: true, get: function () { return __importDefault(App_1).default; } });
 var Auth_1 = require("./Auth/Auth");
@@ -40,3 +40,7 @@ var NotFoundPage_1 = require("./NotFoundPage");
 Object.defineProperty(exports, "NotFoundPage", { enumerable: true, get: function () { return __importDefault(NotFoundPage_1).default; } });
 var AccessDeniedPage_1 = require("./AccessDeniedPage");
 Object.defineProperty(exports, "AccessDeniedPage", { enumerable: true, get: function () { return __importDefault(AccessDeniedPage_1).default; } });
+var usePageName_1 = require("./PageName/usePageName");
+Object.defineProperty(exports, "usePageName", { enumerable: true, get: function () { return __importDefault(usePageName_1).default; } });
+var setPageName_1 = require("./PageName/setPageName");
+Object.defineProperty(exports, "setPageName", { enumerable: true, get: function () { return __importDefault(setPageName_1).default; } });

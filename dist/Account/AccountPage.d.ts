@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-declare const AccountPage: ({ setPageName, }: {
-    setPageName: Dispatch<SetStateAction<string>>;
-}) => JSX.Element;
+/// <reference types="react" />
+declare const AccountPage: () => JSX.Element;
 export default AccountPage;

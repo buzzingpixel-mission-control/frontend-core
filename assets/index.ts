@@ -20,3 +20,5 @@ export { default as PartialPageLoading } from './PartialPageLoading';
 export { default as RequireAdmin } from './RequireAdmin';
 export { default as NotFoundPage } from './NotFoundPage';
 export { default as AccessDeniedPage } from './AccessDeniedPage';
+export { default as usePageName } from './PageName/usePageName';
+export { default as setPageName } from './PageName/setPageName';

@@ -1,12 +1,9 @@
-import { Dispatch, SetStateAction } from 'react';
 import MenuItem from './MenuItem';
 
 type AppConfig = {
     appContainer: HTMLElement,
     menuItems: () => Array<MenuItem>,
-    routes: (
-        setPageName: Dispatch<SetStateAction<string>>,
-    ) => | JSX.Element | JSX.Element[] | string | string[],
+    routes: () => | JSX.Element | JSX.Element[] | string | string[],
 }
 
 export default AppConfig;

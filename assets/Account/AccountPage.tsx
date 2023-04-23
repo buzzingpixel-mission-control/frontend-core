@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React from 'react';
 import useUserData from '../Auth/useUserData';
 import PartialPageLoading from '../PartialPageLoading';
 import ListItemRenderer from './ListItemRenderer';
@@ -6,15 +6,10 @@ import ListItem from './ListItem';
 import SingleInputEditor from './SingleInputEditor';
 import PasswordEditor from './PasswordEditor';
 import TimezoneEditor from './TimezoneEditor';
+import setPageName from '../PageName/setPageName';
 
-const AccountPage = (
-    {
-        setPageName,
-    }:{
-        setPageName: Dispatch<SetStateAction<string>>
-    },
-) => {
-    useEffect(() => setPageName('Your Account'), []);
+const AccountPage = () => {
+    setPageName('Your Account');
 
     const {
         data: userData,

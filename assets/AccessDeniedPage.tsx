@@ -1,14 +1,9 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import setPageName from './PageName/setPageName';
 
-const AccessDeniedPage = (
-    {
-        setPageName,
-    }:{
-        setPageName: Dispatch<SetStateAction<string>>
-    },
-) => {
-    useEffect(() => setPageName('Access Denied'), []);
+const AccessDeniedPage = () => {
+    setPageName('Access Denied');
 
     return <div>
         <h1 className="mt-4 text-xl font-bold tracking-tight text-gray-900">

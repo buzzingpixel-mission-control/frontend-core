@@ -6,12 +6,12 @@ import AccountPage from './Account/AccountPage';
 import UserAdminPage from './UserAdmin/UserAdminPage';
 import RequireAdmin from './RequireAdmin';
 
-const FrontEndCoreRoutes = (setPageName: Dispatch<SetStateAction<string>>) => <>
+const FrontEndCoreRoutes = () => <>
     <Route path="/" element={<Navigate to="/projects" />} />
-    <Route path="/projects" element={<ProjectsPage setPageName={setPageName} />} />
-    <Route path="/user-admin" element={<RequireAdmin setPageName={setPageName}><UserAdminPage setPageName={setPageName} /></RequireAdmin>} />
-    <Route path="/account" element={<AccountPage setPageName={setPageName} />} />
-    <Route path="*" element={<NotFoundPage setPageName={setPageName} />} />
+    <Route path="/projects" element={<ProjectsPage />} />
+    <Route path="/user-admin" element={<RequireAdmin><UserAdminPage /></RequireAdmin>} />
+    <Route path="/account" element={<AccountPage />} />
+    <Route path="*" element={<NotFoundPage />} />
 </>;
 
 export default FrontEndCoreRoutes;

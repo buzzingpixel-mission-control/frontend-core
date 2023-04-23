@@ -1,3 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-declare const FrontEndCoreRoutes: (setPageName: Dispatch<SetStateAction<string>>) => JSX.Element;
+/// <reference types="react" />
+declare const FrontEndCoreRoutes: () => JSX.Element;
 export default FrontEndCoreRoutes;

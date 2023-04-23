@@ -1,6 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
-declare const RequireAdmin: ({ setPageName, children, }: {
-    setPageName: Dispatch<SetStateAction<string>>;
+/// <reference types="react" />
+declare const RequireAdmin: ({ children, }: {
     children: JSX.Element | JSX.Element[] | string | string[];
 }) => JSX.Element;
 export default RequireAdmin;

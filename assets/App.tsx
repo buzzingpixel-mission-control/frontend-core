@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import { QueryClient } from '@tanstack/query-core';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -9,6 +9,7 @@ import Auth from './Auth/Auth';
 import RuntimeContext from './RuntimeContext';
 import FrontEndCoreRoutes from './FrontEndCoreRoutes';
 import FrontEndCoreMenuItems from './FrontEndCoreMenuItems';
+import usePageName from './PageName/usePageName';
 
 const queryClient = new QueryClient();
 
@@ -19,10 +20,7 @@ const App = (
         appConfig: AppConfig;
     },
 ) => {
-    const [
-        pageName,
-        setPageName,
-    ] = useState('');
+    const pageName = usePageName();
 
     useEffect(() => {
         let documentTitle = 'Mission Control';
@@ -47,10 +45,10 @@ const App = (
                     <Shell menuItems={[
                         ...FrontEndCoreMenuItems(),
                         ...appConfig.menuItems(),
-                    ]} pageName={pageName}>
+                    ]}>
                         <Routes>
-                            {appConfig.routes(setPageName)}
-                            {FrontEndCoreRoutes(setPageName)}
+                            {appConfig.routes()}
+                            {FrontEndCoreRoutes()}
                         </Routes>
                     </Shell>
                 </Router>

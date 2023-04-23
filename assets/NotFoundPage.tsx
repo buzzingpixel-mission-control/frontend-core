@@ -1,14 +1,9 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import setPageName from './PageName/setPageName';
 
-const NotFoundPage = (
-    {
-        setPageName,
-    }:{
-        setPageName: Dispatch<SetStateAction<string>>
-    },
-) => {
-    useEffect(() => setPageName('404'), []);
+const NotFoundPage = () => {
+    setPageName('404');
 
     return <div>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>

@@ -32,6 +32,7 @@ var outline_1 = require("@heroicons/react/24/outline");
 var react_router_dom_1 = require("react-router-dom");
 var FullPageLoading_1 = __importDefault(require("./FullPageLoading"));
 var useUserData_1 = __importDefault(require("./Auth/useUserData"));
+var usePageName_1 = __importDefault(require("./PageName/usePageName"));
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -40,10 +41,11 @@ function classNames() {
     return classes.filter(Boolean).join(' ');
 }
 var Shell = function (_a) {
-    var pageName = _a.pageName, menuItems = _a.menuItems, children = _a.children;
+    var menuItems = _a.menuItems, children = _a.children;
     var location = (0, react_router_dom_1.useLocation)();
     var locationArray = location.pathname.split('/');
     var rootPath = "/".concat(locationArray[1]);
+    var pageName = (0, usePageName_1.default)();
     menuItems = menuItems || [];
     var _b = (0, react_1.useState)(false), sidebarOpen = _b[0], setSidebarOpen = _b[1];
     var _c = (0, useUserData_1.default)(), status = _c.status, userData = _c.data;
