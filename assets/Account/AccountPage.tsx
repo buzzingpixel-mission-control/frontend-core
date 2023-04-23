@@ -5,6 +5,7 @@ import ListItemRenderer from './ListItemRenderer';
 import ListItem from './ListItem';
 import SingleInputEditor from './SingleInputEditor';
 import PasswordEditor from './PasswordEditor';
+import TimezoneEditor from './TimezoneEditor';
 
 const AccountPage = (
     {
@@ -37,6 +38,12 @@ const AccountPage = (
             renderEditor: SingleInputEditor,
             editAction: '/api/request/user-info/edit/email',
             editorInputType: 'email',
+        },
+        {
+            title: 'Timezone',
+            content: userData.timezone,
+            renderEditor: TimezoneEditor,
+            editAction: '/api/request/user-info/edit/timezone',
         },
         {
             title: 'Password',

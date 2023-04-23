@@ -10,6 +10,7 @@ var UserDataSchema = zod_1.z.object({
     name: zod_1.z.string(),
     nameOrEmail: zod_1.z.string().min(1),
     isAdmin: zod_1.z.boolean(),
+    timezone: zod_1.z.string(),
 });
 var useUserData = function () { return (0, useApiQueryWithSignInRedirect_1.default)(['user-info'], { uri: '/user-info' }, {
     staleTime: Infinity,

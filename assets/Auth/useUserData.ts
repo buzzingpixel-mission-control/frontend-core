@@ -6,6 +6,7 @@ const UserDataSchema = z.object({
     name: z.string(),
     nameOrEmail: z.string().min(1),
     isAdmin: z.boolean(),
+    timezone: z.string(),
 });
 
 type UserData = z.infer<typeof UserDataSchema>;

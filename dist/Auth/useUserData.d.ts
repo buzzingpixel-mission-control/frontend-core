@@ -5,12 +5,14 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }) => void;
     data: {
         emailAddress?: string;
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     };
     error: import("../Api/ApiError").default;
     isError: true;
@@ -38,6 +40,7 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
@@ -48,12 +51,14 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }) => void;
     data: {
         emailAddress?: string;
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     };
     error: null;
     isError: false;
@@ -81,6 +86,7 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
@@ -91,6 +97,7 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }) => void;
     data: undefined;
     error: import("../Api/ApiError").default;
@@ -119,6 +126,7 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
@@ -129,6 +137,7 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }) => void;
     data: undefined;
     error: null;
@@ -157,6 +166,7 @@ declare const useUserData: () => {
         name?: string;
         nameOrEmail?: string;
         isAdmin?: boolean;
+        timezone?: string;
     }, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;

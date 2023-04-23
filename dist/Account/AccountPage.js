@@ -32,6 +32,7 @@ var PartialPageLoading_1 = __importDefault(require("../PartialPageLoading"));
 var ListItemRenderer_1 = __importDefault(require("./ListItemRenderer"));
 var SingleInputEditor_1 = __importDefault(require("./SingleInputEditor"));
 var PasswordEditor_1 = __importDefault(require("./PasswordEditor"));
+var TimezoneEditor_1 = __importDefault(require("./TimezoneEditor"));
 var AccountPage = function (_a) {
     var setPageName = _a.setPageName;
     (0, react_1.useEffect)(function () { return setPageName('Your Account'); }, []);
@@ -52,6 +53,12 @@ var AccountPage = function (_a) {
             renderEditor: SingleInputEditor_1.default,
             editAction: '/api/request/user-info/edit/email',
             editorInputType: 'email',
+        },
+        {
+            title: 'Timezone',
+            content: userData.timezone,
+            renderEditor: TimezoneEditor_1.default,
+            editAction: '/api/request/user-info/edit/timezone',
         },
         {
             title: 'Password',

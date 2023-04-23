@@ -43,10 +43,6 @@ readonly class Boot
 
         $whoops = new WhoopsRun();
 
-        $isJsonRequest = (new IsJsonRequest())->checkHttpAcceptString(
-            httpAccept: (string) ($_SERVER['HTTP_ACCEPT'] ?? ''),
-        );
-
         if (mb_strtolower(PHP_SAPI) === 'cli') {
             $handler = new PlainTextHandler();
         } elseif ($this->isJsonRequest()) {
