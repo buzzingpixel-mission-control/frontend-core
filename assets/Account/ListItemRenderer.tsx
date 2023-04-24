@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { createPortal } from 'react-dom';
 import ListItem from './ListItem';
 
 const ListItemRenderer = ({ item }: { item: ListItem }) => {

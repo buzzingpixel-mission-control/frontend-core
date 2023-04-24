@@ -9,7 +9,6 @@ import { UsersSchema } from './Users';
 import AddUserOverlay from './AddUserOverlay';
 import MinutesToMilliseconds from '../MinutesToMilliseconds';
 import EditUserOverlay from './EditUserOverlay';
-import editUserOverlay from './EditUserOverlay';
 
 const UserAdminPage = () => {
     setPageName('Users');
