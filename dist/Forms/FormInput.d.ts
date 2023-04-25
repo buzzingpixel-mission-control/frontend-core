@@ -1,8 +1,7 @@
+/// <reference types="react" />
 import { UseFormSetValue } from 'react-hook-form';
 import EditorParams from './EditorParams';
-import FormValues from './FormValues';
-
-type Input = {
+type FormInput = {
     title: string;
     type?: string;
     name: string;
@@ -10,8 +9,7 @@ type Input = {
     placeholder?: string;
     required?: boolean;
     renderInput?: (editorParams: EditorParams) => JSX.Element;
-    setValue?: UseFormSetValue<FormValues>;
+    setValue?: UseFormSetValue<any>;
     initialValue?: never;
 };
-
-export default Input;
+export default FormInput;

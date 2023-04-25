@@ -30,10 +30,10 @@ var react_1 = __importStar(require("react"));
 var react_hook_form_1 = require("react-hook-form");
 var react_query_1 = require("@tanstack/react-query");
 var SubmitExistingUser_1 = __importDefault(require("./SubmitExistingUser"));
-var TextInput_1 = __importDefault(require("./TextInput"));
-var ToggleInput_1 = __importDefault(require("./ToggleInput"));
-var TimezoneInput_1 = __importDefault(require("./TimezoneInput"));
-var EditorShell_1 = __importDefault(require("../EditorShell"));
+var FormInputText_1 = __importDefault(require("../Forms/FormInputText"));
+var FormInputToggle_1 = __importDefault(require("../Forms/FormInputToggle"));
+var FormInputTimezone_1 = __importDefault(require("../Forms/FormInputTimezone"));
+var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
 var EditUserOverlay = function (_a) {
     var user = _a.user, setEditUser = _a.setEditUser;
     var queryClient = (0, react_query_1.useQueryClient)();
@@ -71,7 +71,7 @@ var EditUserOverlay = function (_a) {
             name: 'email',
             placeholder: 'johndoe@domain.com',
             required: true,
-            renderInput: TextInput_1.default,
+            renderInput: FormInputText_1.default,
         },
         {
             title: 'Name',
@@ -79,19 +79,19 @@ var EditUserOverlay = function (_a) {
             placeholder: 'John Doe',
             required: false,
             instructions: 'optional',
-            renderInput: TextInput_1.default,
+            renderInput: FormInputText_1.default,
         },
         {
             title: 'Is Admin?',
             name: 'is_admin',
-            renderInput: ToggleInput_1.default,
+            renderInput: FormInputToggle_1.default,
             setValue: setValue,
             initialValue: user.isAdmin,
         },
         {
             title: 'Is Active?',
             name: 'is_active',
-            renderInput: ToggleInput_1.default,
+            renderInput: FormInputToggle_1.default,
             setValue: setValue,
             initialValue: user.isActive,
         },
@@ -99,7 +99,7 @@ var EditUserOverlay = function (_a) {
             title: 'Timezone',
             name: 'timezone',
             instructions: 'optional',
-            renderInput: TimezoneInput_1.default,
+            renderInput: FormInputTimezone_1.default,
             setValue: setValue,
             initialValue: user.timezone,
         },

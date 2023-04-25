@@ -3,13 +3,14 @@ import React, {
 } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useQueryClient } from '@tanstack/react-query';
-import EditorShell from '../EditorShell';
-import Input from './Input';
-import TextInput from './TextInput';
 import FormValues from './FormValues';
-import ToggleInput from './ToggleInput';
-import TimezoneInput from './TimezoneInput';
 import SubmitNewUser from './SubmitNewUser';
+import FormInput from '../Forms/FormInput';
+import FormInputText from '../Forms/FormInputText';
+import FormInputToggle from '../Forms/FormInputToggle';
+import FormInputTimezone from '../Forms/FormInputTimezone';
+import EditorShell from '../Forms/EditorShell';
+import EditorShellForm from '../Forms/EditorShellForm';
 
 const AddUserOverlay = (
     {
@@ -69,7 +70,7 @@ const AddUserOverlay = (
             name: 'email',
             placeholder: 'johndoe@domain.com',
             required: true,
-            renderInput: TextInput,
+            renderInput: FormInputText,
         },
         {
             title: 'Name',
@@ -77,7 +78,7 @@ const AddUserOverlay = (
             placeholder: 'John Doe',
             required: false,
             instructions: 'optional',
-            renderInput: TextInput,
+            renderInput: FormInputText,
         },
         {
             title: 'Password',
@@ -85,21 +86,21 @@ const AddUserOverlay = (
             name: 'password',
             required: false,
             instructions: 'optional',
-            renderInput: TextInput,
+            renderInput: FormInputText,
         },
         {
             title: 'Is Admin?',
             name: 'is_admin',
-            renderInput: ToggleInput,
+            renderInput: FormInputToggle,
             setValue,
         },
         {
             title: 'Timezone',
             name: 'timezone',
-            renderInput: TimezoneInput,
+            renderInput: FormInputTimezone,
             setValue,
         },
-    ] as Array<Input>;
+    ] as Array<FormInput>;
 
     return <EditorShell
         title="Add New User"
@@ -111,25 +112,13 @@ const AddUserOverlay = (
         setEditorIsOpen={setIsOpen}
         submitButtonText="Add"
     >
-        <div className="text-left">
-            <form onSubmit={() => {
+        <EditorShellForm
+            inputs={inputs}
+            register={register}
+            onSubmit={() => {
                 saveHandler(getValues());
-            }}>
-                {inputs.map((input, i) => {
-                    const divClass = i === 0 ? '' : 'mt-4';
-
-                    return <div
-                        className={divClass}
-                        key={input.name}
-                    >
-                        <input.renderInput
-                            input={input}
-                            register={register}
-                        />
-                    </div>;
-                })}
-            </form>
-        </div>
+            }}
+        />
     </EditorShell>;
 };
 

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { PlusIcon, UserIcon } from '@heroicons/react/20/solid';
-import { createPortal } from 'react-dom';
 import setPageName from '../PageName/setPageName';
 import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect';
 import User from './User';
 import PartialPageLoading from '../PartialPageLoading';
-import { UsersSchema } from './Users';
+import Users, { UsersSchema } from './Users';
 import AddUserOverlay from './AddUserOverlay';
 import MinutesToMilliseconds from '../MinutesToMilliseconds';
 import EditUserOverlay from './EditUserOverlay';
+import NoResultsAddItem from '../NoResultsAddItem';
+import createPortal from '../createPortal';
 
 const UserAdminPage = () => {
     setPageName('Users');
@@ -26,7 +27,7 @@ const UserAdminPage = () => {
     const {
         status,
         data: users,
-    } = useApiQueryWithSignInRedirect<Array<User>>(
+    } = useApiQueryWithSignInRedirect<Users>(
         ['admin-user-list'],
         { uri: '/user-admin/all-users' },
         {
@@ -41,10 +42,7 @@ const UserAdminPage = () => {
 
     const portals = () => {
         if (addUserIsOpen) {
-            return createPortal(
-                <AddUserOverlay setIsOpen={setAddUserIsOpen} />,
-                document.body,
-            );
+            return createPortal(<AddUserOverlay setIsOpen={setAddUserIsOpen} />);
         }
 
         if (editUser) {
@@ -55,7 +53,6 @@ const UserAdminPage = () => {
                     user={editUser}
                     setEditUser={setEditUser}
                 />,
-                document.body,
             );
         }
 
@@ -65,23 +62,14 @@ const UserAdminPage = () => {
     if (users.length < 1) {
         return <>
             {portals()}
-            <div className="text-center rounded-lg border-2 border-dashed border-gray-300 p-6">
-                <div className="mx-auto h-12 w-12 text-gray-400">
-                    <UserIcon />
-                </div>
-                <h3 className="mt-2 text-sm font-semibold text-gray-900">No users (except yourself)</h3>
-                <p className="mt-1 text-sm text-gray-500">Would you like to create a user?</p>
-                <div className="mt-6">
-                    <button
-                        type="button"
-                        className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-                        onClick={() => { setAddUserIsOpen(true); }}
-                    >
-                        <PlusIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                        Add New User
-                    </button>
-                </div>
-            </div>
+            <NoResultsAddItem
+                icon={<UserIcon />}
+                headline="No users (except yourself)"
+                content="Would you like to create a user?"
+                actionText="Add New User"
+                actionUsesPlusIcon={true}
+                actionButtonOnClick={() => { setAddUserIsOpen(true); }}
+            />
         </>;
     }
 

@@ -3,12 +3,12 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useQueryClient } from '@tanstack/react-query';
 import FormValues from './FormValues';
 import SubmitExistingUser from './SubmitExistingUser';
-import TextInput from './TextInput';
-import ToggleInput from './ToggleInput';
-import TimezoneInput from './TimezoneInput';
-import Input from './Input';
-import EditorShell from '../EditorShell';
 import User from './User';
+import FormInput from '../Forms/FormInput';
+import FormInputText from '../Forms/FormInputText';
+import FormInputToggle from '../Forms/FormInputToggle';
+import FormInputTimezone from '../Forms/FormInputTimezone';
+import EditorShell from '../Forms/EditorShell';
 
 const EditUserOverlay = (
     {
@@ -77,7 +77,7 @@ const EditUserOverlay = (
             name: 'email',
             placeholder: 'johndoe@domain.com',
             required: true,
-            renderInput: TextInput,
+            renderInput: FormInputText,
         },
         {
             title: 'Name',
@@ -85,19 +85,19 @@ const EditUserOverlay = (
             placeholder: 'John Doe',
             required: false,
             instructions: 'optional',
-            renderInput: TextInput,
+            renderInput: FormInputText,
         },
         {
             title: 'Is Admin?',
             name: 'is_admin',
-            renderInput: ToggleInput,
+            renderInput: FormInputToggle,
             setValue,
             initialValue: user.isAdmin,
         },
         {
             title: 'Is Active?',
             name: 'is_active',
-            renderInput: ToggleInput,
+            renderInput: FormInputToggle,
             setValue,
             initialValue: user.isActive,
         },
@@ -105,11 +105,11 @@ const EditUserOverlay = (
             title: 'Timezone',
             name: 'timezone',
             instructions: 'optional',
-            renderInput: TimezoneInput,
+            renderInput: FormInputTimezone,
             setValue,
             initialValue: user.timezone,
         },
-    ] as Array<Input>;
+    ] as Array<FormInput>;
 
     return <EditorShell
         title="Edit User"

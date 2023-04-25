@@ -63,8 +63,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var EditorShell_1 = __importDefault(require("../EditorShell"));
 var FetchOptionsBuilder_1 = __importDefault(require("../FetchOptionsBuilder"));
+var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
 var PasswordEditor = function (_a) {
     var setEditorIsOpen = _a.setEditorIsOpen, item = _a.item;
     var _b = (0, react_1.useState)(''), password = _b[0], setPassword = _b[1];

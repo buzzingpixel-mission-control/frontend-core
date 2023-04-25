@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EditorParams from './EditorParams';
-import EditorShell from '../EditorShell';
 import FetchOptionsBuilder from '../FetchOptionsBuilder';
+import EditorShell from '../Forms/EditorShell';
 
 const PasswordEditor = (
     {

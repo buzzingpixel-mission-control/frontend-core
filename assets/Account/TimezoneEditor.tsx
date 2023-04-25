@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import EditorParams from './EditorParams';
 import FetchOptionsBuilder from '../FetchOptionsBuilder';
-import EditorShell from '../EditorShell';
 import useApiQuery from '../Api/useApiQuery';
+import EditorShell from '../Forms/EditorShell';
 
 type Option = {
     value: string,

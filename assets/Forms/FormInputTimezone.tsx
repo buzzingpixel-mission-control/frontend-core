@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import EditorParams from './EditorParams';
 import useApiQuery from '../Api/useApiQuery';
+import EditorParams from './EditorParams';
 
 type Option = {
     value: string,
@@ -10,7 +10,7 @@ type Option = {
 
 type Options = Array<Option>;
 
-const TimezoneInput = (
+const FormInputTimezone = (
     {
         input,
     }: EditorParams,
@@ -94,4 +94,4 @@ const TimezoneInput = (
     </>;
 };
 
-export default TimezoneInput;
+export default FormInputTimezone;

@@ -64,8 +64,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_query_1 = require("@tanstack/react-query");
-var EditorShell_1 = __importDefault(require("../EditorShell"));
 var FetchOptionsBuilder_1 = __importDefault(require("../FetchOptionsBuilder"));
+var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
 var SingleInputEditor = function (_a) {
     var setEditorIsOpen = _a.setEditorIsOpen, item = _a.item, setContent = _a.setContent;
     var queryClient = (0, react_query_1.useQueryClient)();
