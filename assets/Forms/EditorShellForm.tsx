@@ -14,7 +14,11 @@ const EditorShellForm = (
         register: UseFormRegister<any>;
     },
 ) => <div className="text-left">
-    <form onSubmit={onSubmit}>
+    <form onSubmit={(e) => {
+        e.preventDefault();
+
+        onSubmit(e);
+    }}>
         {inputs.map((input, i) => {
             const divClass = i === 0 ? '' : 'mt-4';
 
@@ -28,6 +32,7 @@ const EditorShellForm = (
                 />
             </div>;
         })}
+        <button type="submit" className="hidden"></button>
     </form>
 </div>;
 

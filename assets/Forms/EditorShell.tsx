@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import { Dialog } from '@headlessui/react';
 
 const EditorShell = (
@@ -20,6 +20,22 @@ const EditorShell = (
         children: | JSX.Element | JSX.Element[] | string | string[];
     },
 ) => {
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            switch (e.key) {
+                case 'Escape':
+                    e.preventDefault();
+                    setEditorIsOpen(false);
+                    break;
+                default:
+            }
+        };
+
+        window.addEventListener('keydown', handler);
+
+        return () => window.removeEventListener('keydown', handler);
+    });
+
     let buttonBgClass = 'bg-cyan-600 hover:bg-cyan-700 focus:ring-cyan-500';
 
     let spinnerSavingClass = 'opacity-0';
@@ -32,7 +48,7 @@ const EditorShell = (
 
     return <div className="relative z-50">
         <Dialog as="div" className="relative z-50" open={true} onClose={() => null}>
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"/>
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             <div className="fixed inset-0 z-10 overflow-y-auto">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                     <Dialog.Panel
