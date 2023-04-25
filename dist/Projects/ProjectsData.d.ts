@@ -1,3 +1,4 @@
+import AddProjectFormValues from './AddProjectFormValues';
 declare const useProjectsData: () => {
     accessDenied: boolean;
     setData: (newData: {
@@ -181,4 +182,5 @@ declare const useProjectsData: () => {
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 };
-export { useProjectsData, };
+declare const useProjectsMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, Error, AddProjectFormValues>;
+export { useProjectsData, useProjectsMutation, };

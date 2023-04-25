@@ -1,11 +1,12 @@
-import React, { Dispatch, SetStateAction } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import AddProjectFormValues from './AddProjectFormValues';
 import FormInput from '../Forms/FormInput';
 import FormInputText from '../Forms/FormInputText';
 import EditorShell from '../Forms/EditorShell';
 import EditorShellForm from '../Forms/EditorShellForm';
 import FormInputTextarea from '../Forms/FormInputTextarea';
+import { useProjectsMutation } from './ProjectsData';
 
 const AddProjectOverlay = (
     {
@@ -14,6 +15,11 @@ const AddProjectOverlay = (
         setIsOpen: Dispatch<SetStateAction<boolean>>;
     },
 ) => {
+    const [
+        isSaving,
+        setIsSaving,
+    ] = useState<boolean>(false);
+
     const {
         getValues,
         register,
@@ -47,17 +53,39 @@ const AddProjectOverlay = (
         },
     ] as Array<FormInput>;
 
-    const saveHandler = () => {
-        console.log(getValues());
+    const [
+        errorMessage,
+        setErrorMessage,
+    ] = useState<string>('');
+
+    const mutation = useProjectsMutation();
+
+    const saveHandler: SubmitHandler<AddProjectFormValues> = (
+        data,
+    ) => {
+        setIsSaving(true);
+
+        if (errorMessage) {
+            setErrorMessage('');
+        }
+
+        mutation.mutate(data, {
+            onSuccess: () => setIsOpen(false),
+            onError: (error) => {
+                setErrorMessage(error.message || 'Unable to add project');
+
+                setIsSaving(false);
+            },
+        });
     };
 
     return <EditorShell
         title="Add New Project"
-        isSaving={false}
-        errorMessage=""
+        isSaving={isSaving}
+        submitButtonText="Add"
+        errorMessage={errorMessage}
         saveHandler={() => {
-            // saveHandler(getValues());
-            saveHandler();
+            saveHandler(getValues());
         }}
         setEditorIsOpen={setIsOpen}
     >
@@ -65,8 +93,7 @@ const AddProjectOverlay = (
             inputs={inputs}
             register={register}
             onSubmit={() => {
-                // saveHandler(getValues());
-                saveHandler();
+                saveHandler(getValues());
             }}
         />
     </EditorShell>;
