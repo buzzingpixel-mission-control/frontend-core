@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Tab } from './Tab';
 
@@ -9,8 +9,14 @@ function classNames (...classes) {
 const PageTabs = (
     {
         tabs,
+        rightHandButtons,
     }: {
         tabs: Array<Tab>;
+        rightHandButtons?: Array<{
+            key: string;
+            text: string | JSX.Element;
+            onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+        }>;
     },
 ) => {
     const navigate = useNavigate();
@@ -21,7 +27,6 @@ const PageTabs = (
                 <label htmlFor="tabs" className="sr-only">
                     Select a tab
                 </label>
-                {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
                 <select
                     id="tabs"
                     name="tabs"
@@ -35,6 +40,22 @@ const PageTabs = (
                         <option key={tab.name} value={tab.href}>{tab.name}</option>
                     ))}
                 </select>
+                {(() => {
+                    if (!rightHandButtons) {
+                        return null;
+                    }
+
+                    return <div className="text-right mt-2">
+                        {rightHandButtons.map((button) => <button
+                            key={button.key}
+                            type="button"
+                            className="ml-2 my-1 inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+                            onClick={button.onClick}
+                        >
+                            {button.text}
+                        </button>)}
+                    </div>;
+                })()}
             </div>
             <div className="hidden sm:block">
                 <div className="border-b border-gray-200">
@@ -67,6 +88,24 @@ const PageTabs = (
                                 <span>{tab.name}</span>
                             </Link>
                         ))}
+                        {(() => {
+                            if (!rightHandButtons) {
+                                return null;
+                            }
+
+                            return <div className="my-auto ml-auto text-right" style={{
+                                marginLeft: 'auto',
+                            }}>
+                                {rightHandButtons.map((button) => <button
+                                    key={button.key}
+                                    type="button"
+                                    className="ml-2 my-1 inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+                                    onClick={button.onClick}
+                                >
+                                    {button.text}
+                                </button>)}
+                            </div>;
+                        })()}
                     </nav>
                 </div>
             </div>

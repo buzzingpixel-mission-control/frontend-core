@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from 'react';
 import {
-    PlusIcon,
     ClipboardDocumentListIcon,
     EllipsisVerticalIcon,
 } from '@heroicons/react/20/solid';
@@ -42,9 +41,13 @@ const ProjectsPage = () => {
         data,
     } = useProjectsData();
 
+    const Tabs = <ProjectTabs
+        addProjectOnClick={() => { setAddProjectIsOpen(true); }}
+    />;
+
     if (status === 'loading') {
         return <>
-            <ProjectTabs />
+            {Tabs}
             <PartialPageLoading />
         </>;
     }
@@ -62,7 +65,7 @@ const ProjectsPage = () => {
     if (projects.length < 1) {
         return <>
             {portals()}
-            <ProjectTabs />
+            {Tabs}
             <NoResultsAddItem
                 icon={<ClipboardDocumentListIcon />}
                 headline="No projects"
@@ -96,21 +99,8 @@ const ProjectsPage = () => {
 
     return <>
         {portals()}
-        <ProjectTabs />
+        {Tabs}
         <div>
-            <div className="flex items-center mb-4">
-                <div className="flex-auto"></div>
-                <div className="mt-4 sm:mt-0 sm:ml-16">
-                    <button
-                        type="button"
-                        className="inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
-                        onClick={() => { setAddProjectIsOpen(true); }}
-                    >
-                        <PlusIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                        Add New Project
-                    </button>
-                </div>
-            </div>
             {FilterInput}
             {(() => {
                 if (projects.length < 1) {

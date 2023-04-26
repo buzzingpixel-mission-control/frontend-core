@@ -54,9 +54,10 @@ var ProjectsPage = function () {
     var _a = (0, react_1.useState)(''), filterText = _a[0], setFilterText = _a[1];
     var _b = (0, react_1.useState)(false), addProjectIsOpen = _b[0], setAddProjectIsOpen = _b[1];
     var _c = (0, ProjectsData_1.useProjectsData)(), status = _c.status, data = _c.data;
+    var Tabs = react_1.default.createElement(ProjectTabs_1.default, { addProjectOnClick: function () { setAddProjectIsOpen(true); } });
     if (status === 'loading') {
         return react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(ProjectTabs_1.default, null),
+            Tabs,
             react_1.default.createElement(PartialPageLoading_1.default, null));
     }
     var portals = function () {
@@ -69,7 +70,7 @@ var ProjectsPage = function () {
     if (projects.length < 1) {
         return react_1.default.createElement(react_1.default.Fragment, null,
             portals(),
-            react_1.default.createElement(ProjectTabs_1.default, null),
+            Tabs,
             react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.ClipboardDocumentListIcon, null), headline: "No projects", content: "Would you like to create a project?", actionText: "Add New Project", actionUsesPlusIcon: true, actionButtonOnClick: function () { setAddProjectIsOpen(true); } }));
     }
     var FilterInput = react_1.default.createElement("div", { className: "mb-4" },
@@ -83,14 +84,8 @@ var ProjectsPage = function () {
     }
     return react_1.default.createElement(react_1.default.Fragment, null,
         portals(),
-        react_1.default.createElement(ProjectTabs_1.default, null),
+        Tabs,
         react_1.default.createElement("div", null,
-            react_1.default.createElement("div", { className: "flex items-center mb-4" },
-                react_1.default.createElement("div", { className: "flex-auto" }),
-                react_1.default.createElement("div", { className: "mt-4 sm:mt-0 sm:ml-16" },
-                    react_1.default.createElement("button", { type: "button", className: "inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600", onClick: function () { setAddProjectIsOpen(true); } },
-                        react_1.default.createElement(solid_1.PlusIcon, { className: "-ml-1 mr-2 h-5 w-5", "aria-hidden": "true" }),
-                        "Add New Project"))),
             FilterInput,
             (function () {
                 if (projects.length < 1) {
