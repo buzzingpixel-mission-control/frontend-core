@@ -45,7 +45,7 @@ var ApiError_1 = __importDefault(require("./Api/ApiError"));
 var MakeApiRequest = function (_a) {
     var uri = _a.uri, queryParams = _a.queryParams, method = _a.method, payload = _a.payload;
     return __awaiter(void 0, void 0, void 0, function () {
-        var options, urlStr, url, queryString, response, data;
+        var options, urlStr, url, queryString, response, data, message;
         var _b;
         return __generator(this, function (_c) {
             switch (_c.label) {
@@ -86,7 +86,13 @@ var MakeApiRequest = function (_a) {
                     if (response.ok) {
                         return [2 /*return*/, data];
                     }
-                    return [2 /*return*/, Promise.reject(new ApiError_1.default(data, response.status, response.statusText, (_b = data.message) !== null && _b !== void 0 ? _b : undefined))];
+                    if (data.message) {
+                        message = data.message;
+                    }
+                    else if ((_b = data.error) === null || _b === void 0 ? void 0 : _b.message) {
+                        message = data.error.message;
+                    }
+                    return [2 /*return*/, Promise.reject(new ApiError_1.default(data, response.status, response.statusText, message))];
             }
         });
     });

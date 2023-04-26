@@ -182,5 +182,5 @@ declare const useProjectsData: () => {
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 };
-declare const useProjectsMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, Error, AddProjectFormValues>;
+declare const useProjectsMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
 export { useProjectsData, useProjectsMutation, };

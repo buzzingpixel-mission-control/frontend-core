@@ -53,11 +53,19 @@ const MakeApiRequest = async <Props>({
         return data;
     }
 
+    let message;
+
+    if (data.message) {
+        message = data.message;
+    } else if (data.error?.message) {
+        message = data.error.message;
+    }
+
     return Promise.reject(new ApiError(
         data,
         response.status,
         response.statusText,
-        data.message ?? undefined,
+        message,
     ));
 };
 

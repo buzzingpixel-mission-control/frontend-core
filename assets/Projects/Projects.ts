@@ -16,3 +16,32 @@ export const ProjectsSchema = z.array(
 );
 
 export type Projects = z.infer<typeof ProjectsSchema>;
+
+// eslint-disable-next-line no-shadow
+export enum ProjectViewOptionsStatus {
+    Active = 'Active',
+    Archived = 'Archived'
+}
+
+export type ProjectWithViewOptions = Project & {
+    href: string;
+    status: ProjectViewOptionsStatus;
+    createdAtDate: Date;
+}
+
+export type ProjectsWithViewOptions = Array<ProjectWithViewOptions>;
+
+export const transformProject = (project: Project): ProjectWithViewOptions => ({
+    ...project,
+    href: `/projects/${project.slug}`,
+    status: project.isActive
+        ? ProjectViewOptionsStatus.Active
+        : ProjectViewOptionsStatus.Archived,
+    createdAtDate: new Date(project.createdAt),
+});
+
+export const transformProjects = (
+    projects: Projects,
+): ProjectsWithViewOptions => projects.map((
+    project,
+) => transformProject(project));

@@ -3,14 +3,15 @@ import { useMutation, UseMutationOptions, useQueryClient } from '@tanstack/react
 import ApiParams from './ApiParams';
 import RequestMethod from './RequestMethod';
 import MakeApiRequest from '../MakeApiRequest';
+import ApiError from './ApiError';
 
 const useApiMutation = <TData = unknown, PrepData = unknown>(
     params?: {
         invalidateQueryKeysOnSuccess?: Array<string>;
-        options?: Omit<UseMutationOptions<TData, Error, ApiParams>, 'mutationFn'>;
+        options?: Omit<UseMutationOptions<TData, ApiError, ApiParams>, 'mutationFn'>;
         prepareApiParams?: (prepData: PrepData) => ApiParams;
     },
-): UseMutationResult<TData, Error, PrepData> => {
+): UseMutationResult<TData, ApiError, PrepData> => {
     params = params || {};
 
     const options = params.options || {};
@@ -41,7 +42,7 @@ const useApiMutation = <TData = unknown, PrepData = unknown>(
         };
     }
 
-    return useMutation<TData, Error, PrepData, unknown>({
+    return useMutation<TData, ApiError, PrepData, unknown>({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         mutationFn: async (prepData) => {
