@@ -6,7 +6,7 @@ import FormInputText from '../Forms/FormInputText';
 import EditorShellFloating from '../Forms/EditorShellFloating';
 import EditorShellForm from '../Forms/EditorShellForm';
 import FormInputTextarea from '../Forms/FormInputTextarea';
-import { useProjectsMutation } from './ProjectsData';
+import { useAddProjectMutation } from './ProjectsData';
 
 const AddProjectOverlay = (
     {
@@ -58,9 +58,7 @@ const AddProjectOverlay = (
         setErrorMessage,
     ] = useState<string>('');
 
-    const mutation = useProjectsMutation(
-        '/projects/add',
-    );
+    const mutation = useAddProjectMutation();
 
     const saveHandler: SubmitHandler<AddProjectFormValues> = (
         data,

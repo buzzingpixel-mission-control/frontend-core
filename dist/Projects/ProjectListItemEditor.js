@@ -33,7 +33,6 @@ var EditorShellForm_1 = __importDefault(require("../Forms/EditorShellForm"));
 var FormInputText_1 = __importDefault(require("../Forms/FormInputText"));
 var FormInputTextarea_1 = __importDefault(require("../Forms/FormInputTextarea"));
 var ProjectsData_1 = require("./ProjectsData");
-var RequestMethod_1 = __importDefault(require("../Api/RequestMethod"));
 var ProjectListItemEditor = function (_a) {
     var project = _a.project, setEditorIsOpen = _a.setEditorIsOpen;
     var _b = (0, react_hook_form_1.useForm)({
@@ -71,7 +70,7 @@ var ProjectListItemEditor = function (_a) {
         },
     ];
     var _d = (0, react_1.useState)(''), errorMessage = _d[0], setErrorMessage = _d[1];
-    var mutation = (0, ProjectsData_1.useProjectsMutation)("/projects/edit/".concat(project.id), RequestMethod_1.default.PATCH);
+    var mutation = (0, ProjectsData_1.useEditProjectMutation)(project.id);
     var saveHandler = function (data) {
         setIsSaving(true);
         if (errorMessage) {

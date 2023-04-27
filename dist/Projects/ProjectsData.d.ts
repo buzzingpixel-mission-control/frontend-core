@@ -1,5 +1,4 @@
 import AddProjectFormValues from './AddProjectFormValues';
-import RequestMethod from '../Api/RequestMethod';
 declare const useProjectsData: (archive?: boolean) => {
     accessDenied: boolean;
     setData: (newData: {
@@ -39,7 +38,7 @@ declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
         id?: string;
         isActive?: boolean;
         title?: string;
@@ -48,7 +47,7 @@ declare const useProjectsData: (archive?: boolean) => {
         createdAt?: string;
     }[], import("../Api/ApiError").default>>;
     remove: () => void;
-    fetchStatus: import("@tanstack/query-core").FetchStatus;
+    fetchStatus: import("@tanstack/react-query").FetchStatus;
 } | {
     accessDenied: boolean;
     setData: (newData: {
@@ -88,7 +87,7 @@ declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
         id?: string;
         isActive?: boolean;
         title?: string;
@@ -97,7 +96,7 @@ declare const useProjectsData: (archive?: boolean) => {
         createdAt?: string;
     }[], import("../Api/ApiError").default>>;
     remove: () => void;
-    fetchStatus: import("@tanstack/query-core").FetchStatus;
+    fetchStatus: import("@tanstack/react-query").FetchStatus;
 } | {
     accessDenied: boolean;
     setData: (newData: {
@@ -130,7 +129,7 @@ declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
         id?: string;
         isActive?: boolean;
         title?: string;
@@ -139,7 +138,7 @@ declare const useProjectsData: (archive?: boolean) => {
         createdAt?: string;
     }[], import("../Api/ApiError").default>>;
     remove: () => void;
-    fetchStatus: import("@tanstack/query-core").FetchStatus;
+    fetchStatus: import("@tanstack/react-query").FetchStatus;
 } | {
     accessDenied: boolean;
     setData: (newData: {
@@ -172,7 +171,7 @@ declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
         id?: string;
         isActive?: boolean;
         title?: string;
@@ -181,7 +180,9 @@ declare const useProjectsData: (archive?: boolean) => {
         createdAt?: string;
     }[], import("../Api/ApiError").default>>;
     remove: () => void;
-    fetchStatus: import("@tanstack/query-core").FetchStatus;
+    fetchStatus: import("@tanstack/react-query").FetchStatus;
 };
-declare const useProjectsMutation: (uri: string, method?: RequestMethod) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
-export { useProjectsData, useProjectsMutation, };
+declare const useAddProjectMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
+declare const useEditProjectMutation: (projectId: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
+declare const useArchiveProjectMutation: (projectId: string, isArchive: boolean) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, unknown>;
+export { useProjectsData, useAddProjectMutation, useEditProjectMutation, useArchiveProjectMutation, };

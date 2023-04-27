@@ -7,8 +7,7 @@ import FormInputText from '../Forms/FormInputText';
 import { Project } from './Projects';
 import AddProjectFormValues from './AddProjectFormValues';
 import FormInputTextarea from '../Forms/FormInputTextarea';
-import { useProjectsMutation } from './ProjectsData';
-import RequestMethod from '../Api/RequestMethod';
+import { useEditProjectMutation } from './ProjectsData';
 
 const ProjectListItemEditor = (
     {
@@ -68,9 +67,8 @@ const ProjectListItemEditor = (
         setErrorMessage,
     ] = useState<string>('');
 
-    const mutation = useProjectsMutation(
-        `/projects/edit/${project.id}`,
-        RequestMethod.PATCH,
+    const mutation = useEditProjectMutation(
+        project.id,
     );
 
     const saveHandler: SubmitHandler<AddProjectFormValues> = (

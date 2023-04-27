@@ -60,8 +60,8 @@ var useApiMutation = function (params) {
     var invalidateQueryKeysOnSuccess = params.invalidateQueryKeysOnSuccess || [];
     var queryClient = (0, react_query_1.useQueryClient)();
     if (invalidateQueryKeysOnSuccess.length > 0) {
-        var incomingOnSuccess_1 = options.onSuccess;
-        options.onSuccess = function (data, variables, context) {
+        var incomingOnSettled_1 = options.onSettled;
+        options.onSettled = function (data, error, variables, context) {
             Promise.all(invalidateQueryKeysOnSuccess.map(function (key) { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
@@ -72,8 +72,8 @@ var useApiMutation = function (params) {
                     }
                 });
             }); })).then(function () {
-                if (incomingOnSuccess_1) {
-                    incomingOnSuccess_1(data, variables, context);
+                if (incomingOnSettled_1) {
+                    incomingOnSettled_1(data, error, variables, context);
                 }
             });
         };

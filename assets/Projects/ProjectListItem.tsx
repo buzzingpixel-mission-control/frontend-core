@@ -4,8 +4,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 import { ProjectWithViewOptions } from './Projects';
 import ProjectListItemEditor from './ProjectListItemEditor';
-import { useProjectsMutation } from './ProjectsData';
-import RequestMethod from '../Api/RequestMethod';
+import { useArchiveProjectMutation } from './ProjectsData';
 
 const statuses = {
     Active: 'text-green-700 bg-green-50 ring-green-600/20',
@@ -30,9 +29,9 @@ const ProjectListItem = (
         setEditProjectIsOpen,
     ] = useState<boolean>(false);
 
-    const archiveMutation = useProjectsMutation(
-        `/projects/${isArchive ? 'un-archive' : 'archive'}/${project.id}`,
-        RequestMethod.PATCH,
+    const archiveMutation = useArchiveProjectMutation(
+        project.id,
+        isArchive,
     );
 
     return <li>

@@ -64,7 +64,7 @@ var AddProjectOverlay = function (_a) {
         },
     ];
     var _d = (0, react_1.useState)(''), errorMessage = _d[0], setErrorMessage = _d[1];
-    var mutation = (0, ProjectsData_1.useProjectsMutation)('/projects/add');
+    var mutation = (0, ProjectsData_1.useAddProjectMutation)();
     var saveHandler = function (data) {
         setIsSaving(true);
         if (errorMessage) {

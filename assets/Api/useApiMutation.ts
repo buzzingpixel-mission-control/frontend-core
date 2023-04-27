@@ -25,10 +25,11 @@ const useApiMutation = <TData = unknown, PrepData = unknown>(
     const queryClient = useQueryClient();
 
     if (invalidateQueryKeysOnSuccess.length > 0) {
-        const incomingOnSuccess = options.onSuccess;
+        const incomingOnSettled = options.onSettled;
 
-        options.onSuccess = (
+        options.onSettled = (
             data,
+            error,
             variables,
             context,
         ) => {
@@ -37,8 +38,8 @@ const useApiMutation = <TData = unknown, PrepData = unknown>(
                     await queryClient.invalidateQueries([[key]]);
                 }),
             ).then(() => {
-                if (incomingOnSuccess) {
-                    incomingOnSuccess(data, variables, context);
+                if (incomingOnSettled) {
+                    incomingOnSettled(data, error, variables, context);
                 }
             });
         };
