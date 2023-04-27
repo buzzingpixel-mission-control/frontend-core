@@ -2,12 +2,10 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import { useForm } from 'react-hook-form';
 import { ProjectWithViewOptions } from './Projects';
-import EditorShellInline from '../Forms/EditorShellInline';
-import EditorShellForm from '../Forms/EditorShellForm';
-import FormInput from '../Forms/FormInput';
 import ProjectListItemEditor from './ProjectListItemEditor';
+import { useProjectsMutation } from './ProjectsData';
+import RequestMethod from '../Api/RequestMethod';
 
 const statuses = {
     Active: 'text-green-700 bg-green-50 ring-green-600/20',
@@ -29,6 +27,11 @@ const ProjectListItem = (
         editProjectIsOpen,
         setEditProjectIsOpen,
     ] = useState<boolean>(false);
+
+    const archiveMutation = useProjectsMutation(
+        `/projects/archive/${project.id}`,
+        RequestMethod.PATCH,
+    );
 
     return <li>
         <div className="flex items-center justify-between gap-x-6 py-5">
@@ -100,7 +103,7 @@ const ProjectListItem = (
                                             'cursor-pointer block px-3 py-1 text-sm leading-6 text-gray-900',
                                         )}
                                         onClick={() => {
-                                            // todo
+                                            archiveMutation.mutate(undefined);
                                         }}
                                     >
                                         Archive<span className="sr-only">, {project.title}</span>

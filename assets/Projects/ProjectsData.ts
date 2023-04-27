@@ -17,7 +17,7 @@ const useProjectsData = () => useApiQueryWithSignInRedirect<Projects>(
 const useProjectsMutation = (
     uri: string,
     method: RequestMethod = RequestMethod.POST,
-) => useApiMutation<unknown, AddProjectFormValues>(
+) => useApiMutation<unknown, AddProjectFormValues|undefined>(
     {
         invalidateQueryKeysOnSuccess: ['projects-list'],
         prepareApiParams: (

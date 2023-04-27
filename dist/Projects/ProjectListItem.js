@@ -31,6 +31,8 @@ var react_router_dom_1 = require("react-router-dom");
 var react_2 = require("@headlessui/react");
 var solid_1 = require("@heroicons/react/20/solid");
 var ProjectListItemEditor_1 = __importDefault(require("./ProjectListItemEditor"));
+var ProjectsData_1 = require("./ProjectsData");
+var RequestMethod_1 = __importDefault(require("../Api/RequestMethod"));
 var statuses = {
     Active: 'text-green-700 bg-green-50 ring-green-600/20',
     Archived: 'text-yellow-800 bg-yellow-50 ring-yellow-600/20',
@@ -45,6 +47,7 @@ function classNames() {
 var ProjectListItem = function (_a) {
     var project = _a.project;
     var _b = (0, react_1.useState)(false), editProjectIsOpen = _b[0], setEditProjectIsOpen = _b[1];
+    var archiveMutation = (0, ProjectsData_1.useProjectsMutation)("/projects/archive/".concat(project.id), RequestMethod_1.default.PATCH);
     return react_1.default.createElement("li", null,
         react_1.default.createElement("div", { className: "flex items-center justify-between gap-x-6 py-5" },
             react_1.default.createElement("div", { className: "min-w-0" },
@@ -83,7 +86,7 @@ var ProjectListItem = function (_a) {
                             react_1.default.createElement(react_2.Menu.Item, null, function (_a) {
                                 var active = _a.active;
                                 return (react_1.default.createElement("span", { className: classNames(active ? 'bg-gray-50' : '', 'cursor-pointer block px-3 py-1 text-sm leading-6 text-gray-900'), onClick: function () {
-                                        // todo
+                                        archiveMutation.mutate(undefined);
                                     } },
                                     "Archive",
                                     react_1.default.createElement("span", { className: "sr-only" },
