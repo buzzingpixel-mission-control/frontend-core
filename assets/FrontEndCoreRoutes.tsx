@@ -9,6 +9,7 @@ import RequireAdmin from './RequireAdmin';
 const FrontEndCoreRoutes = () => <>
     <Route path="/" element={<Navigate to="/projects" />} />
     <Route path="/projects" element={<ProjectsPage />} />
+    <Route path="/projects/archived" element={<ProjectsPage isArchive={true} />} />
     <Route path="/user-admin" element={<RequireAdmin><UserAdminPage /></RequireAdmin>} />
     <Route path="/account" element={<AccountPage />} />
     <Route path="*" element={<NotFoundPage />} />

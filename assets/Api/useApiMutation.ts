@@ -32,8 +32,10 @@ const useApiMutation = <TData = unknown, PrepData = unknown>(
             variables,
             context,
         ) => {
-            queryClient.invalidateQueries(
-                [invalidateQueryKeysOnSuccess],
+            Promise.all(
+                invalidateQueryKeysOnSuccess.map(async (key) => {
+                    await queryClient.invalidateQueries([[key]]);
+                }),
             ).then(() => {
                 if (incomingOnSuccess) {
                     incomingOnSuccess(data, variables, context);

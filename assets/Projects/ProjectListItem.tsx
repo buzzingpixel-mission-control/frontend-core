@@ -18,8 +18,10 @@ function classNames (...classes) {
 
 const ProjectListItem = (
     {
+        isArchive,
         project,
     }: {
+        isArchive: boolean,
         project: ProjectWithViewOptions,
     },
 ) => {
@@ -29,7 +31,7 @@ const ProjectListItem = (
     ] = useState<boolean>(false);
 
     const archiveMutation = useProjectsMutation(
-        `/projects/archive/${project.id}`,
+        `/projects/${isArchive ? 'un-archive' : 'archive'}/${project.id}`,
         RequestMethod.PATCH,
     );
 
@@ -106,7 +108,7 @@ const ProjectListItem = (
                                             archiveMutation.mutate(undefined);
                                         }}
                                     >
-                                        Archive<span className="sr-only">, {project.title}</span>
+                                        {isArchive ? 'Un-archive' : 'Archive'}<span className="sr-only">, {project.title}</span>
                                     </span>
                                 )}
                             </Menu.Item>

@@ -10,7 +10,13 @@ import ProjectTabs from './ProjectTabs';
 import { transformProjects } from './Projects';
 import ProjectsList from './ProjectsList';
 
-const ProjectsPage = () => {
+const ProjectsPage = (
+    {
+        isArchive = false,
+    }: {
+        isArchive?: boolean,
+    },
+) => {
     setPageName('Projects');
 
     const [
@@ -26,9 +32,10 @@ const ProjectsPage = () => {
     const {
         status,
         data,
-    } = useProjectsData();
+    } = useProjectsData(isArchive);
 
     const Tabs = <ProjectTabs
+        activeHref={isArchive ? '/projects/archived' : '/projects'}
         addProjectOnClick={() => { setAddProjectIsOpen(true); }}
     />;
 
@@ -87,7 +94,10 @@ const ProjectsPage = () => {
                     }}
                 />
             </div>
-            <ProjectsList projects={projects} />
+            <ProjectsList
+                isArchive={isArchive}
+                projects={projects}
+            />
         </div>
     </>;
 };

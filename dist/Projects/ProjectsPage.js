@@ -37,12 +37,13 @@ var AddProjectOverlay_1 = __importDefault(require("./AddProjectOverlay"));
 var ProjectTabs_1 = __importDefault(require("./ProjectTabs"));
 var Projects_1 = require("./Projects");
 var ProjectsList_1 = __importDefault(require("./ProjectsList"));
-var ProjectsPage = function () {
+var ProjectsPage = function (_a) {
+    var _b = _a.isArchive, isArchive = _b === void 0 ? false : _b;
     (0, setPageName_1.default)('Projects');
-    var _a = (0, react_1.useState)(''), filterText = _a[0], setFilterText = _a[1];
-    var _b = (0, react_1.useState)(false), addProjectIsOpen = _b[0], setAddProjectIsOpen = _b[1];
-    var _c = (0, ProjectsData_1.useProjectsData)(), status = _c.status, data = _c.data;
-    var Tabs = react_1.default.createElement(ProjectTabs_1.default, { addProjectOnClick: function () { setAddProjectIsOpen(true); } });
+    var _c = (0, react_1.useState)(''), filterText = _c[0], setFilterText = _c[1];
+    var _d = (0, react_1.useState)(false), addProjectIsOpen = _d[0], setAddProjectIsOpen = _d[1];
+    var _e = (0, ProjectsData_1.useProjectsData)(isArchive), status = _e.status, data = _e.data;
+    var Tabs = react_1.default.createElement(ProjectTabs_1.default, { activeHref: isArchive ? '/projects/archived' : '/projects', addProjectOnClick: function () { setAddProjectIsOpen(true); } });
     if (status === 'loading') {
         return react_1.default.createElement(react_1.default.Fragment, null,
             Tabs,
@@ -74,6 +75,6 @@ var ProjectsPage = function () {
                 react_1.default.createElement("input", { type: "text", name: "filter", id: "filter", className: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6", placeholder: "Filter results", value: filterText, onChange: function (e) {
                         setFilterText(e.target.value);
                     } })),
-            react_1.default.createElement(ProjectsList_1.default, { projects: projects })));
+            react_1.default.createElement(ProjectsList_1.default, { isArchive: isArchive, projects: projects })));
 };
 exports.default = ProjectsPage;

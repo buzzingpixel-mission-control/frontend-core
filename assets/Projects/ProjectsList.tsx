@@ -6,8 +6,10 @@ import ProjectListItem from './ProjectListItem';
 
 const ProjectsList = (
     {
+        isArchive,
         projects,
     }: {
+        isArchive: boolean,
         projects: ProjectsWithViewOptions
     },
 ) => {
@@ -21,7 +23,11 @@ const ProjectsList = (
     return <div className="bg-white rounded-md shadow-sm px-4">
         <ul role="list" className="divide-y divide-gray-100">
             {projects.map((project) => (
-                <ProjectListItem key={project.id} project={project} />
+                <ProjectListItem
+                    key={project.id}
+                    isArchive={isArchive}
+                    project={project}
+                />
             ))}
         </ul>
     </div>;

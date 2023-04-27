@@ -1,6 +1,6 @@
 import AddProjectFormValues from './AddProjectFormValues';
 import RequestMethod from '../Api/RequestMethod';
-declare const useProjectsData: () => {
+declare const useProjectsData: (archive?: boolean) => {
     accessDenied: boolean;
     setData: (newData: {
         id?: string;

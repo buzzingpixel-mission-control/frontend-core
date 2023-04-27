@@ -13,6 +13,7 @@ var RequireAdmin_1 = __importDefault(require("./RequireAdmin"));
 var FrontEndCoreRoutes = function () { return react_1.default.createElement(react_1.default.Fragment, null,
     react_1.default.createElement(react_router_dom_1.Route, { path: "/", element: react_1.default.createElement(react_router_dom_1.Navigate, { to: "/projects" }) }),
     react_1.default.createElement(react_router_dom_1.Route, { path: "/projects", element: react_1.default.createElement(ProjectsPage_1.default, null) }),
+    react_1.default.createElement(react_router_dom_1.Route, { path: "/projects/archived", element: react_1.default.createElement(ProjectsPage_1.default, { isArchive: true }) }),
     react_1.default.createElement(react_router_dom_1.Route, { path: "/user-admin", element: react_1.default.createElement(RequireAdmin_1.default, null,
             react_1.default.createElement(UserAdminPage_1.default, null)) }),
     react_1.default.createElement(react_router_dom_1.Route, { path: "/account", element: react_1.default.createElement(AccountPage_1.default, null) }),

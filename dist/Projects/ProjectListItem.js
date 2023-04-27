@@ -45,9 +45,9 @@ function classNames() {
     return classes.filter(Boolean).join(' ');
 }
 var ProjectListItem = function (_a) {
-    var project = _a.project;
+    var isArchive = _a.isArchive, project = _a.project;
     var _b = (0, react_1.useState)(false), editProjectIsOpen = _b[0], setEditProjectIsOpen = _b[1];
-    var archiveMutation = (0, ProjectsData_1.useProjectsMutation)("/projects/archive/".concat(project.id), RequestMethod_1.default.PATCH);
+    var archiveMutation = (0, ProjectsData_1.useProjectsMutation)("/projects/".concat(isArchive ? 'un-archive' : 'archive', "/").concat(project.id), RequestMethod_1.default.PATCH);
     return react_1.default.createElement("li", null,
         react_1.default.createElement("div", { className: "flex items-center justify-between gap-x-6 py-5" },
             react_1.default.createElement("div", { className: "min-w-0" },
@@ -88,7 +88,7 @@ var ProjectListItem = function (_a) {
                                 return (react_1.default.createElement("span", { className: classNames(active ? 'bg-gray-50' : '', 'cursor-pointer block px-3 py-1 text-sm leading-6 text-gray-900'), onClick: function () {
                                         archiveMutation.mutate(undefined);
                                     } },
-                                    "Archive",
+                                    isArchive ? 'Un-archive' : 'Archive',
                                     react_1.default.createElement("span", { className: "sr-only" },
                                         ", ",
                                         project.title)));
