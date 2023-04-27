@@ -9,7 +9,7 @@ import FormInput from '../Forms/FormInput';
 import FormInputText from '../Forms/FormInputText';
 import FormInputToggle from '../Forms/FormInputToggle';
 import FormInputTimezone from '../Forms/FormInputTimezone';
-import EditorShell from '../Forms/EditorShell';
+import EditorShellFloating from '../Forms/EditorShellFloating';
 import EditorShellForm from '../Forms/EditorShellForm';
 
 const AddUserOverlay = (
@@ -102,7 +102,7 @@ const AddUserOverlay = (
         },
     ] as Array<FormInput>;
 
-    return <EditorShell
+    return <EditorShellFloating
         title="Add New User"
         isSaving={isSaving}
         errorMessage={errorMessage}
@@ -119,7 +119,7 @@ const AddUserOverlay = (
                 saveHandler(getValues());
             }}
         />
-    </EditorShell>;
+    </EditorShellFloating>;
 };
 
 export default AddUserOverlay;

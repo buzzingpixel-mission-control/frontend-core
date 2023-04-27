@@ -3,6 +3,7 @@ import MinutesToMilliseconds from '../MinutesToMilliseconds';
 import { Projects, ProjectsSchema } from './Projects';
 import useApiMutation from '../Api/useApiMutation';
 import AddProjectFormValues from './AddProjectFormValues';
+import RequestMethod from '../Api/RequestMethod';
 
 const useProjectsData = () => useApiQueryWithSignInRedirect<Projects>(
     ['projects-list'],
@@ -13,14 +14,18 @@ const useProjectsData = () => useApiQueryWithSignInRedirect<Projects>(
     },
 );
 
-const useProjectsMutation = () => useApiMutation<unknown, AddProjectFormValues>(
+const useProjectsMutation = (
+    uri: string,
+    method: RequestMethod = RequestMethod.POST,
+) => useApiMutation<unknown, AddProjectFormValues>(
     {
         invalidateQueryKeysOnSuccess: ['projects-list'],
         prepareApiParams: (
             data,
         ) => ({
-            uri: '/projects/add',
+            uri,
             payload: data,
+            method,
         }),
     },
 );

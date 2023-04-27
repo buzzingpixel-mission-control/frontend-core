@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import EditorParams from './EditorParams';
 import FetchOptionsBuilder from '../FetchOptionsBuilder';
-import EditorShell from '../Forms/EditorShell';
+import EditorShellFloating from '../Forms/EditorShellFloating';
 
 const SingleInputEditor = (
     {
@@ -90,7 +90,7 @@ const SingleInputEditor = (
         return () => window.removeEventListener('keydown', handler);
     });
 
-    return <EditorShell
+    return <EditorShellFloating
         title={`Edit ${item.title}`}
         isSaving={isSaving}
         errorMessage={errorMessage}
@@ -106,7 +106,7 @@ const SingleInputEditor = (
                 setValue(e.target.value);
             }}
         />
-    </EditorShell>;
+    </EditorShellFloating>;
 };
 
 export default SingleInputEditor;

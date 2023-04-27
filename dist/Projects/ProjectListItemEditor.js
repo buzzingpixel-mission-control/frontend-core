@@ -26,17 +26,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
 var react_hook_form_1 = require("react-hook-form");
-var FormInputText_1 = __importDefault(require("../Forms/FormInputText"));
-var EditorShellFloating_1 = __importDefault(require("../Forms/EditorShellFloating"));
+var react_1 = __importStar(require("react"));
+var EditorShellInline_1 = __importDefault(require("../Forms/EditorShellInline"));
 var EditorShellForm_1 = __importDefault(require("../Forms/EditorShellForm"));
+var FormInputText_1 = __importDefault(require("../Forms/FormInputText"));
 var FormInputTextarea_1 = __importDefault(require("../Forms/FormInputTextarea"));
 var ProjectsData_1 = require("./ProjectsData");
-var AddProjectOverlay = function (_a) {
-    var setIsOpen = _a.setIsOpen;
-    var _b = (0, react_1.useState)(false), isSaving = _b[0], setIsSaving = _b[1];
-    var _c = (0, react_hook_form_1.useForm)(), getValues = _c.getValues, register = _c.register, setValue = _c.setValue;
+var RequestMethod_1 = __importDefault(require("../Api/RequestMethod"));
+var ProjectListItemEditor = function (_a) {
+    var project = _a.project, setEditorIsOpen = _a.setEditorIsOpen;
+    var _b = (0, react_hook_form_1.useForm)({
+        defaultValues: {
+            title: project.title,
+            slug: project.slug,
+            description: project.description,
+        },
+    }), getValues = _b.getValues, register = _b.register, setValue = _b.setValue;
+    var _c = (0, react_1.useState)(false), isSaving = _c[0], setIsSaving = _c[1];
     var inputs = [
         {
             title: 'Title',
@@ -64,25 +71,29 @@ var AddProjectOverlay = function (_a) {
         },
     ];
     var _d = (0, react_1.useState)(''), errorMessage = _d[0], setErrorMessage = _d[1];
-    var mutation = (0, ProjectsData_1.useProjectsMutation)('/projects/add');
+    var mutation = (0, ProjectsData_1.useProjectsMutation)("/projects/edit/".concat(project.id), RequestMethod_1.default.PATCH);
     var saveHandler = function (data) {
         setIsSaving(true);
         if (errorMessage) {
             setErrorMessage('');
         }
         mutation.mutate(data, {
-            onSuccess: function () { return setIsOpen(false); },
+            onSuccess: function () { return setEditorIsOpen(false); },
             onError: function (error) {
-                setErrorMessage(error.message || 'Unable to add project');
+                setErrorMessage(error.message || 'Unable to edit project');
                 setIsSaving(false);
             },
         });
     };
-    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Add New Project", isSaving: isSaving, submitButtonText: "Add", errorMessage: errorMessage, saveHandler: function () {
-            saveHandler(getValues());
-        }, setEditorIsOpen: setIsOpen },
-        react_1.default.createElement(EditorShellForm_1.default, { inputs: inputs, register: register, onSubmit: function () {
+    return react_1.default.createElement("div", { className: "border border-gray-300 rounded-md shadow-md mx-auto p-4", style: {
+            maxWidth: '600px',
+            marginBottom: '1.5rem',
+        } },
+        react_1.default.createElement(EditorShellInline_1.default, { isSaving: isSaving, setEditorIsOpen: setEditorIsOpen, errorMessage: errorMessage, saveHandler: function () {
                 saveHandler(getValues());
-            } }));
+            } },
+            react_1.default.createElement(EditorShellForm_1.default, { inputs: inputs, register: register, onSubmit: function () {
+                    saveHandler(getValues());
+                } })));
 };
-exports.default = AddProjectOverlay;
+exports.default = ProjectListItemEditor;

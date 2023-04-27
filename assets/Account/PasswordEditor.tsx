@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EditorParams from './EditorParams';
 import FetchOptionsBuilder from '../FetchOptionsBuilder';
-import EditorShell from '../Forms/EditorShell';
+import EditorShellFloating from '../Forms/EditorShellFloating';
 
 const PasswordEditor = (
     {
@@ -100,7 +100,7 @@ const PasswordEditor = (
         return () => window.removeEventListener('keydown', handler);
     });
 
-    return <EditorShell
+    return <EditorShellFloating
         title={`Edit ${item.title}`}
         isSaving={isSaving}
         errorMessage={errorMessage}
@@ -141,7 +141,7 @@ const PasswordEditor = (
                 </div>
             </div>
         </div>
-    </EditorShell>;
+    </EditorShellFloating>;
 };
 
 export default PasswordEditor;

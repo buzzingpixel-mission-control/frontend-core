@@ -1,4 +1,5 @@
 import AddProjectFormValues from './AddProjectFormValues';
+import RequestMethod from '../Api/RequestMethod';
 declare const useProjectsData: () => {
     accessDenied: boolean;
     setData: (newData: {
@@ -182,5 +183,5 @@ declare const useProjectsData: () => {
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 };
-declare const useProjectsMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
+declare const useProjectsMutation: (uri: string, method?: RequestMethod) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
 export { useProjectsData, useProjectsMutation, };

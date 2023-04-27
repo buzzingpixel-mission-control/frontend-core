@@ -8,7 +8,7 @@ import FormInput from '../Forms/FormInput';
 import FormInputText from '../Forms/FormInputText';
 import FormInputToggle from '../Forms/FormInputToggle';
 import FormInputTimezone from '../Forms/FormInputTimezone';
-import EditorShell from '../Forms/EditorShell';
+import EditorShellFloating from '../Forms/EditorShellFloating';
 
 const EditUserOverlay = (
     {
@@ -111,7 +111,7 @@ const EditUserOverlay = (
         },
     ] as Array<FormInput>;
 
-    return <EditorShell
+    return <EditorShellFloating
         title="Edit User"
         isSaving={isSaving}
         errorMessage={errorMessage}
@@ -140,7 +140,7 @@ const EditUserOverlay = (
                 })}
             </form>
         </div>
-    </EditorShell>;
+    </EditorShellFloating>;
 };
 
 export default EditUserOverlay;

@@ -65,7 +65,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_query_1 = require("@tanstack/react-query");
 var FetchOptionsBuilder_1 = __importDefault(require("../FetchOptionsBuilder"));
-var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
+var EditorShellFloating_1 = __importDefault(require("../Forms/EditorShellFloating"));
 var SingleInputEditor = function (_a) {
     var setEditorIsOpen = _a.setEditorIsOpen, item = _a.item, setContent = _a.setContent;
     var queryClient = (0, react_query_1.useQueryClient)();
@@ -127,7 +127,7 @@ var SingleInputEditor = function (_a) {
         window.addEventListener('keydown', handler);
         return function () { return window.removeEventListener('keydown', handler); };
     });
-    return react_1.default.createElement(EditorShell_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
+    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
         react_1.default.createElement("input", { type: item.editorInputType || 'text', name: "input", className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm", value: value, onChange: function (e) {
                 setValue(e.target.value);
             } }));

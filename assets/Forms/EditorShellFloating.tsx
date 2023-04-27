@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import { Dialog } from '@headlessui/react';
 
-const EditorShell = (
+const EditorShellFloating = (
     {
         title,
         children,
@@ -115,4 +115,4 @@ const EditorShell = (
         </Dialog>
     </div>;
 };
-export default EditorShell;
+export default EditorShellFloating;

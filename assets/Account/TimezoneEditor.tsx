@@ -3,7 +3,7 @@ import Select from 'react-select';
 import EditorParams from './EditorParams';
 import FetchOptionsBuilder from '../FetchOptionsBuilder';
 import useApiQuery from '../Api/useApiQuery';
-import EditorShell from '../Forms/EditorShell';
+import EditorShellFloating from '../Forms/EditorShellFloating';
 
 type Option = {
     value: string,
@@ -98,7 +98,7 @@ const TimezoneEditor = (
     );
 
     if (timezoneListStatus === 'loading') {
-        return <EditorShell
+        return <EditorShellFloating
             title={`Edit ${item.title}`}
             isSaving={isSaving}
             errorMessage={errorMessage}
@@ -115,10 +115,10 @@ const TimezoneEditor = (
                     Loading...
                 </span>
             </div>
-        </EditorShell>;
+        </EditorShellFloating>;
     }
 
-    return <EditorShell
+    return <EditorShellFloating
         title={`Edit ${item.title}`}
         isSaving={isSaving}
         errorMessage={errorMessage}
@@ -135,7 +135,7 @@ const TimezoneEditor = (
                 className="react-select-control"
             />
         </div>
-    </EditorShell>;
+    </EditorShellFloating>;
 };
 
 export default TimezoneEditor;

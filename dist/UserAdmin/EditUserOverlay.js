@@ -33,7 +33,7 @@ var SubmitExistingUser_1 = __importDefault(require("./SubmitExistingUser"));
 var FormInputText_1 = __importDefault(require("../Forms/FormInputText"));
 var FormInputToggle_1 = __importDefault(require("../Forms/FormInputToggle"));
 var FormInputTimezone_1 = __importDefault(require("../Forms/FormInputTimezone"));
-var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
+var EditorShellFloating_1 = __importDefault(require("../Forms/EditorShellFloating"));
 var EditUserOverlay = function (_a) {
     var user = _a.user, setEditUser = _a.setEditUser;
     var queryClient = (0, react_query_1.useQueryClient)();
@@ -104,7 +104,7 @@ var EditUserOverlay = function (_a) {
             initialValue: user.timezone,
         },
     ];
-    return react_1.default.createElement(EditorShell_1.default, { title: "Edit User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
+    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
             saveHandler(getValues());
         }, setEditorIsOpen: setEditUser, submitButtonText: "Submit" },
         react_1.default.createElement("div", { className: "text-left" },

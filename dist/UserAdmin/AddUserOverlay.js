@@ -33,7 +33,7 @@ var SubmitNewUser_1 = __importDefault(require("./SubmitNewUser"));
 var FormInputText_1 = __importDefault(require("../Forms/FormInputText"));
 var FormInputToggle_1 = __importDefault(require("../Forms/FormInputToggle"));
 var FormInputTimezone_1 = __importDefault(require("../Forms/FormInputTimezone"));
-var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
+var EditorShellFloating_1 = __importDefault(require("../Forms/EditorShellFloating"));
 var EditorShellForm_1 = __importDefault(require("../Forms/EditorShellForm"));
 var AddUserOverlay = function (_a) {
     var setIsOpen = _a.setIsOpen;
@@ -94,7 +94,7 @@ var AddUserOverlay = function (_a) {
             setValue: setValue,
         },
     ];
-    return react_1.default.createElement(EditorShell_1.default, { title: "Add New User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
+    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Add New User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
             saveHandler(getValues());
         }, setEditorIsOpen: setIsOpen, submitButtonText: "Add" },
         react_1.default.createElement(EditorShellForm_1.default, { inputs: inputs, register: register, onSubmit: function () {

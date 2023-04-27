@@ -1,30 +1,40 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import AddProjectFormValues from './AddProjectFormValues';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import FormInput from '../Forms/FormInput';
-import FormInputText from '../Forms/FormInputText';
-import EditorShellFloating from '../Forms/EditorShellFloating';
+import EditorShellInline from '../Forms/EditorShellInline';
 import EditorShellForm from '../Forms/EditorShellForm';
+import FormInputText from '../Forms/FormInputText';
+import { Project } from './Projects';
+import AddProjectFormValues from './AddProjectFormValues';
 import FormInputTextarea from '../Forms/FormInputTextarea';
 import { useProjectsMutation } from './ProjectsData';
+import RequestMethod from '../Api/RequestMethod';
 
-const AddProjectOverlay = (
+const ProjectListItemEditor = (
     {
-        setIsOpen,
+        project,
+        setEditorIsOpen,
     }: {
-        setIsOpen: Dispatch<SetStateAction<boolean>>;
+        project: Project,
+        setEditorIsOpen: Dispatch<SetStateAction<boolean>>;
     },
 ) => {
-    const [
-        isSaving,
-        setIsSaving,
-    ] = useState<boolean>(false);
-
     const {
         getValues,
         register,
         setValue,
-    } = useForm<AddProjectFormValues>();
+    } = useForm<AddProjectFormValues>({
+        defaultValues: {
+            title: project.title,
+            slug: project.slug,
+            description: project.description,
+        },
+    });
+
+    const [
+        isSaving,
+        setIsSaving,
+    ] = useState<boolean>(false);
 
     const inputs = [
         {
@@ -59,7 +69,8 @@ const AddProjectOverlay = (
     ] = useState<string>('');
 
     const mutation = useProjectsMutation(
-        '/projects/add',
+        `/projects/edit/${project.id}`,
+        RequestMethod.PATCH,
     );
 
     const saveHandler: SubmitHandler<AddProjectFormValues> = (
@@ -72,33 +83,39 @@ const AddProjectOverlay = (
         }
 
         mutation.mutate(data, {
-            onSuccess: () => setIsOpen(false),
+            onSuccess: () => setEditorIsOpen(false),
             onError: (error) => {
-                setErrorMessage(error.message || 'Unable to add project');
+                setErrorMessage(error.message || 'Unable to edit project');
 
                 setIsSaving(false);
             },
         });
     };
 
-    return <EditorShellFloating
-        title="Add New Project"
-        isSaving={isSaving}
-        submitButtonText="Add"
-        errorMessage={errorMessage}
-        saveHandler={() => {
-            saveHandler(getValues());
+    return <div
+        className="border border-gray-300 rounded-md shadow-md mx-auto p-4"
+        style={{
+            maxWidth: '600px',
+            marginBottom: '1.5rem',
         }}
-        setEditorIsOpen={setIsOpen}
     >
-        <EditorShellForm
-            inputs={inputs}
-            register={register}
-            onSubmit={() => {
+        <EditorShellInline
+            isSaving={isSaving}
+            setEditorIsOpen={setEditorIsOpen}
+            errorMessage={errorMessage}
+            saveHandler={() => {
                 saveHandler(getValues());
             }}
-        />
-    </EditorShellFloating>;
+        >
+            <EditorShellForm
+                inputs={inputs}
+                register={register}
+                onSubmit={() => {
+                    saveHandler(getValues());
+                }}
+            />
+        </EditorShellInline>
+    </div>;
 };
 
-export default AddProjectOverlay;
+export default ProjectListItemEditor;

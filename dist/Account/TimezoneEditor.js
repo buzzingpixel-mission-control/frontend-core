@@ -66,7 +66,7 @@ var react_1 = __importStar(require("react"));
 var react_select_1 = __importDefault(require("react-select"));
 var FetchOptionsBuilder_1 = __importDefault(require("../FetchOptionsBuilder"));
 var useApiQuery_1 = __importDefault(require("../Api/useApiQuery"));
-var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
+var EditorShellFloating_1 = __importDefault(require("../Forms/EditorShellFloating"));
 var TimezoneEditor = function (_a) {
     var setEditorIsOpen = _a.setEditorIsOpen, item = _a.item, setContent = _a.setContent;
     var _b = (0, react_1.useState)(item.content), value = _b[0], setValue = _b[1];
@@ -122,11 +122,11 @@ var TimezoneEditor = function (_a) {
     });
     var _e = (0, useApiQuery_1.default)(['timezone-list'], { uri: '/utility/timezone-list' }, { staleTime: Infinity }), timezoneListStatus = _e.status, timezoneListData = _e.data;
     if (timezoneListStatus === 'loading') {
-        return react_1.default.createElement(EditorShell_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
+        return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
             react_1.default.createElement("div", { className: "inline-block align-middle h-3 w-3 animate-spin rounded-full border-2 border-solid border-current border-r-transparent text-info motion-reduce:animate-[spin_1.5s_linear_infinite] opacity-100 text-cyan-600", role: "status" },
                 react_1.default.createElement("span", { className: "!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]" }, "Loading...")));
     }
-    return react_1.default.createElement(EditorShell_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
+    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
         react_1.default.createElement("div", { className: "text-left" },
             react_1.default.createElement(react_select_1.default, { options: timezoneListData, value: timezoneListData.filter(function (option) { return option.value === value; })[0], onChange: function (selected) {
                     setValue(selected.value);

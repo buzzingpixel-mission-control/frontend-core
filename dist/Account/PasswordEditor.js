@@ -64,7 +64,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var FetchOptionsBuilder_1 = __importDefault(require("../FetchOptionsBuilder"));
-var EditorShell_1 = __importDefault(require("../Forms/EditorShell"));
+var EditorShellFloating_1 = __importDefault(require("../Forms/EditorShellFloating"));
 var PasswordEditor = function (_a) {
     var setEditorIsOpen = _a.setEditorIsOpen, item = _a.item;
     var _b = (0, react_1.useState)(''), password = _b[0], setPassword = _b[1];
@@ -131,7 +131,7 @@ var PasswordEditor = function (_a) {
         window.addEventListener('keydown', handler);
         return function () { return window.removeEventListener('keydown', handler); };
     });
-    return react_1.default.createElement(EditorShell_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
+    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
         react_1.default.createElement("div", { className: "text-left" },
             react_1.default.createElement("div", null,
                 react_1.default.createElement("label", { htmlFor: "password", className: "block text-sm font-medium text-gray-700" }, "New Password"),
