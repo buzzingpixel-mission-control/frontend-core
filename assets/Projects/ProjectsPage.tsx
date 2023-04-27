@@ -57,6 +57,17 @@ const ProjectsPage = (
     let projects = transformProjects(data);
 
     if (projects.length < 1) {
+        if (isArchive) {
+            return <>
+                {portals()}
+                {Tabs}
+                <NoResultsAddItem
+                    icon={<ClipboardDocumentListIcon />}
+                    headline="No archived projects"
+                />
+            </>;
+        }
+
         return <>
             {portals()}
             {Tabs}

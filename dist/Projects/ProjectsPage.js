@@ -57,6 +57,12 @@ var ProjectsPage = function (_a) {
     };
     var projects = (0, Projects_1.transformProjects)(data);
     if (projects.length < 1) {
+        if (isArchive) {
+            return react_1.default.createElement(react_1.default.Fragment, null,
+                portals(),
+                Tabs,
+                react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.ClipboardDocumentListIcon, null), headline: "No archived projects" }));
+        }
         return react_1.default.createElement(react_1.default.Fragment, null,
             portals(),
             Tabs,
