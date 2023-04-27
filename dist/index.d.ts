@@ -23,3 +23,4 @@ export { default as NotFoundPage } from './NotFoundPage';
 export { default as AccessDeniedPage } from './AccessDeniedPage';
 export { default as createPortal } from './createPortal';
 export { useRouteContext, useRouteLocationContext, useSetPageTitle, usePageTitle, useSetHidePageTitle, useHidePageTitle, useSetBreadcrumbs, useBreadcrumbs, } from './RouteContext/RouteContext';
+export { addProjectDetailsSection } from './Projects/ProjectDetails/ProjectDetailsData';

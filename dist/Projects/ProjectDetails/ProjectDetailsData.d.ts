@@ -1,4 +1,12 @@
-declare const useProjectDetailsData: (slug: string) => {
+import { ProjectDetailsSection } from './ProjectDetailsSection';
+declare global {
+    interface Window {
+        projectDetailsSections: Array<ProjectDetailsSection>;
+    }
+}
+export declare const getProjectDetailsSections: () => ProjectDetailsSection[];
+export declare const addProjectDetailsSection: (section: ProjectDetailsSection) => void;
+export declare const useProjectDetailsData: (slug: string) => {
     accessDenied: boolean;
     setData: (newData: {
         id?: string;
@@ -181,4 +189,3 @@ declare const useProjectDetailsData: (slug: string) => {
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 };
-export { useProjectDetailsData, };

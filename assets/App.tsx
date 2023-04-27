@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import { QueryClient } from '@tanstack/query-core';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -10,6 +10,7 @@ import RuntimeContext from './RuntimeContext';
 import FrontEndCoreRoutes from './FrontEndCoreRoutes';
 import FrontEndCoreMenuItems from './FrontEndCoreMenuItems';
 import { RouteContextProvider } from './RouteContext/RouteContext';
+import FullPageLoading from './FullPageLoading';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,27 @@ const App = (
     const {
         todo,
     } = appConfig.appContainer.dataset;
+
+    const [
+        bootHasRun,
+        setBootHasRun,
+    ] = useState(false);
+
+    useEffect(() => {
+        if (!appConfig.boot) {
+            setBootHasRun(true);
+
+            return;
+        }
+
+        appConfig.boot();
+
+        setBootHasRun(true);
+    }, []);
+
+    if (!bootHasRun) {
+        return <FullPageLoading />;
+    }
 
     return <RuntimeContext.Provider value={{
         todo,

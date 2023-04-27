@@ -2,7 +2,7 @@ import {
     ClipboardDocumentListIcon,
     UserGroupIcon,
 } from '@heroicons/react/24/outline';
-import { MenuItem } from './index';
+import MenuItem from './MenuItem';
 
 const FrontEndCoreMenuItems = (): Array<MenuItem> => [
     {

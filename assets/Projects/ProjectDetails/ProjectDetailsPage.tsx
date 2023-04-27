@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useProjectDetailsData } from './ProjectDetailsData';
+import { getProjectDetailsSections, useProjectDetailsData } from './ProjectDetailsData';
 import PartialPageLoading from '../../PartialPageLoading';
 import { transformProject } from '../Projects';
 import { useBreadcrumbs, useHidePageTitle, usePageTitle } from '../../RouteContext/RouteContext';
@@ -122,6 +122,10 @@ const ProjectDetailsPage = () => {
                 </div>
             </div>
         </div>
+        {getProjectDetailsSections().map((section) => <section.render
+            key={section.uniqueKey}
+            project={project}
+        />)}
     </>;
 };
 

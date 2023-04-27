@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useBreadcrumbs = exports.useSetBreadcrumbs = exports.useHidePageTitle = exports.useSetHidePageTitle = exports.usePageTitle = exports.useSetPageTitle = exports.useRouteLocationContext = exports.useRouteContext = exports.createPortal = exports.AccessDeniedPage = exports.NotFoundPage = exports.RequireAdmin = exports.PartialPageLoading = exports.useUserData = exports.useRuntimeContext = exports.useApiQueryWithSignInRedirect = exports.useApiQuery = exports.Shell = exports.RuntimeContext = exports.RequestMethods = exports.redirectToSignIn = exports.MakeApiRequest = exports.FullPageLoading = exports.FrontEndCoreRoutes = exports.FrontEndCoreMenuItems = exports.EncodeQueryParamsFromObject = exports.Auth = exports.App = void 0;
+exports.addProjectDetailsSection = exports.useBreadcrumbs = exports.useSetBreadcrumbs = exports.useHidePageTitle = exports.useSetHidePageTitle = exports.usePageTitle = exports.useSetPageTitle = exports.useRouteLocationContext = exports.useRouteContext = exports.createPortal = exports.AccessDeniedPage = exports.NotFoundPage = exports.RequireAdmin = exports.PartialPageLoading = exports.useUserData = exports.useRuntimeContext = exports.useApiQueryWithSignInRedirect = exports.useApiQuery = exports.Shell = exports.RuntimeContext = exports.RequestMethods = exports.redirectToSignIn = exports.MakeApiRequest = exports.FullPageLoading = exports.FrontEndCoreRoutes = exports.FrontEndCoreMenuItems = exports.EncodeQueryParamsFromObject = exports.Auth = exports.App = void 0;
 var App_1 = require("./App");
 Object.defineProperty(exports, "App", { enumerable: true, get: function () { return __importDefault(App_1).default; } });
 var Auth_1 = require("./Auth/Auth");
@@ -53,3 +53,5 @@ Object.defineProperty(exports, "useSetHidePageTitle", { enumerable: true, get: f
 Object.defineProperty(exports, "useHidePageTitle", { enumerable: true, get: function () { return RouteContext_1.useHidePageTitle; } });
 Object.defineProperty(exports, "useSetBreadcrumbs", { enumerable: true, get: function () { return RouteContext_1.useSetBreadcrumbs; } });
 Object.defineProperty(exports, "useBreadcrumbs", { enumerable: true, get: function () { return RouteContext_1.useBreadcrumbs; } });
+var ProjectDetailsData_1 = require("./Projects/ProjectDetails/ProjectDetailsData");
+Object.defineProperty(exports, "addProjectDetailsSection", { enumerable: true, get: function () { return ProjectDetailsData_1.addProjectDetailsSection; } });

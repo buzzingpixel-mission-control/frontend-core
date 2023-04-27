@@ -32,3 +32,4 @@ export {
     useSetBreadcrumbs,
     useBreadcrumbs,
 } from './RouteContext/RouteContext';
+export { addProjectDetailsSection } from './Projects/ProjectDetails/ProjectDetailsData';
