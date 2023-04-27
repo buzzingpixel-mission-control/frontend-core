@@ -5,9 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_router_dom_1 = require("react-router-dom");
-var setPageName_1 = __importDefault(require("./PageName/setPageName"));
+var RouteContext_1 = require("./RouteContext/RouteContext");
 var AccessDeniedPage = function () {
-    (0, setPageName_1.default)('Access Denied');
+    var setPageTitle = (0, RouteContext_1.useSetPageTitle)();
+    setPageTitle('Access Denied');
     return react_1.default.createElement("div", null,
         react_1.default.createElement("h1", { className: "mt-4 text-xl font-bold tracking-tight text-gray-900" }, "You do not have access to that page"),
         react_1.default.createElement("div", { className: "mt-10" },

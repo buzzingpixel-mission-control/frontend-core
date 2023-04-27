@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import setPageName from './PageName/setPageName';
+import { usePageTitle } from './RouteContext/RouteContext';
 
 const NotFoundPage = () => {
-    setPageName('404');
+    usePageTitle('404');
 
     return <div>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>

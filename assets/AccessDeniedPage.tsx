@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import setPageName from './PageName/setPageName';
+import { useSetPageTitle } from './RouteContext/RouteContext';
 
 const AccessDeniedPage = () => {
-    setPageName('Access Denied');
+    const setPageTitle = useSetPageTitle();
+    setPageTitle('Access Denied');
 
     return <div>
         <h1 className="mt-4 text-xl font-bold tracking-tight text-gray-900">

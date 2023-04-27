@@ -28,7 +28,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var solid_1 = require("@heroicons/react/20/solid");
-var setPageName_1 = __importDefault(require("../PageName/setPageName"));
 var useApiQueryWithSignInRedirect_1 = __importDefault(require("../Api/useApiQueryWithSignInRedirect"));
 var PartialPageLoading_1 = __importDefault(require("../PartialPageLoading"));
 var Users_1 = require("./Users");
@@ -37,8 +36,9 @@ var MinutesToMilliseconds_1 = __importDefault(require("../MinutesToMilliseconds"
 var EditUserOverlay_1 = __importDefault(require("./EditUserOverlay"));
 var NoResultsAddItem_1 = __importDefault(require("../NoResultsAddItem"));
 var createPortal_1 = __importDefault(require("../createPortal"));
+var RouteContext_1 = require("../RouteContext/RouteContext");
 var UserAdminPage = function () {
-    (0, setPageName_1.default)('Users');
+    (0, RouteContext_1.usePageTitle)('Users');
     var _a = (0, react_1.useState)(false), addUserIsOpen = _a[0], setAddUserIsOpen = _a[1];
     var _b = (0, react_1.useState)(false), editUser = _b[0], setEditUser = _b[1];
     var _c = (0, useApiQueryWithSignInRedirect_1.default)(['admin-user-list'], { uri: '/user-admin/all-users' }, {

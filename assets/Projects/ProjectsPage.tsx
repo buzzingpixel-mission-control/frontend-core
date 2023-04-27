@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ClipboardDocumentListIcon } from '@heroicons/react/20/solid';
-import setPageName from '../PageName/setPageName';
 import { useProjectsData } from './ProjectsData';
 import PartialPageLoading from '../PartialPageLoading';
 import NoResultsAddItem from '../NoResultsAddItem';
@@ -9,6 +8,7 @@ import AddProjectOverlay from './AddProjectOverlay';
 import ProjectTabs from './ProjectTabs';
 import { transformProjects } from './Projects';
 import ProjectsList from './ProjectsList';
+import { usePageTitle } from '../RouteContext/RouteContext';
 
 const ProjectsPage = (
     {
@@ -17,7 +17,18 @@ const ProjectsPage = (
         isArchive?: boolean,
     },
 ) => {
-    setPageName('Projects');
+    const [
+        pageNameState,
+        setPageNameState,
+    ] = useState('');
+
+    if (isArchive && pageNameState !== 'Archived Projects') {
+        setPageNameState('Archived Projects');
+    } else if (!isArchive && pageNameState !== 'Projects') {
+        setPageNameState('Projects');
+    }
+
+    usePageTitle(pageNameState);
 
     const [
         filterText,

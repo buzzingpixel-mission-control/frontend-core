@@ -32,7 +32,8 @@ var outline_1 = require("@heroicons/react/24/outline");
 var react_router_dom_1 = require("react-router-dom");
 var FullPageLoading_1 = __importDefault(require("./FullPageLoading"));
 var useUserData_1 = __importDefault(require("./Auth/useUserData"));
-var usePageName_1 = __importDefault(require("./PageName/usePageName"));
+var Breadcrumbs_1 = __importDefault(require("./Breadcrumbs"));
+var RouteContext_1 = require("./RouteContext/RouteContext");
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -45,10 +46,17 @@ var Shell = function (_a) {
     var location = (0, react_router_dom_1.useLocation)();
     var locationArray = location.pathname.split('/');
     var rootPath = "/".concat(locationArray[1]);
-    var pageName = (0, usePageName_1.default)();
+    var _b = (0, RouteContext_1.useRouteLocationContext)(), pageTitle = _b.pageTitle, hidePageTitle = _b.hidePageTitle, breadcrumbs = _b.breadcrumbs;
     menuItems = menuItems || [];
-    var _b = (0, react_1.useState)(false), sidebarOpen = _b[0], setSidebarOpen = _b[1];
-    var _c = (0, useUserData_1.default)(), status = _c.status, userData = _c.data;
+    var _c = (0, react_1.useState)(false), sidebarOpen = _c[0], setSidebarOpen = _c[1];
+    var _d = (0, useUserData_1.default)(), status = _d.status, userData = _d.data;
+    (0, react_1.useEffect)(function () {
+        var documentTitle = 'Mission Control';
+        if (pageTitle) {
+            documentTitle = "".concat(pageTitle, " | ").concat(documentTitle);
+        }
+        document.title = documentTitle;
+    }, [pageTitle]);
     if (status === 'loading') {
         return react_1.default.createElement(FullPageLoading_1.default, null);
     }
@@ -122,12 +130,24 @@ var Shell = function (_a) {
                 react_1.default.createElement("button", { type: "button", className: "-m-2.5 p-2.5 text-gray-700 lg:hidden", onClick: function () { return setSidebarOpen(true); } },
                     react_1.default.createElement("span", { className: "sr-only" }, "Open sidebar"),
                     react_1.default.createElement(outline_1.Bars3Icon, { className: "h-6 w-6", "aria-hidden": "true" })),
-                react_1.default.createElement("div", { className: "flex-1 text-sm font-semibold leading-6 text-gray-900" }, pageName),
+                react_1.default.createElement("div", { className: "flex-1 text-sm font-semibold leading-6 text-gray-900" }, pageTitle),
                 react_1.default.createElement(react_router_dom_1.Link, { to: "/account" },
                     react_1.default.createElement("span", { className: "sr-only" }, "Your profile"),
                     react_1.default.createElement(outline_1.UserCircleIcon, { className: "h-8 w-8 rounded-full bg-gray-50" }))),
-            react_1.default.createElement("main", { className: "pt-4 pb-10 lg:pl-72" },
-                react_1.default.createElement("h1", { className: "px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block" }, pageName),
-                react_1.default.createElement("div", { className: "px-4 sm:px-6 lg:px-8 relative" }, children)))));
+            react_1.default.createElement("main", { className: "pb-10 lg:pl-72" },
+                (function () {
+                    if (breadcrumbs && breadcrumbs.length > 0) {
+                        return react_1.default.createElement(Breadcrumbs_1.default, { breadcrumbs: breadcrumbs });
+                    }
+                    return null;
+                })(),
+                react_1.default.createElement("div", { className: "pt-4" },
+                    (function () {
+                        if (hidePageTitle) {
+                            return null;
+                        }
+                        return react_1.default.createElement("h1", { className: "px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block" }, pageTitle);
+                    })(),
+                    react_1.default.createElement("div", { className: "px-4 sm:px-6 lg:px-8 relative" }, children))))));
 };
 exports.default = Shell;

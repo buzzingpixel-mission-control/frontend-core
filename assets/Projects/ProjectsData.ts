@@ -2,7 +2,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect';
 import MinutesToMilliseconds from '../MinutesToMilliseconds';
 import {
-    Project, Projects, ProjectsSchema, ProjectWithViewOptions,
+    Project, Projects, ProjectsSchema,
 } from './Projects';
 import useApiMutation from '../Api/useApiMutation';
 import AddProjectFormValues from './AddProjectFormValues';

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import { QueryClient } from '@tanstack/query-core';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -9,7 +9,7 @@ import Auth from './Auth/Auth';
 import RuntimeContext from './RuntimeContext';
 import FrontEndCoreRoutes from './FrontEndCoreRoutes';
 import FrontEndCoreMenuItems from './FrontEndCoreMenuItems';
-import usePageName from './PageName/usePageName';
+import { RouteContextProvider } from './RouteContext/RouteContext';
 
 const queryClient = new QueryClient();
 
@@ -20,18 +20,6 @@ const App = (
         appConfig: AppConfig;
     },
 ) => {
-    const pageName = usePageName();
-
-    useEffect(() => {
-        let documentTitle = 'Mission Control';
-
-        if (pageName) {
-            documentTitle = `${pageName} | ${documentTitle}`;
-        }
-
-        document.title = documentTitle;
-    }, [pageName]);
-
     const {
         todo,
     } = appConfig.appContainer.dataset;
@@ -42,15 +30,17 @@ const App = (
         <QueryClientProvider client={queryClient}>
             <Auth>
                 <Router>
-                    <Shell menuItems={[
-                        ...FrontEndCoreMenuItems(),
-                        ...appConfig.menuItems(),
-                    ]}>
-                        <Routes>
-                            {appConfig.routes()}
-                            {FrontEndCoreRoutes()}
-                        </Routes>
-                    </Shell>
+                    <RouteContextProvider>
+                        <Shell menuItems={[
+                            ...FrontEndCoreMenuItems(),
+                            ...appConfig.menuItems(),
+                        ]}>
+                            <Routes>
+                                {appConfig.routes()}
+                                {FrontEndCoreRoutes()}
+                            </Routes>
+                        </Shell>
+                    </RouteContextProvider>
                 </Router>
             </Auth>
             {/*

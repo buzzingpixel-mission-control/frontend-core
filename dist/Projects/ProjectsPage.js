@@ -28,7 +28,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var solid_1 = require("@heroicons/react/20/solid");
-var setPageName_1 = __importDefault(require("../PageName/setPageName"));
 var ProjectsData_1 = require("./ProjectsData");
 var PartialPageLoading_1 = __importDefault(require("../PartialPageLoading"));
 var NoResultsAddItem_1 = __importDefault(require("../NoResultsAddItem"));
@@ -37,12 +36,20 @@ var AddProjectOverlay_1 = __importDefault(require("./AddProjectOverlay"));
 var ProjectTabs_1 = __importDefault(require("./ProjectTabs"));
 var Projects_1 = require("./Projects");
 var ProjectsList_1 = __importDefault(require("./ProjectsList"));
+var RouteContext_1 = require("../RouteContext/RouteContext");
 var ProjectsPage = function (_a) {
     var _b = _a.isArchive, isArchive = _b === void 0 ? false : _b;
-    (0, setPageName_1.default)('Projects');
-    var _c = (0, react_1.useState)(''), filterText = _c[0], setFilterText = _c[1];
-    var _d = (0, react_1.useState)(false), addProjectIsOpen = _d[0], setAddProjectIsOpen = _d[1];
-    var _e = (0, ProjectsData_1.useProjectsData)(isArchive), status = _e.status, data = _e.data;
+    var _c = (0, react_1.useState)(''), pageNameState = _c[0], setPageNameState = _c[1];
+    if (isArchive && pageNameState !== 'Archived Projects') {
+        setPageNameState('Archived Projects');
+    }
+    else if (!isArchive && pageNameState !== 'Projects') {
+        setPageNameState('Projects');
+    }
+    (0, RouteContext_1.usePageTitle)(pageNameState);
+    var _d = (0, react_1.useState)(''), filterText = _d[0], setFilterText = _d[1];
+    var _e = (0, react_1.useState)(false), addProjectIsOpen = _e[0], setAddProjectIsOpen = _e[1];
+    var _f = (0, ProjectsData_1.useProjectsData)(isArchive), status = _f.status, data = _f.data;
     var Tabs = react_1.default.createElement(ProjectTabs_1.default, { activeHref: isArchive ? '/projects/archived' : '/projects', addProjectOnClick: function () { setAddProjectIsOpen(true); } });
     if (status === 'loading') {
         return react_1.default.createElement(react_1.default.Fragment, null,

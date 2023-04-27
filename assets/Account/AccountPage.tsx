@@ -6,10 +6,10 @@ import ListItem from './ListItem';
 import SingleInputEditor from './SingleInputEditor';
 import PasswordEditor from './PasswordEditor';
 import TimezoneEditor from './TimezoneEditor';
-import setPageName from '../PageName/setPageName';
+import { usePageTitle } from '../RouteContext/RouteContext';
 
 const AccountPage = () => {
-    setPageName('Your Account');
+    usePageTitle('Your Account');
 
     const {
         data: userData,

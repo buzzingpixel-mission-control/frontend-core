@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PlusIcon, UserIcon } from '@heroicons/react/20/solid';
-import setPageName from '../PageName/setPageName';
 import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect';
 import User from './User';
 import PartialPageLoading from '../PartialPageLoading';
@@ -10,9 +9,10 @@ import MinutesToMilliseconds from '../MinutesToMilliseconds';
 import EditUserOverlay from './EditUserOverlay';
 import NoResultsAddItem from '../NoResultsAddItem';
 import createPortal from '../createPortal';
+import { usePageTitle } from '../RouteContext/RouteContext';
 
 const UserAdminPage = () => {
-    setPageName('Users');
+    usePageTitle('Users');
 
     const [
         addUserIsOpen,

@@ -1,11 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { Link, useLocation } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import FullPageLoading from './FullPageLoading';
 import useUserData from './Auth/useUserData';
-import usePageName from './PageName/usePageName';
+import Breadcrumbs from './Breadcrumbs';
+import { useRouteLocationContext } from './RouteContext/RouteContext';
 
 function classNames (...classes) {
     return classes.filter(Boolean).join(' ');
@@ -24,7 +25,11 @@ const Shell = (
     const location = useLocation();
     const locationArray = location.pathname.split('/');
     const rootPath = `/${locationArray[1]}`;
-    const pageName = usePageName();
+    const {
+        pageTitle,
+        hidePageTitle,
+        breadcrumbs,
+    } = useRouteLocationContext();
 
     menuItems = menuItems || [];
 
@@ -37,6 +42,16 @@ const Shell = (
         status,
         data: userData,
     } = useUserData();
+
+    useEffect(() => {
+        let documentTitle = 'Mission Control';
+
+        if (pageTitle) {
+            documentTitle = `${pageTitle} | ${documentTitle}`;
+        }
+
+        document.title = documentTitle;
+    }, [pageTitle]);
 
     if (status === 'loading') {
         return <FullPageLoading />;
@@ -212,19 +227,34 @@ const Shell = (
                         <span className="sr-only">Open sidebar</span>
                         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </button>
-                    <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">{pageName}</div>
+                    <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">{pageTitle}</div>
                     <Link to="/account">
                         <span className="sr-only">Your profile</span>
                         <UserCircleIcon className="h-8 w-8 rounded-full bg-gray-50" />
                     </Link>
                 </div>
 
-                <main className="pt-4 pb-10 lg:pl-72">
-                    <h1 className="px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block">
-                        {pageName}
-                    </h1>
-                    <div className="px-4 sm:px-6 lg:px-8 relative">
-                        {children}
+                <main className="pb-10 lg:pl-72">
+                    {(() => {
+                        if (breadcrumbs && breadcrumbs.length > 0) {
+                            return <Breadcrumbs breadcrumbs={breadcrumbs} />;
+                        }
+
+                        return null;
+                    })()}
+                    <div className="pt-4">
+                        {(() => {
+                            if (hidePageTitle) {
+                                return null;
+                            }
+
+                            return <h1 className="px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block">
+                                {pageTitle}
+                            </h1>;
+                        })()}
+                        <div className="px-4 sm:px-6 lg:px-8 relative">
+                            {children}
+                        </div>
                     </div>
                 </main>
             </div>

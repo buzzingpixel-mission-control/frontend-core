@@ -10,9 +10,9 @@ var ListItemRenderer_1 = __importDefault(require("./ListItemRenderer"));
 var SingleInputEditor_1 = __importDefault(require("./SingleInputEditor"));
 var PasswordEditor_1 = __importDefault(require("./PasswordEditor"));
 var TimezoneEditor_1 = __importDefault(require("./TimezoneEditor"));
-var setPageName_1 = __importDefault(require("../PageName/setPageName"));
+var RouteContext_1 = require("../RouteContext/RouteContext");
 var AccountPage = function () {
-    (0, setPageName_1.default)('Your Account');
+    (0, RouteContext_1.usePageTitle)('Your Account');
     var _a = (0, useUserData_1.default)(), userData = _a.data, status = _a.status;
     if (status === 'loading') {
         return react_1.default.createElement(PartialPageLoading_1.default, null);
