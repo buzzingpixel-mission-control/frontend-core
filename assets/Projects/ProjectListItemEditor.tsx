@@ -90,29 +90,28 @@ const ProjectListItemEditor = (
         });
     };
 
-    return <div
-        className="border border-gray-300 rounded-md shadow-md mx-auto p-4"
-        style={{
-            maxWidth: '600px',
-            marginBottom: '1.5rem',
-        }}
-    >
-        <EditorShellInline
-            isSaving={isSaving}
-            setEditorIsOpen={setEditorIsOpen}
-            errorMessage={errorMessage}
-            saveHandler={() => {
-                saveHandler(getValues());
-            }}
+    return <div style={{ paddingBottom: '1.5rem' }}>
+        <div
+            className="border border-gray-300 rounded-md shadow-md mx-auto p-4"
+            style={{ maxWidth: '600px' }}
         >
-            <EditorShellForm
-                inputs={inputs}
-                register={register}
-                onSubmit={() => {
+            <EditorShellInline
+                isSaving={isSaving}
+                setEditorIsOpen={setEditorIsOpen}
+                errorMessage={errorMessage}
+                saveHandler={() => {
                     saveHandler(getValues());
                 }}
-            />
-        </EditorShellInline>
+            >
+                <EditorShellForm
+                    inputs={inputs}
+                    register={register}
+                    onSubmit={() => {
+                        saveHandler(getValues());
+                    }}
+                />
+            </EditorShellInline>
+        </div>
     </div>;
 };
 
