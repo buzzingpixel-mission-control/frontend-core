@@ -100,48 +100,50 @@ const PasswordEditor = (
         return () => window.removeEventListener('keydown', handler);
     });
 
-    return <EditorShellFloating
-        title={`Edit ${item.title}`}
-        isSaving={isSaving}
-        errorMessage={errorMessage}
-        saveHandler={saveHandler}
-        setEditorIsOpen={setEditorIsOpen}
-    >
-        <div className="text-left">
-            <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                    New Password
-                </label>
-                <div className="mt-0.5">
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
-                        onChange={(e) => {
-                            setPassword(e.target.value);
-                        }}
-                    />
+    return (
+        <EditorShellFloating
+            title={`Edit ${item.title}`}
+            isSaving={isSaving}
+            errorMessage={errorMessage}
+            saveHandler={saveHandler}
+            setEditorIsOpen={setEditorIsOpen}
+        >
+            <div className="text-left">
+                <div>
+                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                        New Password
+                    </label>
+                    <div className="mt-0.5">
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                        />
+                    </div>
+                </div>
+                <div className="mt-4">
+                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                        Confirm Password
+                    </label>
+                    <div className="mt-0.5">
+                        <input
+                            type="password"
+                            name="password-confirm"
+                            id="password-confirm"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                            onChange={(e) => {
+                                setPasswordConfirm(e.target.value);
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
-            <div className="mt-4">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                    Confirm Password
-                </label>
-                <div className="mt-0.5">
-                    <input
-                        type="password"
-                        name="password-confirm"
-                        id="password-confirm"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
-                        onChange={(e) => {
-                            setPasswordConfirm(e.target.value);
-                        }}
-                    />
-                </div>
-            </div>
-        </div>
-    </EditorShellFloating>;
+        </EditorShellFloating>
+    );
 };
 
 export default PasswordEditor;

@@ -122,14 +122,14 @@ var TimezoneEditor = function (_a) {
     });
     var _e = (0, useApiQuery_1.default)(['timezone-list'], { uri: '/utility/timezone-list' }, { staleTime: Infinity }), timezoneListStatus = _e.status, timezoneListData = _e.data;
     if (timezoneListStatus === 'loading') {
-        return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
+        return (react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
             react_1.default.createElement("div", { className: "inline-block align-middle h-3 w-3 animate-spin rounded-full border-2 border-solid border-current border-r-transparent text-info motion-reduce:animate-[spin_1.5s_linear_infinite] opacity-100 text-cyan-600", role: "status" },
-                react_1.default.createElement("span", { className: "!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]" }, "Loading...")));
+                react_1.default.createElement("span", { className: "!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]" }, "Loading..."))));
     }
-    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
+    return (react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
         react_1.default.createElement("div", { className: "text-left" },
             react_1.default.createElement(react_select_1.default, { options: timezoneListData, value: timezoneListData.filter(function (option) { return option.value === value; })[0], onChange: function (selected) {
                     setValue(selected.value);
-                }, className: "react-select-control" })));
+                }, className: "react-select-control" }))));
 };
 exports.default = TimezoneEditor;

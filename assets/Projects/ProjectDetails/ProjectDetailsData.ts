@@ -4,7 +4,7 @@ import { Project, ProjectSchema } from '../Projects';
 import { ProjectDetailsSection } from './ProjectDetailsSection';
 
 declare global {
-    interface Window { projectDetailsSections: Array<ProjectDetailsSection>; }
+    interface Window { projectDetailsSections: Array<ProjectDetailsSection> }
 }
 
 export const getProjectDetailsSections = () => {

@@ -10,8 +10,8 @@ const useApiQuery = <Props>(
     queryKey: QueryKey,
     apiParams: ApiParams,
     options?: Omit<
-        UseQueryOptions<Props | { error: string }, ApiError, Props>,
-        'queryKey' | 'queryFn' | 'initialData'
+    UseQueryOptions<Props | { error: string }, ApiError, Props>,
+    'queryKey' | 'queryFn' | 'initialData'
     > & {
         initialData?: () => undefined;
         zodValidator?: ZodType;

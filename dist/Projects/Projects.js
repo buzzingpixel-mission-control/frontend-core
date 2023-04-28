@@ -22,7 +22,6 @@ exports.ProjectSchema = zod_1.z.object({
     createdAt: zod_1.z.string(),
 });
 exports.ProjectsSchema = zod_1.z.array(exports.ProjectSchema);
-// eslint-disable-next-line no-shadow
 var ProjectViewOptionsStatus;
 (function (ProjectViewOptionsStatus) {
     ProjectViewOptionsStatus["Active"] = "Active";

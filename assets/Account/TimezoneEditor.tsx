@@ -6,8 +6,8 @@ import useApiQuery from '../Api/useApiQuery';
 import EditorShellFloating from '../Forms/EditorShellFloating';
 
 type Option = {
-    value: string,
-    label: string,
+    value: string;
+    label: string;
 };
 
 type Options = Array<Option>;
@@ -98,44 +98,48 @@ const TimezoneEditor = (
     );
 
     if (timezoneListStatus === 'loading') {
-        return <EditorShellFloating
+        return (
+            <EditorShellFloating
+                title={`Edit ${item.title}`}
+                isSaving={isSaving}
+                errorMessage={errorMessage}
+                saveHandler={saveHandler}
+                setEditorIsOpen={setEditorIsOpen}
+            >
+                <div
+                    className="inline-block align-middle h-3 w-3 animate-spin rounded-full border-2 border-solid border-current border-r-transparent text-info motion-reduce:animate-[spin_1.5s_linear_infinite] opacity-100 text-cyan-600"
+                    role="status"
+                >
+                    <span
+                        className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                    >
+                        Loading...
+                    </span>
+                </div>
+            </EditorShellFloating>
+        );
+    }
+
+    return (
+        <EditorShellFloating
             title={`Edit ${item.title}`}
             isSaving={isSaving}
             errorMessage={errorMessage}
             saveHandler={saveHandler}
             setEditorIsOpen={setEditorIsOpen}
         >
-            <div
-                className="inline-block align-middle h-3 w-3 animate-spin rounded-full border-2 border-solid border-current border-r-transparent text-info motion-reduce:animate-[spin_1.5s_linear_infinite] opacity-100 text-cyan-600"
-                role="status"
-            >
-                <span
-                    className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-                >
-                    Loading...
-                </span>
+            <div className="text-left">
+                <Select
+                    options={timezoneListData}
+                    value={timezoneListData.filter((option) => option.value === value)[0]}
+                    onChange={(selected: Option) => {
+                        setValue(selected.value);
+                    }}
+                    className="react-select-control"
+                />
             </div>
-        </EditorShellFloating>;
-    }
-
-    return <EditorShellFloating
-        title={`Edit ${item.title}`}
-        isSaving={isSaving}
-        errorMessage={errorMessage}
-        saveHandler={saveHandler}
-        setEditorIsOpen={setEditorIsOpen}
-    >
-        <div className="text-left">
-            <Select
-                options={timezoneListData}
-                value={timezoneListData.filter((option) => option.value === value)[0]}
-                onChange={(selected: Option) => {
-                    setValue(selected.value);
-                }}
-                className="react-select-control"
-            />
-        </div>
-    </EditorShellFloating>;
+        </EditorShellFloating>
+    );
 };
 
 export default TimezoneEditor;

@@ -9,11 +9,12 @@ var RouteContext_1 = require("./RouteContext/RouteContext");
 var AccessDeniedPage = function () {
     var setPageTitle = (0, RouteContext_1.useSetPageTitle)();
     setPageTitle('Access Denied');
-    return react_1.default.createElement("div", null,
+    return (react_1.default.createElement("div", null,
         react_1.default.createElement("h1", { className: "mt-4 text-xl font-bold tracking-tight text-gray-900" }, "You do not have access to that page"),
         react_1.default.createElement("div", { className: "mt-10" },
             react_1.default.createElement(react_router_dom_1.Link, { to: "/projects", className: "text-sm font-semibold leading-7 text-cyan-600" },
                 react_1.default.createElement("span", { "aria-hidden": "true" }, "\u2190"),
-                " Go to projects")));
+                ' ',
+                "Go to projects"))));
 };
 exports.default = AccessDeniedPage;

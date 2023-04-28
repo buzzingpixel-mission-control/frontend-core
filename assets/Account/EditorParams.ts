@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+// eslint-disable-next-line import/no-cycle
 import ListItem from './ListItem';
 
 type EditorParams = {

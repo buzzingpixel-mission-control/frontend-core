@@ -14,7 +14,7 @@ const ProjectsPage = (
     {
         isArchive = false,
     }: {
-        isArchive?: boolean,
+        isArchive?: boolean;
     },
 ) => {
     const [
@@ -45,16 +45,20 @@ const ProjectsPage = (
         data,
     } = useProjectsData(isArchive);
 
-    const Tabs = <ProjectTabs
-        activeHref={isArchive ? '/projects/archived' : '/projects'}
-        addProjectOnClick={() => { setAddProjectIsOpen(true); }}
-    />;
+    const Tabs = (
+        <ProjectTabs
+            activeHref={isArchive ? '/projects/archived' : '/projects'}
+            addProjectOnClick={() => { setAddProjectIsOpen(true); }}
+        />
+    );
 
     if (status === 'loading') {
-        return <>
-            {Tabs}
-            <PartialPageLoading />
-        </>;
+        return (
+            <>
+                {Tabs}
+                <PartialPageLoading />
+            </>
+        );
     }
 
     const portals = () => {
@@ -69,28 +73,32 @@ const ProjectsPage = (
 
     if (projects.length < 1) {
         if (isArchive) {
-            return <>
+            return (
+                <>
+                    {portals()}
+                    {Tabs}
+                    <NoResultsAddItem
+                        icon={<ClipboardDocumentListIcon />}
+                        headline="No archived projects"
+                    />
+                </>
+            );
+        }
+
+        return (
+            <>
                 {portals()}
                 {Tabs}
                 <NoResultsAddItem
                     icon={<ClipboardDocumentListIcon />}
-                    headline="No archived projects"
+                    headline="No projects"
+                    content="Would you like to create a project?"
+                    actionText="Add New Project"
+                    actionUsesPlusIcon
+                    actionButtonOnClick={() => { setAddProjectIsOpen(true); }}
                 />
-            </>;
-        }
-
-        return <>
-            {portals()}
-            {Tabs}
-            <NoResultsAddItem
-                icon={<ClipboardDocumentListIcon />}
-                headline="No projects"
-                content="Would you like to create a project?"
-                actionText="Add New Project"
-                actionUsesPlusIcon={true}
-                actionButtonOnClick={() => { setAddProjectIsOpen(true); }}
-            />
-        </>;
+            </>
+        );
     }
 
     if (filterText !== '') {
@@ -99,29 +107,35 @@ const ProjectsPage = (
             || project.description.toLowerCase().indexOf(filterText.toLowerCase()) > -1);
     }
 
-    return <>
-        {portals()}
-        {Tabs}
-        <div>
-            <div className="mb-4">
-                <input
-                    type="text"
-                    name="filter"
-                    id="filter"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
-                    placeholder="Filter results"
-                    value={filterText}
-                    onChange={(e) => {
-                        setFilterText(e.target.value);
-                    }}
+    return (
+        <>
+            {portals()}
+            {Tabs}
+            <div>
+                <div className="mb-4">
+                    <input
+                        type="text"
+                        name="filter"
+                        id="filter"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                        placeholder="Filter results"
+                        value={filterText}
+                        onChange={(e) => {
+                            setFilterText(e.target.value);
+                        }}
+                    />
+                </div>
+                <ProjectsList
+                    isArchive={isArchive}
+                    projects={projects}
                 />
             </div>
-            <ProjectsList
-                isArchive={isArchive}
-                projects={projects}
-            />
-        </div>
-    </>;
+        </>
+    );
+};
+
+ProjectsPage.defaultProps = {
+    isArchive: false,
 };
 
 export default ProjectsPage;

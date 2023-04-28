@@ -131,7 +131,7 @@ var PasswordEditor = function (_a) {
         window.addEventListener('keydown', handler);
         return function () { return window.removeEventListener('keydown', handler); };
     });
-    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
+    return (react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit ".concat(item.title), isSaving: isSaving, errorMessage: errorMessage, saveHandler: saveHandler, setEditorIsOpen: setEditorIsOpen },
         react_1.default.createElement("div", { className: "text-left" },
             react_1.default.createElement("div", null,
                 react_1.default.createElement("label", { htmlFor: "password", className: "block text-sm font-medium text-gray-700" }, "New Password"),
@@ -144,6 +144,6 @@ var PasswordEditor = function (_a) {
                 react_1.default.createElement("div", { className: "mt-0.5" },
                     react_1.default.createElement("input", { type: "password", name: "password-confirm", id: "password-confirm", className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm", onChange: function (e) {
                             setPasswordConfirm(e.target.value);
-                        } })))));
+                        } }))))));
 };
 exports.default = PasswordEditor;

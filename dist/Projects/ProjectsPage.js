@@ -50,11 +50,11 @@ var ProjectsPage = function (_a) {
     var _d = (0, react_1.useState)(''), filterText = _d[0], setFilterText = _d[1];
     var _e = (0, react_1.useState)(false), addProjectIsOpen = _e[0], setAddProjectIsOpen = _e[1];
     var _f = (0, ProjectsData_1.useProjectsData)(isArchive), status = _f.status, data = _f.data;
-    var Tabs = react_1.default.createElement(ProjectTabs_1.default, { activeHref: isArchive ? '/projects/archived' : '/projects', addProjectOnClick: function () { setAddProjectIsOpen(true); } });
+    var Tabs = (react_1.default.createElement(ProjectTabs_1.default, { activeHref: isArchive ? '/projects/archived' : '/projects', addProjectOnClick: function () { setAddProjectIsOpen(true); } }));
     if (status === 'loading') {
-        return react_1.default.createElement(react_1.default.Fragment, null,
+        return (react_1.default.createElement(react_1.default.Fragment, null,
             Tabs,
-            react_1.default.createElement(PartialPageLoading_1.default, null));
+            react_1.default.createElement(PartialPageLoading_1.default, null)));
     }
     var portals = function () {
         if (addProjectIsOpen) {
@@ -65,22 +65,22 @@ var ProjectsPage = function (_a) {
     var projects = (0, Projects_1.transformProjects)(data);
     if (projects.length < 1) {
         if (isArchive) {
-            return react_1.default.createElement(react_1.default.Fragment, null,
+            return (react_1.default.createElement(react_1.default.Fragment, null,
                 portals(),
                 Tabs,
-                react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.ClipboardDocumentListIcon, null), headline: "No archived projects" }));
+                react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.ClipboardDocumentListIcon, null), headline: "No archived projects" })));
         }
-        return react_1.default.createElement(react_1.default.Fragment, null,
+        return (react_1.default.createElement(react_1.default.Fragment, null,
             portals(),
             Tabs,
-            react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.ClipboardDocumentListIcon, null), headline: "No projects", content: "Would you like to create a project?", actionText: "Add New Project", actionUsesPlusIcon: true, actionButtonOnClick: function () { setAddProjectIsOpen(true); } }));
+            react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.ClipboardDocumentListIcon, null), headline: "No projects", content: "Would you like to create a project?", actionText: "Add New Project", actionUsesPlusIcon: true, actionButtonOnClick: function () { setAddProjectIsOpen(true); } })));
     }
     if (filterText !== '') {
         projects = projects.filter(function (project) { return project.title.toLowerCase().indexOf(filterText.toLowerCase()) > -1
             || project.slug.toLowerCase().indexOf(filterText.toLowerCase()) > -1
             || project.description.toLowerCase().indexOf(filterText.toLowerCase()) > -1; });
     }
-    return react_1.default.createElement(react_1.default.Fragment, null,
+    return (react_1.default.createElement(react_1.default.Fragment, null,
         portals(),
         Tabs,
         react_1.default.createElement("div", null,
@@ -88,6 +88,9 @@ var ProjectsPage = function (_a) {
                 react_1.default.createElement("input", { type: "text", name: "filter", id: "filter", className: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6", placeholder: "Filter results", value: filterText, onChange: function (e) {
                         setFilterText(e.target.value);
                     } })),
-            react_1.default.createElement(ProjectsList_1.default, { isArchive: isArchive, projects: projects })));
+            react_1.default.createElement(ProjectsList_1.default, { isArchive: isArchive, projects: projects }))));
+};
+ProjectsPage.defaultProps = {
+    isArchive: false,
 };
 exports.default = ProjectsPage;

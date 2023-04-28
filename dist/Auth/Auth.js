@@ -34,6 +34,7 @@ var Auth = function (_a) {
     var children = _a.children;
     var cookies = (0, react_cookie_1.useCookies)(['auth_token'])[0];
     if (!cookies.auth_token) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         (0, react_1.useEffect)(function () {
             (0, redirectToSignIn_1.default)();
         }, []);

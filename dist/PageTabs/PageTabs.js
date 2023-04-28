@@ -25,7 +25,7 @@ var PageTabs = function (_a) {
                 if (!rightHandButtons) {
                     return null;
                 }
-                return react_1.default.createElement("div", { className: "text-right mt-2" }, rightHandButtons.map(function (button) { return react_1.default.createElement("button", { key: button.key, type: "button", className: "ml-2 my-1 inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600", onClick: button.onClick }, button.text); }));
+                return (react_1.default.createElement("div", { className: "text-right mt-2" }, rightHandButtons.map(function (button) { return (react_1.default.createElement("button", { key: button.key, type: "button", className: "ml-2 my-1 inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600", onClick: button.onClick }, button.text)); })));
             })()),
         react_1.default.createElement("div", { className: "hidden sm:block" },
             react_1.default.createElement("div", { className: "border-b border-gray-200" },
@@ -37,16 +37,19 @@ var PageTabs = function (_a) {
                             if (!tab.icon) {
                                 return null;
                             }
-                            return react_1.default.createElement(tab.icon, { className: classNames(tab.current ? 'text-cyan-500' : 'text-gray-400 group-hover:text-gray-500', '-ml-0.5 mr-2 h-5 w-5'), "aria-hidden": "true" });
+                            return (react_1.default.createElement(tab.icon, { className: classNames(tab.current ? 'text-cyan-500' : 'text-gray-400 group-hover:text-gray-500', '-ml-0.5 mr-2 h-5 w-5'), "aria-hidden": "true" }));
                         })(),
                         react_1.default.createElement("span", null, tab.name))); }),
                     (function () {
                         if (!rightHandButtons) {
                             return null;
                         }
-                        return react_1.default.createElement("div", { className: "my-auto ml-auto text-right", style: {
+                        return (react_1.default.createElement("div", { className: "my-auto ml-auto text-right", style: {
                                 marginLeft: 'auto',
-                            } }, rightHandButtons.map(function (button) { return react_1.default.createElement("button", { key: button.key, type: "button", className: "ml-2 my-1 inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600", onClick: button.onClick }, button.text); }));
+                            } }, rightHandButtons.map(function (button) { return (react_1.default.createElement("button", { key: button.key, type: "button", className: "ml-2 my-1 inline-flex items-center block rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600", onClick: button.onClick }, button.text)); })));
                     })())))));
+};
+PageTabs.defaultProps = {
+    rightHandButtons: undefined,
 };
 exports.default = PageTabs;

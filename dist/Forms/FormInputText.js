@@ -24,19 +24,19 @@ var FormInputText = function (_a) {
     if (input.type === 'email') {
         options.pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     }
-    return react_1.default.createElement(react_1.default.Fragment, null,
+    return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("label", { htmlFor: "email", className: "block text-sm font-medium text-gray-700" },
             input.title,
             (function () {
                 if (!input.instructions) {
                     return null;
                 }
-                return react_1.default.createElement("span", { className: "block text-gray-400 text-xs -mt-0.5" }, input.instructions);
+                return (react_1.default.createElement("span", { className: "block text-gray-400 text-xs -mt-0.5" }, input.instructions));
             })()),
         react_1.default.createElement("div", { className: "mt-1" },
             react_1.default.createElement("input", __assign({}, register(
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            input.name, options), { type: input.type || 'text', id: input.name, placeholder: input.placeholder || '', className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" }))));
+            input.name, options), { type: input.type || 'text', id: input.name, placeholder: input.placeholder || '', className: "block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" })))));
 };
 exports.default = FormInputText;

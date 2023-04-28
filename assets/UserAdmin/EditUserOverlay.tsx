@@ -111,36 +111,41 @@ const EditUserOverlay = (
         },
     ] as Array<FormInput>;
 
-    return <EditorShellFloating
-        title="Edit User"
-        isSaving={isSaving}
-        errorMessage={errorMessage}
-        saveHandler={() => {
-            saveHandler(getValues());
-        }}
-        setEditorIsOpen={setEditUser}
-        submitButtonText="Submit"
-    >
-        <div className="text-left">
-            <form onSubmit={() => {
+    return (
+        <EditorShellFloating
+            title="Edit User"
+            isSaving={isSaving}
+            errorMessage={errorMessage}
+            saveHandler={() => {
                 saveHandler(getValues());
-            }}>
-                {inputs.map((input, i) => {
-                    const divClass = i === 0 ? '' : 'mt-4';
+            }}
+            setEditorIsOpen={setEditUser}
+            submitButtonText="Submit"
+        >
+            <div className="text-left">
+                <form onSubmit={() => {
+                    saveHandler(getValues());
+                }}
+                >
+                    {inputs.map((input, i) => {
+                        const divClass = i === 0 ? '' : 'mt-4';
 
-                    return <div
-                        className={divClass}
-                        key={input.name}
-                    >
-                        <input.renderInput
-                            input={input}
-                            register={register}
-                        />
-                    </div>;
-                })}
-            </form>
-        </div>
-    </EditorShellFloating>;
+                        return (
+                            <div
+                                className={divClass}
+                                key={input.name}
+                            >
+                                <input.renderInput
+                                    input={input}
+                                    register={register}
+                                />
+                            </div>
+                        );
+                    })}
+                </form>
+            </div>
+        </EditorShellFloating>
+    );
 };
 
 export default EditUserOverlay;

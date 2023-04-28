@@ -79,24 +79,26 @@ const AddProjectOverlay = (
         });
     };
 
-    return <EditorShellFloating
-        title="Add New Project"
-        isSaving={isSaving}
-        submitButtonText="Add"
-        errorMessage={errorMessage}
-        saveHandler={() => {
-            saveHandler(getValues());
-        }}
-        setEditorIsOpen={setIsOpen}
-    >
-        <EditorShellForm
-            inputs={inputs}
-            register={register}
-            onSubmit={() => {
+    return (
+        <EditorShellFloating
+            title="Add New Project"
+            isSaving={isSaving}
+            submitButtonText="Add"
+            errorMessage={errorMessage}
+            saveHandler={() => {
                 saveHandler(getValues());
             }}
-        />
-    </EditorShellFloating>;
+            setEditorIsOpen={setIsOpen}
+        >
+            <EditorShellForm
+                inputs={inputs}
+                register={register}
+                onSubmit={() => {
+                    saveHandler(getValues());
+                }}
+            />
+        </EditorShellFloating>
+    );
 };
 
 export default AddProjectOverlay;

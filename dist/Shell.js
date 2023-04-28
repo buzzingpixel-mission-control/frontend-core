@@ -77,9 +77,9 @@ var Shell = function (_a) {
                                 react_1.default.createElement("div", { className: "flex grow flex-col gap-y-0 overflow-y-auto bg-white px-6 pb-4" },
                                     react_1.default.createElement("div", { className: "flex h-12 shrink-0 items-center font-bold text-lg" }, "Mission Control"),
                                     react_1.default.createElement("nav", { className: "flex flex-1 flex-col" },
-                                        react_1.default.createElement("ul", { role: "list", className: "flex flex-1 flex-col gap-y-7" },
+                                        react_1.default.createElement("ul", { className: "flex flex-1 flex-col gap-y-7" },
                                             react_1.default.createElement("li", null,
-                                                react_1.default.createElement("ul", { role: "list", className: "-mx-2 space-y-1" }, menuItems.map(function (item) {
+                                                react_1.default.createElement("ul", { className: "-mx-2 space-y-1" }, menuItems.map(function (item) {
                                                     if (item.requiresAdminPrivileges && !userData.isAdmin) {
                                                         return null;
                                                     }
@@ -94,7 +94,7 @@ var Shell = function (_a) {
                                                                 if (!item.icon) {
                                                                     return null;
                                                                 }
-                                                                return react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" });
+                                                                return (react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" }));
                                                             })(),
                                                             item.name)));
                                                 }))))))))))),
@@ -102,9 +102,9 @@ var Shell = function (_a) {
                 react_1.default.createElement("div", { className: "flex grow flex-col gap-y-0 overflow-y-auto border-r border-gray-200 bg-white px-6 pt-2 pb-4" },
                     react_1.default.createElement("div", { className: "flex h-12 shrink-0 items-center font-bold text-lg" }, "Mission Control"),
                     react_1.default.createElement("nav", { className: "flex flex-1 flex-col" },
-                        react_1.default.createElement("ul", { role: "list", className: "flex flex-1 flex-col gap-y-7" },
+                        react_1.default.createElement("ul", { className: "flex flex-1 flex-col gap-y-7" },
                             react_1.default.createElement("li", null,
-                                react_1.default.createElement("ul", { role: "list", className: "-mx-2 space-y-1" }, menuItems.map(function (item) {
+                                react_1.default.createElement("ul", { className: "-mx-2 space-y-1" }, menuItems.map(function (item) {
                                     if (item.requiresAdminPrivileges && !userData.isAdmin) {
                                         return null;
                                     }
@@ -117,7 +117,7 @@ var Shell = function (_a) {
                                                 if (!item.icon) {
                                                     return null;
                                                 }
-                                                return react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" });
+                                                return (react_1.default.createElement(item.icon, { className: classNames(isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600', 'h-6 w-6 shrink-0'), "aria-hidden": "true" }));
                                             })(),
                                             item.name)));
                                 }))),
@@ -146,8 +146,11 @@ var Shell = function (_a) {
                         if (hidePageTitle) {
                             return null;
                         }
-                        return react_1.default.createElement("h1", { className: "px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block" }, pageTitle);
+                        return (react_1.default.createElement("h1", { className: "px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block" }, pageTitle));
                     })(),
                     react_1.default.createElement("div", { className: "px-4 sm:px-6 lg:px-8 relative" }, children))))));
+};
+Shell.defaultProps = {
+    menuItems: [],
 };
 exports.default = Shell;

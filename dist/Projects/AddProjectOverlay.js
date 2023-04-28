@@ -78,11 +78,11 @@ var AddProjectOverlay = function (_a) {
             },
         });
     };
-    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Add New Project", isSaving: isSaving, submitButtonText: "Add", errorMessage: errorMessage, saveHandler: function () {
+    return (react_1.default.createElement(EditorShellFloating_1.default, { title: "Add New Project", isSaving: isSaving, submitButtonText: "Add", errorMessage: errorMessage, saveHandler: function () {
             saveHandler(getValues());
         }, setEditorIsOpen: setIsOpen },
         react_1.default.createElement(EditorShellForm_1.default, { inputs: inputs, register: register, onSubmit: function () {
                 saveHandler(getValues());
-            } }));
+            } })));
 };
 exports.default = AddProjectOverlay;

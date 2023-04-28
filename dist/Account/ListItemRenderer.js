@@ -29,12 +29,12 @@ var ListItemRenderer = function (_a) {
     var _b = (0, react_1.useState)(false), editorIsOpen = _b[0], setEditorIsOpen = _b[1];
     var _c = (0, react_1.useState)(item.content), content = _c[0], setContent = _c[1];
     item.content = content;
-    return react_1.default.createElement(react_1.default.Fragment, null,
+    return (react_1.default.createElement(react_1.default.Fragment, null,
         (function () {
             if (!editorIsOpen) {
                 return null;
             }
-            return react_1.default.createElement(item.renderEditor, { setEditorIsOpen: setEditorIsOpen, item: item, setContent: setContent });
+            return (react_1.default.createElement(item.renderEditor, { setEditorIsOpen: setEditorIsOpen, item: item, setContent: setContent }));
         })(),
         react_1.default.createElement("div", { className: "py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6" },
             react_1.default.createElement("dt", { className: "text-sm font-bold text-gray-500" }, item.title),
@@ -44,7 +44,7 @@ var ListItemRenderer = function (_a) {
                     if (!item.renderEditor) {
                         return null;
                     }
-                    return react_1.default.createElement("button", { className: "float-right text-cyan-600 hover:text-cyan-800 hover:underline", onClick: function () { return setEditorIsOpen(true); } }, item.editText || 'Edit');
-                })())));
+                    return (react_1.default.createElement("button", { type: "button", className: "float-right text-cyan-600 hover:text-cyan-800 hover:underline", onClick: function () { return setEditorIsOpen(true); } }, item.editText || 'Edit'));
+                })()))));
 };
 exports.default = ListItemRenderer;

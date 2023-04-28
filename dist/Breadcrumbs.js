@@ -9,7 +9,7 @@ var react_router_dom_1 = require("react-router-dom");
 var Breadcrumbs = function (_a) {
     var breadcrumbs = _a.breadcrumbs;
     return (react_1.default.createElement("nav", { className: "flex border-b border-gray-200 bg-white", "aria-label": "Breadcrumb" },
-        react_1.default.createElement("ol", { role: "list", className: "mx-auto flex w-full max-w-screen-xl space-x-4 px-4 sm:px-6 lg:px-8" },
+        react_1.default.createElement("ol", { className: "mx-auto flex w-full max-w-screen-xl space-x-4 px-4 sm:px-6 lg:px-8" },
             react_1.default.createElement("li", { className: "flex" },
                 react_1.default.createElement("div", { className: "flex items-center" },
                     react_1.default.createElement(react_router_dom_1.Link, { to: "/", className: "text-gray-400 hover:text-gray-500" },

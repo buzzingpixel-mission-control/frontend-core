@@ -90,23 +90,25 @@ const SingleInputEditor = (
         return () => window.removeEventListener('keydown', handler);
     });
 
-    return <EditorShellFloating
-        title={`Edit ${item.title}`}
-        isSaving={isSaving}
-        errorMessage={errorMessage}
-        saveHandler={saveHandler}
-        setEditorIsOpen={setEditorIsOpen}
-    >
-        <input
-            type={item.editorInputType || 'text'}
-            name="input"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
-            value={value}
-            onChange={(e) => {
-                setValue(e.target.value);
-            }}
-        />
-    </EditorShellFloating>;
+    return (
+        <EditorShellFloating
+            title={`Edit ${item.title}`}
+            isSaving={isSaving}
+            errorMessage={errorMessage}
+            saveHandler={saveHandler}
+            setEditorIsOpen={setEditorIsOpen}
+        >
+            <input
+                type={item.editorInputType || 'text'}
+                name="input"
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                value={value}
+                onChange={(e) => {
+                    setValue(e.target.value);
+                }}
+            />
+        </EditorShellFloating>
+    );
 };
 
 export default SingleInputEditor;

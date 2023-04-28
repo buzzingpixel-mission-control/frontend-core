@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-
 import { useCookies } from 'react-cookie';
 import FullPageLoading from '../FullPageLoading';
 import redirectToSignIn from './redirectToSignIn';
@@ -16,6 +15,7 @@ const Auth = (
     );
 
     if (!cookies.auth_token) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
             redirectToSignIn();
         }, []);

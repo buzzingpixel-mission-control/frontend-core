@@ -45,9 +45,9 @@ var AccountPage = function () {
             editAction: '/api/request/user-info/edit/password',
         },
     ];
-    return react_1.default.createElement("div", { className: "max-w-4xl" },
+    return (react_1.default.createElement("div", { className: "max-w-4xl" },
         react_1.default.createElement("div", { className: "overflow-hidden bg-white shadow sm:rounded-lg" },
             react_1.default.createElement("div", { className: "px-4 py-5 sm:p-0" },
-                react_1.default.createElement("dl", { className: "sm:divide-y sm:divide-gray-200" }, list.map(function (item) { return react_1.default.createElement(ListItemRenderer_1.default, { key: item.title, item: item }); })))));
+                react_1.default.createElement("dl", { className: "sm:divide-y sm:divide-gray-200" }, list.map(function (item) { return (react_1.default.createElement(ListItemRenderer_1.default, { key: item.title, item: item })); }))))));
 };
 exports.default = AccountPage;

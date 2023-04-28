@@ -64,11 +64,11 @@ var UserAdminPage = function () {
         return null;
     };
     if (users.length < 1) {
-        return react_1.default.createElement(react_1.default.Fragment, null,
+        return (react_1.default.createElement(react_1.default.Fragment, null,
             portals(),
-            react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.UserIcon, null), headline: "No users (except yourself)", content: "Would you like to create a user?", actionText: "Add New User", actionUsesPlusIcon: true, actionButtonOnClick: function () { setAddUserIsOpen(true); } }));
+            react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.UserIcon, null), headline: "No users (except yourself)", content: "Would you like to create a user?", actionText: "Add New User", actionUsesPlusIcon: true, actionButtonOnClick: function () { setAddUserIsOpen(true); } })));
     }
-    return react_1.default.createElement(react_1.default.Fragment, null,
+    return (react_1.default.createElement(react_1.default.Fragment, null,
         portals(),
         react_1.default.createElement("div", null,
             react_1.default.createElement("div", { className: "flex items-center" },
@@ -103,7 +103,7 @@ var UserAdminPage = function () {
                                             } },
                                             "Edit",
                                             react_1.default.createElement("span", { className: "sr-only" },
-                                                ", ",
-                                                user.name || user.emailAddress))))); })))))))));
+                                                ",",
+                                                user.name || user.emailAddress))))); }))))))))));
 };
 exports.default = UserAdminPage;

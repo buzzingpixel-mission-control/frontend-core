@@ -12,15 +12,15 @@ var EditorShellInline = function (_a) {
         buttonBgClass = 'bg-gray-600 focus:ring-gray-500';
         spinnerSavingClass = 'opacity-100';
     }
-    return react_1.default.createElement("div", null,
+    return (react_1.default.createElement("div", null,
         react_1.default.createElement("div", null,
             react_1.default.createElement("div", { className: "text-center" },
                 (function () {
                     if (!errorMessage) {
                         return null;
                     }
-                    return react_1.default.createElement("div", { className: "rounded-md bg-red-50 p-4 mb-2" },
-                        react_1.default.createElement("h3", { className: "text-sm font-medium text-red-800" }, errorMessage));
+                    return (react_1.default.createElement("div", { className: "rounded-md bg-red-50 p-4 mb-2" },
+                        react_1.default.createElement("h3", { className: "text-sm font-medium text-red-800" }, errorMessage)));
                 })(),
                 react_1.default.createElement("div", { className: "mt-2" }, children))),
         react_1.default.createElement("div", { className: "mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3" },
@@ -29,6 +29,10 @@ var EditorShellInline = function (_a) {
                     react_1.default.createElement("span", { className: "!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]" }, "Loading...")),
                 react_1.default.createElement("span", { className: "ml-1 inline-block align-middle" }, submitButtonText || 'Update'),
                 react_1.default.createElement("div", { className: "inline-block align-middle h-3 w-3", style: { marginTop: '0.25rem' }, role: "status" })),
-            react_1.default.createElement("button", { type: "button", className: "mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm", onClick: function () { return setEditorIsOpen(false); } }, "Cancel")));
+            react_1.default.createElement("button", { type: "button", className: "mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm", onClick: function () { return setEditorIsOpen(false); } }, "Cancel"))));
+};
+EditorShellInline.defaultProps = {
+    errorMessage: undefined,
+    submitButtonText: undefined,
 };
 exports.default = EditorShellInline;

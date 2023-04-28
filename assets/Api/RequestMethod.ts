@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-shadow
 enum RequestMethod {
     GET = 'GET',
     HEAD = 'HEAD',

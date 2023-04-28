@@ -1,5 +1,6 @@
 import { UseFormSetValue } from 'react-hook-form';
 
+// eslint-disable-next-line import/no-cycle
 import EditorParams from './EditorParams';
 
 type FormInput = {
@@ -10,7 +11,8 @@ type FormInput = {
     placeholder?: string;
     required?: boolean;
     renderInput?: (editorParams: EditorParams) => JSX.Element;
-    // eslint-disable-next-line
+    // eslint-disable-next-line eslint-comments/disable-enable-pair
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     setValue?: UseFormSetValue<any>;
     initialValue?: never;
 };

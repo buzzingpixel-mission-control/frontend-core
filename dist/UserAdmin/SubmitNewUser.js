@@ -46,21 +46,23 @@ var SubmitNewUser = function (formValues) { return __awaiter(void 0, void 0, voi
     return __generator(this, function (_c) {
         switch (_c.label) {
             case 0:
-                _c.trys.push([0, 3, , 4]);
+                _c.trys.push([0, 5, , 6]);
                 return [4 /*yield*/, fetch('/api/request/user-admin/add-user', (0, FetchOptionsBuilder_1.default)(formValues))];
             case 1:
                 response = _c.sent();
                 return [4 /*yield*/, response.json()];
             case 2:
                 json = _c.sent();
-                if (json.success === false || json.error || ((_a = json.error) === null || _a === void 0 ? void 0 : _a.message)) {
-                    return [2 /*return*/, Promise.reject(new Error(((_b = json.error) === null || _b === void 0 ? void 0 : _b.message) || json.message))];
-                }
-                return [2 /*return*/, true];
+                if (!(json.success === false || json.error || ((_a = json.error) === null || _a === void 0 ? void 0 : _a.message))) return [3 /*break*/, 4];
+                return [4 /*yield*/, Promise.reject(new Error(((_b = json.error) === null || _b === void 0 ? void 0 : _b.message) || json.message))];
             case 3:
+                _c.sent();
+                _c.label = 4;
+            case 4: return [2 /*return*/, true];
+            case 5:
                 error_1 = _c.sent();
                 return [2 /*return*/, Promise.reject(new Error('Unable to add user'))];
-            case 4: return [2 /*return*/];
+            case 6: return [2 /*return*/];
         }
     });
 }); };

@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// eslint-disable-next-line no-shadow
 var RequestMethod;
 (function (RequestMethod) {
     RequestMethod["GET"] = "GET";

@@ -104,7 +104,7 @@ var EditUserOverlay = function (_a) {
             initialValue: user.timezone,
         },
     ];
-    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
+    return (react_1.default.createElement(EditorShellFloating_1.default, { title: "Edit User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
             saveHandler(getValues());
         }, setEditorIsOpen: setEditUser, submitButtonText: "Submit" },
         react_1.default.createElement("div", { className: "text-left" },
@@ -112,8 +112,8 @@ var EditUserOverlay = function (_a) {
                     saveHandler(getValues());
                 } }, inputs.map(function (input, i) {
                 var divClass = i === 0 ? '' : 'mt-4';
-                return react_1.default.createElement("div", { className: divClass, key: input.name },
-                    react_1.default.createElement(input.renderInput, { input: input, register: register }));
-            }))));
+                return (react_1.default.createElement("div", { className: divClass, key: input.name },
+                    react_1.default.createElement(input.renderInput, { input: input, register: register })));
+            })))));
 };
 exports.default = EditUserOverlay;

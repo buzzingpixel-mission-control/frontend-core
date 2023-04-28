@@ -49,18 +49,22 @@ const AccountPage = () => {
         },
     ] as Array<ListItem>;
 
-    return <div className="max-w-4xl">
-        <div className="overflow-hidden bg-white shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-0">
-                <dl className="sm:divide-y sm:divide-gray-200">
-                    {list.map((item) => <ListItemRenderer
-                        key={item.title}
-                        item={item}
-                    />)}
-                </dl>
+    return (
+        <div className="max-w-4xl">
+            <div className="overflow-hidden bg-white shadow sm:rounded-lg">
+                <div className="px-4 py-5 sm:p-0">
+                    <dl className="sm:divide-y sm:divide-gray-200">
+                        {list.map((item) => (
+                            <ListItemRenderer
+                                key={item.title}
+                                item={item}
+                            />
+                        ))}
+                    </dl>
+                </div>
             </div>
         </div>
-    </div>;
+    );
 };
 
 export default AccountPage;

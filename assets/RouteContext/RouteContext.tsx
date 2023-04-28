@@ -6,7 +6,7 @@ import RouteContextData from './RouteContextData';
 import { Breadcrumb } from '../Breadcrumbs';
 
 type CreateContextProps = {
-    routeData: Record<string, RouteContextData>,
+    routeData: Record<string, RouteContextData>;
     setPageTitle: (pathname: string, title: string) => void;
     setHidePageTitle: (pathname: string, hide: boolean) => void;
     setBreadcrumbs: (pathname: string, breadcrumbs: Array<Breadcrumb>) => void;
@@ -47,6 +47,7 @@ export const useRouteLocationContext = () => {
 export const useSetPageTitle = () => {
     const { pathname } = useLocation();
     const { setPageTitle } = useRouteContext();
+
     return (title: string) => { setPageTitle(pathname, title); };
 };
 
@@ -60,6 +61,7 @@ export const usePageTitle = (pageTitle: string) => {
 export const useSetHidePageTitle = () => {
     const { pathname } = useLocation();
     const { setHidePageTitle } = useRouteContext();
+
     return (hide: boolean) => { setHidePageTitle(pathname, hide); };
 };
 
@@ -73,6 +75,7 @@ export const useHidePageTitle = (hide: boolean) => {
 export const useSetBreadcrumbs = () => {
     const { pathname } = useLocation();
     const { setBreadcrumbs } = useRouteContext();
+
     return (breadcrumbs: Array<Breadcrumb>) => {
         setBreadcrumbs(pathname, breadcrumbs);
     };
@@ -157,8 +160,11 @@ export const RouteContextProvider = (
         setBreadcrumbs,
     }), [routeData]);
 
-    return <RouteContext.Provider
-        value={value}
-        children={props.children}
-    />;
+    return (
+        <RouteContext.Provider
+            value={value}
+        >
+            {props.children}
+        </RouteContext.Provider>
+    );
 };

@@ -9,28 +9,32 @@ const ProjectsList = (
         isArchive,
         projects,
     }: {
-        isArchive: boolean,
-        projects: ProjectsWithViewOptions
+        isArchive: boolean;
+        projects: ProjectsWithViewOptions;
     },
 ) => {
     if (projects.length < 1) {
-        return <NoResultsAddItem
-            icon={<ClipboardDocumentListIcon />}
-            headline="No projects match your filters"
-        />;
+        return (
+            <NoResultsAddItem
+                icon={<ClipboardDocumentListIcon />}
+                headline="No projects match your filters"
+            />
+        );
     }
 
-    return <div className="bg-white rounded-md shadow-sm px-4">
-        <ul role="list" className="divide-y divide-gray-100">
-            {projects.map((project) => (
-                <ProjectListItem
-                    key={project.id}
-                    isArchive={isArchive}
-                    project={project}
-                />
-            ))}
-        </ul>
-    </div>;
+    return (
+        <div className="bg-white rounded-md shadow-sm px-4">
+            <ul className="divide-y divide-gray-100">
+                {projects.map((project) => (
+                    <ProjectListItem
+                        key={project.id}
+                        isArchive={isArchive}
+                        project={project}
+                    />
+                ))}
+            </ul>
+        </div>
+    );
 };
 
 export default ProjectsList;

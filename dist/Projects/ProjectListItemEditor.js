@@ -84,13 +84,13 @@ var ProjectListItemEditor = function (_a) {
             },
         });
     };
-    return react_1.default.createElement("div", { style: { paddingBottom: '1.5rem' } },
+    return (react_1.default.createElement("div", { style: { paddingBottom: '1.5rem' } },
         react_1.default.createElement("div", { className: "border border-gray-300 rounded-md shadow-md mx-auto p-4", style: { maxWidth: '600px' } },
             react_1.default.createElement(EditorShellInline_1.default, { isSaving: isSaving, setEditorIsOpen: setEditorIsOpen, errorMessage: errorMessage, saveHandler: function () {
                     saveHandler(getValues());
                 } },
                 react_1.default.createElement(EditorShellForm_1.default, { inputs: inputs, register: register, onSubmit: function () {
                         saveHandler(getValues());
-                    } }))));
+                    } })))));
 };
 exports.default = ProjectListItemEditor;

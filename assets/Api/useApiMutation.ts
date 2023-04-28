@@ -45,10 +45,10 @@ const useApiMutation = <TData = unknown, PrepData = unknown>(
         };
     }
 
-    return useMutation<TData, ApiError, PrepData, unknown>({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        mutationFn: async (prepData) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return useMutation<TData, ApiError, PrepData, unknown>(
+        async (prepData) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const apiParams = prepareApiParams(prepData);
@@ -59,8 +59,8 @@ const useApiMutation = <TData = unknown, PrepData = unknown>(
 
             return MakeApiRequest<TData>(apiParams);
         },
-        ...options,
-    });
+        options,
+    );
 };
 
 export default useApiMutation;

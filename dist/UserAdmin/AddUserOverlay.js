@@ -94,11 +94,11 @@ var AddUserOverlay = function (_a) {
             setValue: setValue,
         },
     ];
-    return react_1.default.createElement(EditorShellFloating_1.default, { title: "Add New User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
+    return (react_1.default.createElement(EditorShellFloating_1.default, { title: "Add New User", isSaving: isSaving, errorMessage: errorMessage, saveHandler: function () {
             saveHandler(getValues());
         }, setEditorIsOpen: setIsOpen, submitButtonText: "Add" },
         react_1.default.createElement(EditorShellForm_1.default, { inputs: inputs, register: register, onSubmit: function () {
                 saveHandler(getValues());
-            } }));
+            } })));
 };
 exports.default = AddUserOverlay;

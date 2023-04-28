@@ -107,9 +107,9 @@ const Shell = (
                                             Mission Control
                                         </div>
                                         <nav className="flex flex-1 flex-col">
-                                            <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                                            <ul className="flex flex-1 flex-col gap-y-7">
                                                 <li>
-                                                    <ul role="list" className="-mx-2 space-y-1">
+                                                    <ul className="-mx-2 space-y-1">
                                                         {menuItems.map((item) => {
                                                             if (item.requiresAdminPrivileges && !userData.isAdmin) {
                                                                 return null;
@@ -135,13 +135,16 @@ const Shell = (
                                                                             if (!item.icon) {
                                                                                 return null;
                                                                             }
-                                                                            return <item.icon
-                                                                                className={classNames(
-                                                                                    isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
-                                                                                    'h-6 w-6 shrink-0',
-                                                                                )}
-                                                                                aria-hidden="true"
-                                                                            />;
+
+                                                                            return (
+                                                                                <item.icon
+                                                                                    className={classNames(
+                                                                                        isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
+                                                                                        'h-6 w-6 shrink-0',
+                                                                                    )}
+                                                                                    aria-hidden="true"
+                                                                                />
+                                                                            );
                                                                         })()}
                                                                         {item.name}
                                                                     </Link>
@@ -167,9 +170,9 @@ const Shell = (
                             Mission Control
                         </div>
                         <nav className="flex flex-1 flex-col">
-                            <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                            <ul className="flex flex-1 flex-col gap-y-7">
                                 <li>
-                                    <ul role="list" className="-mx-2 space-y-1">
+                                    <ul className="-mx-2 space-y-1">
                                         {menuItems.map((item) => {
                                             if (item.requiresAdminPrivileges && !userData.isAdmin) {
                                                 return null;
@@ -192,13 +195,16 @@ const Shell = (
                                                             if (!item.icon) {
                                                                 return null;
                                                             }
-                                                            return <item.icon
-                                                                className={classNames(
-                                                                    isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
-                                                                    'h-6 w-6 shrink-0',
-                                                                )}
-                                                                aria-hidden="true"
-                                                            />;
+
+                                                            return (
+                                                                <item.icon
+                                                                    className={classNames(
+                                                                        isCurrent ? 'text-cyan-600' : 'text-gray-400 group-hover:text-cyan-600',
+                                                                        'h-6 w-6 shrink-0',
+                                                                    )}
+                                                                    aria-hidden="true"
+                                                                />
+                                                            );
                                                         })()}
                                                         {item.name}
                                                     </Link>
@@ -248,9 +254,11 @@ const Shell = (
                                 return null;
                             }
 
-                            return <h1 className="px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block">
-                                {pageTitle}
-                            </h1>;
+                            return (
+                                <h1 className="px-4 pb-6 sm:px-6 lg:px-8 text-2xl font-semibold leading-6 text-gray-900 hidden lg:block">
+                                    {pageTitle}
+                                </h1>
+                            );
                         })()}
                         <div className="px-4 sm:px-6 lg:px-8 relative">
                             {children}
@@ -260,6 +268,10 @@ const Shell = (
             </div>
         </>
     );
+};
+
+Shell.defaultProps = {
+    menuItems: [],
 };
 
 export default Shell;

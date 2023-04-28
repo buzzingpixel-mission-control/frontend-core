@@ -44,14 +44,14 @@ var FormInputToggle = function (_a) {
         // @ts-ignore
         input.name, enabled ? '1' : '0');
     }, [enabled]);
-    return react_1.default.createElement(react_1.default.Fragment, null,
+    return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("label", { htmlFor: "email", className: "block text-sm font-medium text-gray-700" },
             input.title,
             (function () {
                 if (!input.instructions) {
                     return null;
                 }
-                return react_1.default.createElement("span", { className: "block text-gray-400 text-xs -mt-0.5" }, input.instructions);
+                return (react_1.default.createElement("span", { className: "block text-gray-400 text-xs -mt-0.5" }, input.instructions));
             })()),
         react_1.default.createElement("div", { className: "mt-1" },
             react_1.default.createElement(react_2.Switch, { checked: enabled, onChange: setEnabled, className: classNames(enabled ? 'bg-cyan-600' : 'bg-gray-200', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2') },
@@ -62,6 +62,6 @@ var FormInputToggle = function (_a) {
                             react_1.default.createElement("path", { d: "M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }))),
                     react_1.default.createElement("span", { className: classNames(enabled ? 'opacity-100 duration-200 ease-in' : 'opacity-0 duration-100 ease-out', 'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity'), "aria-hidden": "true" },
                         react_1.default.createElement("svg", { className: "h-3 w-3 text-cyan-600", fill: "currentColor", viewBox: "0 0 12 12" },
-                            react_1.default.createElement("path", { d: "M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z" })))))));
+                            react_1.default.createElement("path", { d: "M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z" }))))))));
 };
 exports.default = FormInputToggle;

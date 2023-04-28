@@ -143,6 +143,6 @@ var RouteContextProvider = function (props) {
         setHidePageTitle: setHidePageTitle,
         setBreadcrumbs: setBreadcrumbs,
     }); }, [routeData]);
-    return react_1.default.createElement(exports.RouteContext.Provider, { value: value, children: props.children });
+    return (react_1.default.createElement(exports.RouteContext.Provider, { value: value }, props.children));
 };
 exports.RouteContextProvider = RouteContextProvider;

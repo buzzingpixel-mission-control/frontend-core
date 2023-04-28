@@ -11,7 +11,7 @@ const SubmitNewUser = async (formValues: FormValues) => {
         const json = await response.json();
 
         if (json.success === false || json.error || json.error?.message) {
-            return Promise.reject(new Error(
+            await Promise.reject(new Error(
                 json.error?.message || json.message,
             ));
         }

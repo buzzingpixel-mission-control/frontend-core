@@ -102,24 +102,26 @@ const AddUserOverlay = (
         },
     ] as Array<FormInput>;
 
-    return <EditorShellFloating
-        title="Add New User"
-        isSaving={isSaving}
-        errorMessage={errorMessage}
-        saveHandler={() => {
-            saveHandler(getValues());
-        }}
-        setEditorIsOpen={setIsOpen}
-        submitButtonText="Add"
-    >
-        <EditorShellForm
-            inputs={inputs}
-            register={register}
-            onSubmit={() => {
+    return (
+        <EditorShellFloating
+            title="Add New User"
+            isSaving={isSaving}
+            errorMessage={errorMessage}
+            saveHandler={() => {
                 saveHandler(getValues());
             }}
-        />
-    </EditorShellFloating>;
+            setEditorIsOpen={setIsOpen}
+            submitButtonText="Add"
+        >
+            <EditorShellForm
+                inputs={inputs}
+                register={register}
+                onSubmit={() => {
+                    saveHandler(getValues());
+                }}
+            />
+        </EditorShellFloating>
+    );
 };
 
 export default AddUserOverlay;
