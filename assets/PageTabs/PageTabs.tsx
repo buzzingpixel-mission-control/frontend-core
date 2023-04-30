@@ -31,7 +31,7 @@ const PageTabs = (
                     id="tabs"
                     name="tabs"
                     className="block w-full rounded-md border-gray-300 focus:border-cyan-500 focus:ring-cyan-500"
-                    defaultValue={tabs.find((tab) => tab.current).name}
+                    defaultValue={tabs.find((tab) => tab.current)?.name}
                     onChange={(event) => {
                         navigate(event.target.value);
                     }}

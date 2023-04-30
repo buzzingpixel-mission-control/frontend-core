@@ -13,12 +13,13 @@ function classNames() {
     return classes.filter(Boolean).join(' ');
 }
 var PageTabs = function (_a) {
+    var _b;
     var tabs = _a.tabs, rightHandButtons = _a.rightHandButtons;
     var navigate = (0, react_router_dom_1.useNavigate)();
     return (react_1.default.createElement("div", { className: "mb-4" },
         react_1.default.createElement("div", { className: "sm:hidden" },
             react_1.default.createElement("label", { htmlFor: "tabs", className: "sr-only" }, "Select a tab"),
-            react_1.default.createElement("select", { id: "tabs", name: "tabs", className: "block w-full rounded-md border-gray-300 focus:border-cyan-500 focus:ring-cyan-500", defaultValue: tabs.find(function (tab) { return tab.current; }).name, onChange: function (event) {
+            react_1.default.createElement("select", { id: "tabs", name: "tabs", className: "block w-full rounded-md border-gray-300 focus:border-cyan-500 focus:ring-cyan-500", defaultValue: (_b = tabs.find(function (tab) { return tab.current; })) === null || _b === void 0 ? void 0 : _b.name, onChange: function (event) {
                     navigate(event.target.value);
                 } }, tabs.map(function (tab) { return (react_1.default.createElement("option", { key: tab.name, value: tab.href }, tab.name)); })),
             (function () {
