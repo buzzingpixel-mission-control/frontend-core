@@ -1,5 +1,5 @@
 import AddProjectFormValues from './AddProjectFormValues';
-declare const useProjectsData: (archive?: boolean) => {
+export declare const useProjectsData: (archive?: boolean) => {
     accessDenied: boolean;
     setData: (newData: {
         id?: string;
@@ -182,7 +182,6 @@ declare const useProjectsData: (archive?: boolean) => {
     remove: () => void;
     fetchStatus: import("@tanstack/react-query").FetchStatus;
 };
-declare const useAddProjectMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
-declare const useEditProjectMutation: (projectId: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
-declare const useArchiveProjectMutation: (projectId: string, isArchive: boolean) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, unknown>;
-export { useProjectsData, useAddProjectMutation, useEditProjectMutation, useArchiveProjectMutation, };
+export declare const useAddProjectMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
+export declare const useEditProjectMutation: (projectId: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
+export declare const useArchiveProjectMutation: (projectId: string, isArchive: boolean) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, unknown>;

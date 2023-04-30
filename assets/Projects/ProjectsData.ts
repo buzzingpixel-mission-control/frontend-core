@@ -8,7 +8,7 @@ import useApiMutation from '../Api/useApiMutation';
 import AddProjectFormValues from './AddProjectFormValues';
 import RequestMethod from '../Api/RequestMethod';
 
-const useProjectsData = (
+export const useProjectsData = (
     archive = false,
 ) => {
     let queryKey = ['projects-list'];
@@ -31,7 +31,7 @@ const useProjectsData = (
     );
 };
 
-const useAddProjectMutation = () => useApiMutation<unknown, AddProjectFormValues>(
+export const useAddProjectMutation = () => useApiMutation<unknown, AddProjectFormValues>(
     {
         invalidateQueryKeysOnSuccess: [
             'projects-list',
@@ -47,7 +47,7 @@ const useAddProjectMutation = () => useApiMutation<unknown, AddProjectFormValues
     },
 );
 
-const useEditProjectMutation = (projectId: string) => {
+export const useEditProjectMutation = (projectId: string) => {
     const queryClient = useQueryClient();
 
     return useApiMutation<unknown, AddProjectFormValues>(
@@ -119,7 +119,7 @@ const useEditProjectMutation = (projectId: string) => {
     );
 };
 
-const useArchiveProjectMutation = (
+export const useArchiveProjectMutation = (
     projectId: string,
     isArchive: boolean,
 ) => {
@@ -185,11 +185,4 @@ const useArchiveProjectMutation = (
             },
         },
     );
-};
-
-export {
-    useProjectsData,
-    useAddProjectMutation,
-    useEditProjectMutation,
-    useArchiveProjectMutation,
 };
