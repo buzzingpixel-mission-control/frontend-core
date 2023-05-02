@@ -37,6 +37,7 @@ var ProjectTabs_1 = __importDefault(require("./ProjectTabs"));
 var Projects_1 = require("./Projects");
 var ProjectsList_1 = __importDefault(require("./ProjectsList"));
 var RouteContext_1 = require("../RouteContext/RouteContext");
+var useFilterText_1 = __importDefault(require("./useFilterText"));
 var ProjectsPage = function (_a) {
     var _b = _a.isArchive, isArchive = _b === void 0 ? false : _b;
     var _c = (0, react_1.useState)(''), pageNameState = _c[0], setPageNameState = _c[1];
@@ -47,7 +48,7 @@ var ProjectsPage = function (_a) {
         setPageNameState('Projects');
     }
     (0, RouteContext_1.usePageTitle)(pageNameState);
-    var _d = (0, react_1.useState)(''), filterText = _d[0], setFilterText = _d[1];
+    var _d = (0, useFilterText_1.default)(), filterText = _d[0], setFilterText = _d[1];
     var _e = (0, react_1.useState)(false), addProjectIsOpen = _e[0], setAddProjectIsOpen = _e[1];
     var _f = (0, ProjectsData_1.useProjectsData)(isArchive), status = _f.status, data = _f.data;
     var Tabs = (react_1.default.createElement(ProjectTabs_1.default, { activeHref: isArchive ? '/projects/archived' : '/projects', addProjectOnClick: function () { setAddProjectIsOpen(true); } }));

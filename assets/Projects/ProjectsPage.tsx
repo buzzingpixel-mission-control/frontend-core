@@ -9,6 +9,7 @@ import ProjectTabs from './ProjectTabs';
 import { transformProjects } from './Projects';
 import ProjectsList from './ProjectsList';
 import { usePageTitle } from '../RouteContext/RouteContext';
+import useFilterText from './useFilterText';
 
 const ProjectsPage = (
     {
@@ -33,7 +34,7 @@ const ProjectsPage = (
     const [
         filterText,
         setFilterText,
-    ] = useState<string>('');
+    ] = useFilterText();
 
     const [
         addProjectIsOpen,
