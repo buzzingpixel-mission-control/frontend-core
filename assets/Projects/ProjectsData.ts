@@ -11,18 +11,14 @@ import RequestMethod from '../Api/RequestMethod';
 export const useProjectsData = (
     archive = false,
 ) => {
-    let queryKey = ['projects-list'];
-
     let uri = '/projects/list';
 
     if (archive) {
-        queryKey = ['projects-list-archived'];
-
         uri = '/projects/list/archived';
     }
 
     return useApiQueryWithSignInRedirect<Projects>(
-        queryKey,
+        [uri],
         { uri },
         {
             staleTime: MinutesToMilliseconds(5),
@@ -34,8 +30,8 @@ export const useProjectsData = (
 export const useAddProjectMutation = () => useApiMutation<unknown, AddProjectFormValues>(
     {
         invalidateQueryKeysOnSuccess: [
-            'projects-list',
-            'projects-list-archived',
+            '/projects/list',
+            '/projects/list/archived',
         ],
         prepareApiParams: (
             data,
@@ -53,8 +49,8 @@ export const useEditProjectMutation = (projectId: string) => {
     return useApiMutation<unknown, AddProjectFormValues>(
         {
             invalidateQueryKeysOnSuccess: [
-                'projects-list',
-                'projects-list-archived',
+                '/projects/list',
+                '/projects/list/archived',
             ],
             prepareApiParams: (
                 data,
@@ -68,19 +64,19 @@ export const useEditProjectMutation = (projectId: string) => {
                     const formValues = data as unknown as AddProjectFormValues;
 
                     await queryClient.cancelQueries({
-                        queryKey: [['projects-list']],
+                        queryKey: [['/projects/list']],
                     });
 
                     await queryClient.cancelQueries({
-                        queryKey: [['projects-list-archived']],
+                        queryKey: [['/projects/list/archived']],
                     });
 
                     const previousProjects = queryClient.getQueryData(
-                        [['projects-list']],
+                        [['/projects/list']],
                     ) as Projects;
 
                     const previousProjectsArchived = queryClient.getQueryData(
-                        [['projects-list-archived']],
+                        [['/projects/list/archived']],
                     ) as Projects;
 
                     const projectMapper = (project: Project) => {
@@ -98,7 +94,7 @@ export const useEditProjectMutation = (projectId: string) => {
                             projectMapper,
                         );
 
-                        queryClient.setQueryData([['projects-list']], newProjects);
+                        queryClient.setQueryData([['/projects/list']], newProjects);
                     }
 
                     if (previousProjectsArchived) {
@@ -106,7 +102,7 @@ export const useEditProjectMutation = (projectId: string) => {
                             projectMapper,
                         );
 
-                        queryClient.setQueryData([['projects-list-archived']], newProjectsArchive);
+                        queryClient.setQueryData([['/projects/list']], newProjectsArchive);
                     }
 
                     return {
@@ -128,8 +124,8 @@ export const useArchiveProjectMutation = (
     return useApiMutation(
         {
             invalidateQueryKeysOnSuccess: [
-                'projects-list',
-                'projects-list-archived',
+                '/projects/list',
+                '/projects/list/archived',
             ],
             prepareApiParams: () => ({
                 uri: `/projects/${isArchive ? 'un-archive' : 'archive'}/${projectId}`,
@@ -138,19 +134,19 @@ export const useArchiveProjectMutation = (
             options: {
                 onMutate: async () => {
                     await queryClient.cancelQueries({
-                        queryKey: [['projects-list']],
+                        queryKey: [['/projects/list']],
                     });
 
                     await queryClient.cancelQueries({
-                        queryKey: [['projects-list-archived']],
+                        queryKey: [['/projects/list/archived']],
                     });
 
                     const previousProjects = queryClient.getQueryData(
-                        [['projects-list']],
+                        [['/projects/list']],
                     ) as Projects;
 
                     const previousProjectsArchived = queryClient.getQueryData(
-                        [['projects-list-archived']],
+                        [['/projects/list/archived']],
                     ) as Projects;
 
                     const projectMapper = (project: Project) => {
@@ -166,7 +162,7 @@ export const useArchiveProjectMutation = (
                             projectMapper,
                         );
 
-                        queryClient.setQueryData([['projects-list']], newProjects);
+                        queryClient.setQueryData([['/projects/list']], newProjects);
                     }
 
                     if (previousProjectsArchived) {
@@ -174,7 +170,7 @@ export const useArchiveProjectMutation = (
                             projectMapper,
                         );
 
-                        queryClient.setQueryData([['projects-list-archived']], newProjectsArchive);
+                        queryClient.setQueryData([['/projects/list/archived']], newProjectsArchive);
                     }
 
                     return {

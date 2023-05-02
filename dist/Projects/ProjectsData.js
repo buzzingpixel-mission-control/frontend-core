@@ -48,13 +48,11 @@ var useApiMutation_1 = __importDefault(require("../Api/useApiMutation"));
 var RequestMethod_1 = __importDefault(require("../Api/RequestMethod"));
 var useProjectsData = function (archive) {
     if (archive === void 0) { archive = false; }
-    var queryKey = ['projects-list'];
     var uri = '/projects/list';
     if (archive) {
-        queryKey = ['projects-list-archived'];
         uri = '/projects/list/archived';
     }
-    return (0, useApiQueryWithSignInRedirect_1.default)(queryKey, { uri: uri }, {
+    return (0, useApiQueryWithSignInRedirect_1.default)([uri], { uri: uri }, {
         staleTime: (0, MinutesToMilliseconds_1.default)(5),
         zodValidator: Projects_1.ProjectsSchema,
     });
@@ -62,8 +60,8 @@ var useProjectsData = function (archive) {
 exports.useProjectsData = useProjectsData;
 var useAddProjectMutation = function () { return (0, useApiMutation_1.default)({
     invalidateQueryKeysOnSuccess: [
-        'projects-list',
-        'projects-list-archived',
+        '/projects/list',
+        '/projects/list/archived',
     ],
     prepareApiParams: function (data) { return ({
         uri: '/projects/add',
@@ -76,8 +74,8 @@ var useEditProjectMutation = function (projectId) {
     var queryClient = (0, react_query_1.useQueryClient)();
     return (0, useApiMutation_1.default)({
         invalidateQueryKeysOnSuccess: [
-            'projects-list',
-            'projects-list-archived',
+            '/projects/list',
+            '/projects/list/archived',
         ],
         prepareApiParams: function (data) { return ({
             uri: "/projects/edit/".concat(projectId),
@@ -92,17 +90,17 @@ var useEditProjectMutation = function (projectId) {
                         case 0:
                             formValues = data;
                             return [4 /*yield*/, queryClient.cancelQueries({
-                                    queryKey: [['projects-list']],
+                                    queryKey: [['/projects/list']],
                                 })];
                         case 1:
                             _a.sent();
                             return [4 /*yield*/, queryClient.cancelQueries({
-                                    queryKey: [['projects-list-archived']],
+                                    queryKey: [['/projects/list/archived']],
                                 })];
                         case 2:
                             _a.sent();
-                            previousProjects = queryClient.getQueryData([['projects-list']]);
-                            previousProjectsArchived = queryClient.getQueryData([['projects-list-archived']]);
+                            previousProjects = queryClient.getQueryData([['/projects/list']]);
+                            previousProjectsArchived = queryClient.getQueryData([['/projects/list/archived']]);
                             projectMapper = function (project) {
                                 if (project.id === projectId) {
                                     project.title = formValues.title;
@@ -113,11 +111,11 @@ var useEditProjectMutation = function (projectId) {
                             };
                             if (previousProjects) {
                                 newProjects = previousProjects.map(projectMapper);
-                                queryClient.setQueryData([['projects-list']], newProjects);
+                                queryClient.setQueryData([['/projects/list']], newProjects);
                             }
                             if (previousProjectsArchived) {
                                 newProjectsArchive = previousProjectsArchived.map(projectMapper);
-                                queryClient.setQueryData([['projects-list-archived']], newProjectsArchive);
+                                queryClient.setQueryData([['/projects/list']], newProjectsArchive);
                             }
                             return [2 /*return*/, {
                                     previousProjects: previousProjects,
@@ -134,8 +132,8 @@ var useArchiveProjectMutation = function (projectId, isArchive) {
     var queryClient = (0, react_query_1.useQueryClient)();
     return (0, useApiMutation_1.default)({
         invalidateQueryKeysOnSuccess: [
-            'projects-list',
-            'projects-list-archived',
+            '/projects/list',
+            '/projects/list/archived',
         ],
         prepareApiParams: function () { return ({
             uri: "/projects/".concat(isArchive ? 'un-archive' : 'archive', "/").concat(projectId),
@@ -147,17 +145,17 @@ var useArchiveProjectMutation = function (projectId, isArchive) {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, queryClient.cancelQueries({
-                                queryKey: [['projects-list']],
+                                queryKey: [['/projects/list']],
                             })];
                         case 1:
                             _a.sent();
                             return [4 /*yield*/, queryClient.cancelQueries({
-                                    queryKey: [['projects-list-archived']],
+                                    queryKey: [['/projects/list/archived']],
                                 })];
                         case 2:
                             _a.sent();
-                            previousProjects = queryClient.getQueryData([['projects-list']]);
-                            previousProjectsArchived = queryClient.getQueryData([['projects-list-archived']]);
+                            previousProjects = queryClient.getQueryData([['/projects/list']]);
+                            previousProjectsArchived = queryClient.getQueryData([['/projects/list/archived']]);
                             projectMapper = function (project) {
                                 if (project.id === projectId) {
                                     project.isActive = isArchive;
@@ -166,11 +164,11 @@ var useArchiveProjectMutation = function (projectId, isArchive) {
                             };
                             if (previousProjects) {
                                 newProjects = previousProjects.map(projectMapper);
-                                queryClient.setQueryData([['projects-list']], newProjects);
+                                queryClient.setQueryData([['/projects/list']], newProjects);
                             }
                             if (previousProjectsArchived) {
                                 newProjectsArchive = previousProjectsArchived.map(projectMapper);
-                                queryClient.setQueryData([['projects-list-archived']], newProjectsArchive);
+                                queryClient.setQueryData([['/projects/list/archived']], newProjectsArchive);
                             }
                             return [2 /*return*/, {
                                     previousProjects: previousProjects,

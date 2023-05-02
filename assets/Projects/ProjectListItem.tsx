@@ -36,7 +36,7 @@ const ProjectListItem = (
 
     return (
         <li>
-            <div className="flex items-center justify-between gap-x-6 py-5">
+            <div className="sm:flex items-center justify-between gap-x-6 py-5">
                 <div className="min-w-0">
                     <div className="flex items-start gap-x-3">
                         <p className="text-sm font-semibold leading-6 text-gray-900">{project.title}</p>
@@ -49,20 +49,21 @@ const ProjectListItem = (
                             {project.status.toString()}
                         </p>
                     </div>
-                    <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-                        <p className="whitespace-nowrap">
+                    <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500 truncate">
+                        <p>
                             {project.slug}
                         </p>
                         <svg viewBox="0 0 2 2" className="h-0.5 w-0.5 fill-current">
                             <circle cx={1} cy={1} r={1} />
                         </svg>
-                        <p className="truncate">
+                        <p>
                             Created
+                            {' '}
                             {project.createdAtDate.toLocaleDateString()}
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-none items-center gap-x-4">
+                <div className="mt-2 sm:mt-0 flex flex-none items-center gap-x-4">
                     <Link
                         to={project.href}
                         className="block rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
