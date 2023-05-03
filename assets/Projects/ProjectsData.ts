@@ -145,7 +145,7 @@ export const useEditProjectMutation = (projectId: string) => {
                             projectMapper,
                         );
 
-                        queryClient.setQueryData([['/projects/list']], newProjectsArchive);
+                        queryClient.setQueryData([['/projects/list/archived']], newProjectsArchive);
                     }
 
                     return {

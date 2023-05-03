@@ -149,7 +149,7 @@ var useEditProjectMutation = function (projectId) {
                             }
                             if (previousProjectsArchived) {
                                 newProjectsArchive = previousProjectsArchived.map(projectMapper);
-                                queryClient.setQueryData([['/projects/list']], newProjectsArchive);
+                                queryClient.setQueryData([['/projects/list/archived']], newProjectsArchive);
                             }
                             return [2 /*return*/, {
                                     previousProjects: previousProjects,
