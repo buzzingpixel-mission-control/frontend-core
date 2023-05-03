@@ -35,11 +35,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useArchiveProjectMutation = exports.useEditProjectMutation = exports.useAddProjectMutation = exports.useProjectsData = void 0;
+exports.useArchiveProjectMutation = exports.useEditProjectMutation = exports.useAddProjectMutation = exports.useAllProjectsData = exports.useProjectsData = void 0;
 var react_query_1 = require("@tanstack/react-query");
 var useApiQueryWithSignInRedirect_1 = __importDefault(require("../Api/useApiQueryWithSignInRedirect"));
 var MinutesToMilliseconds_1 = __importDefault(require("../MinutesToMilliseconds"));
@@ -52,12 +61,37 @@ var useProjectsData = function (archive) {
     if (archive) {
         uri = '/projects/list/archived';
     }
-    return (0, useApiQueryWithSignInRedirect_1.default)([uri], { uri: uri }, {
+    var response = (0, useApiQueryWithSignInRedirect_1.default)([uri], { uri: uri }, {
         staleTime: (0, MinutesToMilliseconds_1.default)(5),
         zodValidator: Projects_1.ProjectsSchema,
     });
+    if (response.status === 'success') {
+        response.data = (0, Projects_1.transformProjects)(response.data);
+    }
+    return response;
 };
 exports.useProjectsData = useProjectsData;
+var useAllProjectsData = function () {
+    var _a = (0, exports.useProjectsData)(), projectsData = _a.data, projectsStatus = _a.status;
+    var _b = (0, exports.useProjectsData)(true), projectsDataArchived = _b.data, projectsDataStatus = _b.status;
+    if (projectsStatus === 'loading' || projectsDataStatus === 'loading') {
+        return {
+            status: 'loading',
+            data: [],
+        };
+    }
+    if (projectsStatus === 'error' || projectsDataStatus === 'error') {
+        return {
+            status: 'error',
+            data: [],
+        };
+    }
+    return {
+        status: 'success',
+        data: __spreadArray(__spreadArray([], projectsData, true), projectsDataArchived, true),
+    };
+};
+exports.useAllProjectsData = useAllProjectsData;
 var useAddProjectMutation = function () { return (0, useApiMutation_1.default)({
     invalidateQueryKeysOnSuccess: [
         '/projects/list',

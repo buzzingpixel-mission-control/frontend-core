@@ -2,7 +2,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect';
 import MinutesToMilliseconds from '../MinutesToMilliseconds';
 import {
-    Project, Projects, ProjectsSchema,
+    Project, Projects, ProjectsSchema, ProjectsWithViewOptions, transformProjects,
 } from './Projects';
 import useApiMutation from '../Api/useApiMutation';
 import AddProjectFormValues from './AddProjectFormValues';
@@ -17,7 +17,7 @@ export const useProjectsData = (
         uri = '/projects/list/archived';
     }
 
-    return useApiQueryWithSignInRedirect<Projects>(
+    const response = useApiQueryWithSignInRedirect<ProjectsWithViewOptions>(
         [uri],
         { uri },
         {
@@ -25,6 +25,49 @@ export const useProjectsData = (
             zodValidator: ProjectsSchema,
         },
     );
+
+    if (response.status === 'success') {
+        response.data = transformProjects(response.data);
+    }
+
+    return response;
+};
+
+export const useAllProjectsData = (): {
+    status: 'loading' | 'error' | 'success';
+    data: ProjectsWithViewOptions;
+} => {
+    const {
+        data: projectsData,
+        status: projectsStatus,
+    } = useProjectsData();
+
+    const {
+        data: projectsDataArchived,
+        status: projectsDataStatus,
+    } = useProjectsData(true);
+
+    if (projectsStatus === 'loading' || projectsDataStatus === 'loading') {
+        return {
+            status: 'loading',
+            data: [],
+        };
+    }
+
+    if (projectsStatus === 'error' || projectsDataStatus === 'error') {
+        return {
+            status: 'error',
+            data: [],
+        };
+    }
+
+    return {
+        status: 'success',
+        data: [
+            ...projectsData,
+            ...projectsDataArchived,
+        ],
+    };
 };
 
 export const useAddProjectMutation = () => useApiMutation<unknown, AddProjectFormValues>(

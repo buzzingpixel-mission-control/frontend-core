@@ -70,7 +70,7 @@ const ProjectsPage = (
         return null;
     };
 
-    let projects = transformProjects(data);
+    let projects = data;
 
     if (projects.length < 1) {
         if (isArchive) {

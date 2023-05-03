@@ -32,10 +32,17 @@ import FormInputTextarea from './Forms/FormInputTextarea';
 import FormInputTimezone from './Forms/FormInputTimezone';
 import FrontEndCoreMenuItems from './FrontEndCoreMenuItems';
 import MinutesToMilliseconds from './MinutesToMilliseconds';
+import { useAllProjectsData } from './Projects/ProjectsData';
 import EditorShellFloating from './Forms/EditorShellFloating';
 import EncodeQueryParamsFromObject from './EncodeQueryParamsFromObject';
 import useApiQueryWithSignInRedirect from './Api/useApiQueryWithSignInRedirect';
 import { addProjectDetailsSection } from './Projects/ProjectDetails/ProjectDetailsData';
+import {
+    Project,
+    Projects,
+    ProjectWithViewOptions,
+    ProjectsWithViewOptions,
+} from './Projects/Projects';
 import {
     useRouteContext,
     useRouteLocationContext,
@@ -52,6 +59,8 @@ export {
     Tab,
     Auth,
     Shell,
+    Project,
+    Projects,
     MenuItem,
     PageTabs,
     AppConfig,
@@ -85,11 +94,14 @@ export {
     FormInputTimezone,
     useSetBreadcrumbs,
     FrontEndCoreRoutes,
+    useAllProjectsData,
     PartialPageLoading,
     EditorShellFloating,
     useSetHidePageTitle,
     FrontEndCoreMenuItems,
     MinutesToMilliseconds,
+    ProjectWithViewOptions,
+    ProjectsWithViewOptions,
     useRouteLocationContext,
     addProjectDetailsSection,
     EncodeQueryParamsFromObject,

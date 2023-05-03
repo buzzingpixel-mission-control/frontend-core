@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useApiQueryWithSignInRedirect = exports.EncodeQueryParamsFromObject = exports.addProjectDetailsSection = exports.useRouteLocationContext = exports.MinutesToMilliseconds = exports.FrontEndCoreMenuItems = exports.useSetHidePageTitle = exports.EditorShellFloating = exports.PartialPageLoading = exports.FrontEndCoreRoutes = exports.useSetBreadcrumbs = exports.FormInputTimezone = exports.FormInputTextarea = exports.FormInputProjects = exports.EditorShellInline = exports.useHidePageTitle = exports.redirectToSignIn = exports.NoResultsAddItem = exports.AccessDeniedPage = exports.useSetPageTitle = exports.useRouteContext = exports.FormInputToggle = exports.FullPageLoading = exports.EditorShellForm = exports.useApiMutation = exports.useBreadcrumbs = exports.MakeApiRequest = exports.RequestMethod = exports.FormInputText = exports.usePageTitle = exports.RequireAdmin = exports.NotFoundPage = exports.createPortal = exports.useApiQuery = exports.useUserData = exports.PageTabs = exports.Shell = exports.Auth = exports.App = void 0;
+exports.useApiQueryWithSignInRedirect = exports.EncodeQueryParamsFromObject = exports.addProjectDetailsSection = exports.useRouteLocationContext = exports.MinutesToMilliseconds = exports.FrontEndCoreMenuItems = exports.useSetHidePageTitle = exports.EditorShellFloating = exports.PartialPageLoading = exports.useAllProjectsData = exports.FrontEndCoreRoutes = exports.useSetBreadcrumbs = exports.FormInputTimezone = exports.FormInputTextarea = exports.FormInputProjects = exports.EditorShellInline = exports.useHidePageTitle = exports.redirectToSignIn = exports.NoResultsAddItem = exports.AccessDeniedPage = exports.useSetPageTitle = exports.useRouteContext = exports.FormInputToggle = exports.FullPageLoading = exports.EditorShellForm = exports.useApiMutation = exports.useBreadcrumbs = exports.MakeApiRequest = exports.RequestMethod = exports.FormInputText = exports.usePageTitle = exports.RequireAdmin = exports.NotFoundPage = exports.createPortal = exports.useApiQuery = exports.useUserData = exports.PageTabs = exports.Shell = exports.Auth = exports.App = void 0;
 var App_1 = __importDefault(require("./App"));
 exports.App = App_1.default;
 var Shell_1 = __importDefault(require("./Shell"));
@@ -58,6 +58,8 @@ var FrontEndCoreMenuItems_1 = __importDefault(require("./FrontEndCoreMenuItems")
 exports.FrontEndCoreMenuItems = FrontEndCoreMenuItems_1.default;
 var MinutesToMilliseconds_1 = __importDefault(require("./MinutesToMilliseconds"));
 exports.MinutesToMilliseconds = MinutesToMilliseconds_1.default;
+var ProjectsData_1 = require("./Projects/ProjectsData");
+Object.defineProperty(exports, "useAllProjectsData", { enumerable: true, get: function () { return ProjectsData_1.useAllProjectsData; } });
 var EditorShellFloating_1 = __importDefault(require("./Forms/EditorShellFloating"));
 exports.EditorShellFloating = EditorShellFloating_1.default;
 var EncodeQueryParamsFromObject_1 = __importDefault(require("./EncodeQueryParamsFromObject"));

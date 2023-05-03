@@ -1,22 +1,9 @@
+import { ProjectsWithViewOptions } from './Projects';
 import AddProjectFormValues from './AddProjectFormValues';
 export declare const useProjectsData: (archive?: boolean) => {
     accessDenied: boolean;
-    setData: (newData: {
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[]) => void;
-    data: {
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[];
+    setData: (newData: ProjectsWithViewOptions) => void;
+    data: ProjectsWithViewOptions;
     error: import("../Api/ApiError").default;
     isError: true;
     isLoading: false;
@@ -38,34 +25,13 @@ export declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<ProjectsWithViewOptions, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/react-query").FetchStatus;
 } | {
     accessDenied: boolean;
-    setData: (newData: {
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[]) => void;
-    data: {
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[];
+    setData: (newData: ProjectsWithViewOptions) => void;
+    data: ProjectsWithViewOptions;
     error: null;
     isError: false;
     isLoading: false;
@@ -87,26 +53,12 @@ export declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<ProjectsWithViewOptions, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/react-query").FetchStatus;
 } | {
     accessDenied: boolean;
-    setData: (newData: {
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[]) => void;
+    setData: (newData: ProjectsWithViewOptions) => void;
     data: undefined;
     error: import("../Api/ApiError").default;
     isError: true;
@@ -129,26 +81,12 @@ export declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<ProjectsWithViewOptions, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/react-query").FetchStatus;
 } | {
     accessDenied: boolean;
-    setData: (newData: {
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[]) => void;
+    setData: (newData: ProjectsWithViewOptions) => void;
     data: undefined;
     error: null;
     isError: false;
@@ -171,16 +109,13 @@ export declare const useProjectsData: (archive?: boolean) => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<{
-        id?: string;
-        isActive?: boolean;
-        title?: string;
-        slug?: string;
-        description?: string;
-        createdAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/react-query").RefetchOptions & import("@tanstack/react-query").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/react-query").QueryObserverResult<ProjectsWithViewOptions, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/react-query").FetchStatus;
+};
+export declare const useAllProjectsData: () => {
+    status: 'loading' | 'error' | 'success';
+    data: ProjectsWithViewOptions;
 };
 export declare const useAddProjectMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
 export declare const useEditProjectMutation: (projectId: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;

@@ -34,7 +34,6 @@ var NoResultsAddItem_1 = __importDefault(require("../NoResultsAddItem"));
 var createPortal_1 = __importDefault(require("../createPortal"));
 var AddProjectOverlay_1 = __importDefault(require("./AddProjectOverlay"));
 var ProjectTabs_1 = __importDefault(require("./ProjectTabs"));
-var Projects_1 = require("./Projects");
 var ProjectsList_1 = __importDefault(require("./ProjectsList"));
 var RouteContext_1 = require("../RouteContext/RouteContext");
 var useFilterText_1 = __importDefault(require("./useFilterText"));
@@ -63,7 +62,7 @@ var ProjectsPage = function (_a) {
         }
         return null;
     };
-    var projects = (0, Projects_1.transformProjects)(data);
+    var projects = data;
     if (projects.length < 1) {
         if (isArchive) {
             return (react_1.default.createElement(react_1.default.Fragment, null,
