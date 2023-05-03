@@ -58,15 +58,15 @@ var FormInputProjects = function (_a) {
                     react_1.default.createElement("span", { className: "!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]" }, "Loading...")));
             }
             return (react_1.default.createElement(react_select_1.default, { onChange: function (selected) {
-                    setValue(selected.value || null);
+                    setValue((selected === null || selected === void 0 ? void 0 : selected.value) || null);
                     if (!input.setValue) {
                         return;
                     }
                     input.setValue(
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
-                    input.name, selected.value);
-                }, value: options.filter(function (option) { return option.value === value; }), options: options, className: "react-select-control" }));
+                    input.name, (selected === null || selected === void 0 ? void 0 : selected.value) || '');
+                }, value: options.filter(function (option) { return option.value === value; }), options: options, className: "react-select-control", isClearable: true }));
         })())));
 };
 exports.default = FormInputProjects;

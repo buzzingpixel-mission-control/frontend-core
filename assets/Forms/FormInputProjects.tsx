@@ -74,7 +74,7 @@ const FormInputProjects = (
                     return (
                         <Select
                             onChange={(selected) => {
-                                setValue(selected.value || null);
+                                setValue(selected?.value || null);
 
                                 if (!input.setValue) {
                                     return;
@@ -84,12 +84,13 @@ const FormInputProjects = (
                                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                                     // @ts-ignore
                                     input.name,
-                                    selected.value,
+                                    selected?.value || '',
                                 );
                             }}
                             value={options.filter((option) => option.value === value)}
                             options={options}
                             className="react-select-control"
+                            isClearable
                         />
                     );
                 })()}
