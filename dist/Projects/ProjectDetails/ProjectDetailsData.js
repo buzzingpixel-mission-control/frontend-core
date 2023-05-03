@@ -23,9 +23,23 @@ var addProjectDetailsSection = function (section) {
 exports.addProjectDetailsSection = addProjectDetailsSection;
 var useProjectDetailsData = function (slug) {
     var uri = "/projects/".concat(slug);
-    return (0, useApiQueryWithSignInRedirect_1.default)([uri], { uri: uri }, {
+    var response = (0, useApiQueryWithSignInRedirect_1.default)([uri], { uri: uri }, {
         staleTime: (0, MinutesToMilliseconds_1.default)(5),
         zodValidator: Projects_1.ProjectSchema,
     });
+    if (response.status === 'loading') {
+        return {
+            status: 'loading',
+        };
+    }
+    if (response.status === 'error') {
+        return {
+            status: 'error',
+        };
+    }
+    return {
+        status: 'success',
+        data: (0, Projects_1.transformProject)(response.data),
+    };
 };
 exports.useProjectDetailsData = useProjectDetailsData;

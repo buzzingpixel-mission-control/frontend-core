@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProjectDetailsSections, useProjectDetailsData } from './ProjectDetailsData';
 import PartialPageLoading from '../../PartialPageLoading';
-import { transformProject } from '../Projects';
 import { useBreadcrumbs, useHidePageTitle, usePageTitle } from '../../RouteContext/RouteContext';
 
 const statuses = {
@@ -50,14 +49,10 @@ const ProjectDetailsPage = () => {
     } = useProjectDetailsData(slug);
 
     if (status === 'loading') {
-        return (
-            <>
-                <PartialPageLoading />
-            </>
-        );
+        return <PartialPageLoading />;
     }
 
-    const project = transformProject(data);
+    const project = data;
 
     const pageName = `Project: ${project.title}`;
 
@@ -84,9 +79,6 @@ const ProjectDetailsPage = () => {
                                 <svg viewBox="0 0 2 2" className="h-6 w-10 fill-current inline px-4">
                                     <circle cx={1} cy={1} r={1} />
                                 </svg>
-                                <code className="font-light">
-                                    {project.slug}
-                                </code>
                                 <code className="font-light">
                                     {project.slug}
                                 </code>

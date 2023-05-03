@@ -1,6 +1,8 @@
 import useApiQueryWithSignInRedirect from '../../Api/useApiQueryWithSignInRedirect';
 import MinutesToMilliseconds from '../../MinutesToMilliseconds';
-import { Project, ProjectSchema } from '../Projects';
+import {
+    Project, ProjectSchema, ProjectWithViewOptions, transformProject,
+} from '../Projects';
 import { ProjectDetailsSection } from './ProjectDetailsSection';
 
 declare global {
@@ -25,12 +27,13 @@ export const addProjectDetailsSection = (section: ProjectDetailsSection) => {
     window.projectDetailsSections = projectDetailsSections;
 };
 
-export const useProjectDetailsData = (
-    slug: string,
-) => {
+export const useProjectDetailsData = (slug: string): {
+    status: 'loading' | 'error' | 'success';
+    data?: ProjectWithViewOptions;
+} => {
     const uri = `/projects/${slug}`;
 
-    return useApiQueryWithSignInRedirect<Project>(
+    const response = useApiQueryWithSignInRedirect<Project>(
         [uri],
         { uri },
         {
@@ -38,4 +41,21 @@ export const useProjectDetailsData = (
             zodValidator: ProjectSchema,
         },
     );
+
+    if (response.status === 'loading') {
+        return {
+            status: 'loading',
+        };
+    }
+
+    if (response.status === 'error') {
+        return {
+            status: 'error',
+        };
+    }
+
+    return {
+        status: 'success',
+        data: transformProject(response.data),
+    };
 };

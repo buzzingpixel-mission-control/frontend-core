@@ -30,7 +30,6 @@ var react_1 = __importStar(require("react"));
 var react_router_dom_1 = require("react-router-dom");
 var ProjectDetailsData_1 = require("./ProjectDetailsData");
 var PartialPageLoading_1 = __importDefault(require("../../PartialPageLoading"));
-var Projects_1 = require("../Projects");
 var RouteContext_1 = require("../../RouteContext/RouteContext");
 var statuses = {
     Active: 'text-green-700 bg-green-50 ring-green-600/20',
@@ -61,10 +60,9 @@ var ProjectDetailsPage = function () {
     ]);
     var _c = (0, ProjectDetailsData_1.useProjectDetailsData)(slug), status = _c.status, data = _c.data;
     if (status === 'loading') {
-        return (react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(PartialPageLoading_1.default, null)));
+        return react_1.default.createElement(PartialPageLoading_1.default, null);
     }
-    var project = (0, Projects_1.transformProject)(data);
+    var project = data;
     var pageName = "Project: ".concat(project.title);
     if (pageNameState !== pageName) {
         setPageNameState(pageName);
@@ -81,7 +79,6 @@ var ProjectDetailsPage = function () {
                             project.title,
                             react_1.default.createElement("svg", { viewBox: "0 0 2 2", className: "h-6 w-10 fill-current inline px-4" },
                                 react_1.default.createElement("circle", { cx: 1, cy: 1, r: 1 })),
-                            react_1.default.createElement("code", { className: "font-light" }, project.slug),
                             react_1.default.createElement("code", { className: "font-light" }, project.slug),
                             react_1.default.createElement("svg", { viewBox: "0 0 2 2", className: "h-6 w-10 fill-current inline px-4" },
                                 react_1.default.createElement("circle", { cx: 1, cy: 1, r: 1 })),
