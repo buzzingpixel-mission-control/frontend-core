@@ -15,6 +15,12 @@ var FrontEndCoreMenuItems = function () { return [
         requiresAdminPrivileges: true,
     },
     {
+        name: 'Schedule Admin',
+        href: '/schedule-admin',
+        icon: outline_1.CalendarIcon,
+        requiresAdminPrivileges: true,
+    },
+    {
         name: 'Projects',
         href: '/projects',
         icon: outline_1.ClipboardDocumentListIcon,

@@ -1,4 +1,5 @@
 import {
+    CalendarIcon,
     ClipboardDocumentListIcon,
     UserGroupIcon,
     QueueListIcon,
@@ -16,6 +17,12 @@ const FrontEndCoreMenuItems = (): Array<MenuItem> => [
         name: 'Queue Admin',
         href: '/queue-admin',
         icon: QueueListIcon,
+        requiresAdminPrivileges: true,
+    },
+    {
+        name: 'Schedule Admin',
+        href: '/schedule-admin',
+        icon: CalendarIcon,
         requiresAdminPrivileges: true,
     },
     {
