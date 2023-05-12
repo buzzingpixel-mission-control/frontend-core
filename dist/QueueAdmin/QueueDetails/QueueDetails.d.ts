@@ -3,6 +3,7 @@ export declare const QueueDetailsSchema: z.ZodObject<{
     queue: z.ZodString;
     totalItemsInQueue: z.ZodNumber;
     items: z.ZodArray<z.ZodObject<{
+        key: z.ZodString;
         handle: z.ZodString;
         name: z.ZodString;
         jobs: z.ZodArray<z.ZodObject<{
@@ -19,6 +20,7 @@ export declare const QueueDetailsSchema: z.ZodObject<{
             context?: any[] | Record<string, any>;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
+        key?: string;
         handle?: string;
         name?: string;
         jobs?: {
@@ -27,6 +29,7 @@ export declare const QueueDetailsSchema: z.ZodObject<{
             context?: any[] | Record<string, any>;
         }[];
     }, {
+        key?: string;
         handle?: string;
         name?: string;
         jobs?: {
@@ -39,6 +42,7 @@ export declare const QueueDetailsSchema: z.ZodObject<{
     queue?: string;
     totalItemsInQueue?: number;
     items?: {
+        key?: string;
         handle?: string;
         name?: string;
         jobs?: {
@@ -51,6 +55,7 @@ export declare const QueueDetailsSchema: z.ZodObject<{
     queue?: string;
     totalItemsInQueue?: number;
     items?: {
+        key?: string;
         handle?: string;
         name?: string;
         jobs?: {

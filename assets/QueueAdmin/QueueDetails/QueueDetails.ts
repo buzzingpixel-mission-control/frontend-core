@@ -4,6 +4,7 @@ export const QueueDetailsSchema = z.object({
     queue: z.string(),
     totalItemsInQueue: z.number(),
     items: z.array(z.object({
+        key: z.string(),
         handle: z.string(),
         name: z.string(),
         jobs: z.array(z.object({

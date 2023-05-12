@@ -4,6 +4,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -17,6 +18,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -51,6 +53,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -68,6 +71,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -81,6 +85,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -115,6 +120,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -132,6 +138,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -167,6 +174,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -184,6 +192,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -219,6 +228,7 @@ export declare const useQueueDetailsData: (queueName: string) => {
         queue?: string;
         totalItemsInQueue?: number;
         items?: {
+            key?: string;
             handle?: string;
             name?: string;
             jobs?: {
@@ -231,3 +241,5 @@ export declare const useQueueDetailsData: (queueName: string) => {
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 };
+export declare const useCancelItemMutation: (queueName: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../../Api/ApiError").default, string>;
+export declare const useCancelAllMutation: (queueName: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../../Api/ApiError").default, unknown>;
