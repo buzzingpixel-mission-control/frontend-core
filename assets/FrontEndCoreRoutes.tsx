@@ -6,6 +6,7 @@ import AccountPage from './Account/AccountPage';
 import UserAdminPage from './UserAdmin/UserAdminPage';
 import RequireAdmin from './RequireAdmin';
 import ProjectDetailsPage from './Projects/ProjectDetails/ProjectDetailsPage';
+import QueueAdminPage from './QueueAdmin/QueueAdminPage';
 
 const FrontEndCoreRoutes = () => (
     <>
@@ -14,6 +15,7 @@ const FrontEndCoreRoutes = () => (
         <Route path="/projects/archived" element={<ProjectsPage isArchive />} />
         <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
         <Route path="/user-admin" element={<RequireAdmin><UserAdminPage /></RequireAdmin>} />
+        <Route path="/queue-admin" element={<RequireAdmin><QueueAdminPage /></RequireAdmin>} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="*" element={<NotFoundPage />} />
     </>

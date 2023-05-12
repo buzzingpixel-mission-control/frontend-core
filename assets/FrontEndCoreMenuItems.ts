@@ -1,20 +1,27 @@
 import {
     ClipboardDocumentListIcon,
     UserGroupIcon,
+    QueueListIcon,
 } from '@heroicons/react/24/outline';
 import MenuItem from './MenuItem';
 
 const FrontEndCoreMenuItems = (): Array<MenuItem> => [
     {
-        name: 'Projects',
-        href: '/projects',
-        icon: ClipboardDocumentListIcon,
-    },
-    {
         name: 'User Admin',
         href: '/user-admin',
         icon: UserGroupIcon,
         requiresAdminPrivileges: true,
+    },
+    {
+        name: 'Queue Admin',
+        href: '/queue-admin',
+        icon: QueueListIcon,
+        requiresAdminPrivileges: true,
+    },
+    {
+        name: 'Projects',
+        href: '/projects',
+        icon: ClipboardDocumentListIcon,
     },
 ];
 

@@ -6,7 +6,6 @@ import NoResultsAddItem from '../NoResultsAddItem';
 import createPortal from '../createPortal';
 import AddProjectOverlay from './AddProjectOverlay';
 import ProjectTabs from './ProjectTabs';
-import { transformProjects } from './Projects';
 import ProjectsList from './ProjectsList';
 import { usePageTitle } from '../RouteContext/RouteContext';
 import useFilterText from './useFilterText';
