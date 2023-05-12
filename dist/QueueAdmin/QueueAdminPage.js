@@ -5,14 +5,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_router_dom_1 = require("react-router-dom");
+var solid_1 = require("@heroicons/react/20/solid");
 var RouteContext_1 = require("../RouteContext/RouteContext");
 var QueueAdminData_1 = require("./QueueAdminData");
 var PartialPageLoading_1 = __importDefault(require("../PartialPageLoading"));
+var NoResultsAddItem_1 = __importDefault(require("../NoResultsAddItem"));
 var QueueAdminPage = function () {
     (0, RouteContext_1.usePageTitle)('Queue Admin');
     var _a = (0, QueueAdminData_1.useQueueAdminData)(), data = _a.data, status = _a.status;
     if (status === 'loading') {
         return react_1.default.createElement(PartialPageLoading_1.default, null);
+    }
+    if (data.length < 1) {
+        return (react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(solid_1.StopCircleIcon, null), headline: "There are no queues" }));
     }
     return (react_1.default.createElement("div", { className: "bg-white rounded-md shadow-sm px-4" },
         react_1.default.createElement("ul", { className: "divide-y divide-gray-100" }, data.map(function (queue) { return (react_1.default.createElement("li", { key: queue.queue },

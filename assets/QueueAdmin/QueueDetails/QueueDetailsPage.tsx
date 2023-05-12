@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { StopCircleIcon } from '@heroicons/react/20/solid';
 import {
     useCancelAllMutation,
     useCancelItemMutation,
@@ -11,6 +12,7 @@ import {
     useHidePageTitle,
     usePageTitle,
 } from '../../RouteContext/RouteContext';
+import NoResultsAddItem from '../../NoResultsAddItem';
 
 const QueueDetailsPage = () => {
     const { queueName } = useParams();
@@ -84,55 +86,68 @@ const QueueDetailsPage = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-white rounded-md shadow-sm px-4 mt-4">
-                <ul className="divide-y divide-gray-100">
-                    {data.items.map((item, i) => (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <li key={`${item.handle}_${i}`}>
-                            <div className="sm:flex items-center justify-between gap-x-6 py-5">
-                                <div className="min-w-0">
-                                    <div className="flex items-start gap-x-3">
-                                        <p className="text-sm font-semibold leading-6 text-gray-900">
-                                            {item.name}
-                                        </p>
+            {(() => {
+                if (data.items.length < 1) {
+                    return (
+                        <NoResultsAddItem
+                            icon={<StopCircleIcon />}
+                            headline="There are no items in the queue"
+                        />
+                    );
+                }
+
+                return (
+                    <div className="bg-white rounded-md shadow-sm px-4 mt-4">
+                        <ul className="divide-y divide-gray-100">
+                            {data.items.map((item, i) => (
+                                // eslint-disable-next-line react/no-array-index-key
+                                <li key={`${item.handle}_${i}`}>
+                                    <div className="sm:flex items-center justify-between gap-x-6 py-5">
+                                        <div className="min-w-0">
+                                            <div className="flex items-start gap-x-3">
+                                                <p className="text-sm font-semibold leading-6 text-gray-900">
+                                                    {item.name}
+                                                </p>
+                                            </div>
+                                            <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500 truncate">
+                                                <p>
+                                                    {item.handle}
+                                                </p>
+                                            </div>
+                                            <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500 truncate font-bold">
+                                                Jobs:
+                                            </div>
+                                            <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500 truncate">
+                                                {item.jobs.map((job, jobI) => (
+                                                    // eslint-disable-next-line react/no-array-index-key
+                                                    <code key={`${job.class}_${job.method}_${jobI}`}>
+                                                        {job.class}
+                                                        :
+                                                        {job.method}
+                                                    </code>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="mt-2 sm:mt-0 flex flex-none items-center gap-x-4">
+                                            <div className="mt-2 sm:mt-0 flex flex-none items-center gap-x-4">
+                                                <button
+                                                    type="button"
+                                                    className="block rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                                    onClick={() => {
+                                                        cancelItem.mutate(item.key);
+                                                    }}
+                                                >
+                                                    Cancel Item
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500 truncate">
-                                        <p>
-                                            {item.handle}
-                                        </p>
-                                    </div>
-                                    <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500 truncate font-bold">
-                                        Jobs:
-                                    </div>
-                                    <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500 truncate">
-                                        {item.jobs.map((job, jobI) => (
-                                            // eslint-disable-next-line react/no-array-index-key
-                                            <code key={`${job.class}_${job.method}_${jobI}`}>
-                                                {job.class}
-                                                :
-                                                {job.method}
-                                            </code>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="mt-2 sm:mt-0 flex flex-none items-center gap-x-4">
-                                    <div className="mt-2 sm:mt-0 flex flex-none items-center gap-x-4">
-                                        <button
-                                            type="button"
-                                            className="block rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                                            onClick={() => {
-                                                cancelItem.mutate(item.key);
-                                            }}
-                                        >
-                                            Cancel Item
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                );
+            })()}
         </>
     );
 };

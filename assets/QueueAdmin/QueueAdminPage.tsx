@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { StopCircleIcon } from '@heroicons/react/20/solid';
 import { usePageTitle } from '../RouteContext/RouteContext';
 import { useQueueAdminData } from './QueueAdminData';
 import PartialPageLoading from '../PartialPageLoading';
+import NoResultsAddItem from '../NoResultsAddItem';
 
 const QueueAdminPage = () => {
     usePageTitle('Queue Admin');
@@ -14,6 +16,15 @@ const QueueAdminPage = () => {
 
     if (status === 'loading') {
         return <PartialPageLoading />;
+    }
+
+    if (data.length < 1) {
+        return (
+            <NoResultsAddItem
+                icon={<StopCircleIcon />}
+                headline="There are no queues"
+            />
+        );
     }
 
     return (
