@@ -31,13 +31,13 @@ var useScheduleAdminData = function () {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         returnObject.data = result.data.map(function (item) {
-            var lastRunStartAt = item.lastRunStartAt
+            var lastRunStartAtDate = item.lastRunStartAt
                 ? new Date(item.lastRunStartAt)
                 : null;
-            var lastRunEndAt = item.lastRunEndAt
+            var lastRunEndAtDate = item.lastRunEndAt
                 ? new Date(item.lastRunEndAt)
                 : null;
-            return __assign(__assign({}, item), { lastRunStartAt: lastRunStartAt, lastRunEndAt: lastRunEndAt });
+            return __assign(__assign({}, item), { lastRunStartAtDate: lastRunStartAtDate, lastRunEndAtDate: lastRunEndAtDate });
         });
     }
     return returnObject;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StopCircleIcon } from '@heroicons/react/20/solid';
+import phpDateFormat from 'locutus/php/datetime/date';
 import { usePageTitle } from '../RouteContext/RouteContext';
 import { useScheduleAdminData } from './ScheduleAdminData';
 import PartialPageLoading from '../PartialPageLoading';
@@ -42,12 +43,14 @@ const ScheduleAdminPage = () => {
                                     <p>
                                         Last run start:
                                         {' '}
-                                        <span className="font-bold">{item.lastRunStartAt ? item.lastRunStartAt.toString() : ''}</span>
+                                        <span className="font-bold">{item.lastRunStartAtDate ? `${phpDateFormat('Y-m-d h:i:s', item.lastRunStartAtDate)} (${Intl.DateTimeFormat().resolvedOptions().timeZone})` : ''}</span>
                                     </p>
                                     <p>
                                         Last run end:
                                         {' '}
-                                        <span className="font-bold">{item.lastRunEndAt ? item.lastRunEndAt.toString() : ''}</span>
+                                        <span className="font-bold">
+                                            {item.lastRunEndAtDate ? `${phpDateFormat('Y-m-d h:i:s', item.lastRunEndAtDate.timestamp)} (${Intl.DateTimeFormat().resolvedOptions().timeZone})` : ''}
+                                        </span>
                                     </p>
                                 </div>
                             </div>

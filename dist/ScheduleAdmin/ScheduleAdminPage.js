@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var solid_1 = require("@heroicons/react/20/solid");
+var date_1 = __importDefault(require("locutus/php/datetime/date"));
 var RouteContext_1 = require("../RouteContext/RouteContext");
 var ScheduleAdminData_1 = require("./ScheduleAdminData");
 var PartialPageLoading_1 = __importDefault(require("../PartialPageLoading"));
@@ -30,10 +31,10 @@ var ScheduleAdminPage = function () {
                         react_1.default.createElement("p", null,
                             "Last run start:",
                             ' ',
-                            react_1.default.createElement("span", { className: "font-bold" }, item.lastRunStartAt ? item.lastRunStartAt.toString() : '')),
+                            react_1.default.createElement("span", { className: "font-bold" }, item.lastRunStartAtDate ? "".concat((0, date_1.default)('Y-m-d h:i:s', item.lastRunStartAtDate), " (").concat(Intl.DateTimeFormat().resolvedOptions().timeZone, ")") : '')),
                         react_1.default.createElement("p", null,
                             "Last run end:",
                             ' ',
-                            react_1.default.createElement("span", { className: "font-bold" }, item.lastRunEndAt ? item.lastRunEndAt.toString() : ''))))))); }))));
+                            react_1.default.createElement("span", { className: "font-bold" }, item.lastRunEndAtDate ? "".concat((0, date_1.default)('Y-m-d h:i:s', item.lastRunEndAtDate.timestamp), " (").concat(Intl.DateTimeFormat().resolvedOptions().timeZone, ")") : ''))))))); }))));
 };
 exports.default = ScheduleAdminPage;

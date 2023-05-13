@@ -1,11 +1,11 @@
 import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect';
-import { Schedules, SchedulesSchema, SchedulesWithDates } from './Schedules';
+import { SchedulesSchema, SchedulesWithDates } from './Schedules';
 
 // eslint-disable-next-line import/prefer-default-export
 export const useScheduleAdminData = () => {
     const uri = '/schedule';
 
-    const result = useApiQueryWithSignInRedirect<Schedules>(
+    const result = useApiQueryWithSignInRedirect<SchedulesWithDates>(
         [uri],
         { uri },
         {
@@ -17,7 +17,7 @@ export const useScheduleAdminData = () => {
 
     const returnObject = {
         ...result,
-        data: null as SchedulesWithDates,
+        data: null,
     };
 
     if (result.data) {
@@ -25,18 +25,18 @@ export const useScheduleAdminData = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         returnObject.data = result.data.map((item) => {
-            const lastRunStartAt = item.lastRunStartAt
+            const lastRunStartAtDate = item.lastRunStartAt
                 ? new Date(item.lastRunStartAt)
                 : null;
 
-            const lastRunEndAt = item.lastRunEndAt
+            const lastRunEndAtDate = item.lastRunEndAt
                 ? new Date(item.lastRunEndAt)
                 : null;
 
             return {
                 ...item,
-                lastRunStartAt,
-                lastRunEndAt,
+                lastRunStartAtDate,
+                lastRunEndAtDate,
             };
         });
     }

@@ -14,6 +14,6 @@ export const SchedulesSchema = z.array(
 export type Schedules = z.infer<typeof SchedulesSchema>;
 
 export type SchedulesWithDates = Schedules & {
-    lastRunStartAt: Date | null;
-    lastRunEndAt: Date | null;
+    lastRunStartAtDate: Date | null;
+    lastRunEndAtDate: Date | null;
 };

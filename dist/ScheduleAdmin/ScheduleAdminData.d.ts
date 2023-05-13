@@ -1,15 +1,8 @@
 import { SchedulesWithDates } from './Schedules';
 export declare const useScheduleAdminData: () => {
-    data: SchedulesWithDates;
+    data: any;
     accessDenied: boolean;
-    setData: (newData: {
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[]) => void;
+    setData: (newData: SchedulesWithDates) => void;
     error: import("../Api/ApiError").default;
     isError: true;
     isLoading: false;
@@ -31,27 +24,13 @@ export declare const useScheduleAdminData: () => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<SchedulesWithDates, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 } | {
-    data: SchedulesWithDates;
+    data: any;
     accessDenied: boolean;
-    setData: (newData: {
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[]) => void;
+    setData: (newData: SchedulesWithDates) => void;
     error: null;
     isError: false;
     isLoading: false;
@@ -73,27 +52,13 @@ export declare const useScheduleAdminData: () => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<SchedulesWithDates, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 } | {
-    data: SchedulesWithDates;
+    data: any;
     accessDenied: boolean;
-    setData: (newData: {
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[]) => void;
+    setData: (newData: SchedulesWithDates) => void;
     error: import("../Api/ApiError").default;
     isError: true;
     isLoading: false;
@@ -115,27 +80,13 @@ export declare const useScheduleAdminData: () => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<SchedulesWithDates, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 } | {
-    data: SchedulesWithDates;
+    data: any;
     accessDenied: boolean;
-    setData: (newData: {
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[]) => void;
+    setData: (newData: SchedulesWithDates) => void;
     error: null;
     isError: false;
     isLoading: true;
@@ -157,14 +108,7 @@ export declare const useScheduleAdminData: () => {
     isPreviousData: boolean;
     isRefetching: boolean;
     isStale: boolean;
-    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<{
-        key?: string;
-        runEvery?: string;
-        class?: string;
-        method?: string;
-        lastRunStartAt?: string;
-        lastRunEndAt?: string;
-    }[], import("../Api/ApiError").default>>;
+    refetch: <TPageData>(options?: import("@tanstack/query-core").RefetchOptions & import("@tanstack/query-core").RefetchQueryFilters<TPageData>) => Promise<import("@tanstack/query-core").QueryObserverResult<SchedulesWithDates, import("../Api/ApiError").default>>;
     remove: () => void;
     fetchStatus: import("@tanstack/query-core").FetchStatus;
 };
