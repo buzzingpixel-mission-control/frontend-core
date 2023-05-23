@@ -92,6 +92,7 @@ var ProjectDetailsPage = function () {
                         })())),
                 react_1.default.createElement("div", { className: "mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-3 sm:space-y-0 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3" },
                     react_1.default.createElement("button", { type: "button", className: "inline-flex items-center justify-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" }, "Edit Project")))),
-        (0, ProjectDetailsData_1.getProjectDetailsSections)().map(function (section) { return (react_1.default.createElement(section.render, { key: section.uniqueKey, project: project })); })));
+        (0, ProjectDetailsData_1.getProjectDetailsSections)().map(function (section) { return (react_1.default.createElement("div", { className: "py-6", key: section.uniqueKey },
+            react_1.default.createElement(section.render, { project: project }))); })));
 };
 exports.default = ProjectDetailsPage;

@@ -120,10 +120,9 @@ const ProjectDetailsPage = () => {
                 </div>
             </div>
             {getProjectDetailsSections().map((section) => (
-                <section.render
-                    key={section.uniqueKey}
-                    project={project}
-                />
+                <div className="py-6" key={section.uniqueKey}>
+                    <section.render project={project} />
+                </div>
             ))}
         </>
     );
