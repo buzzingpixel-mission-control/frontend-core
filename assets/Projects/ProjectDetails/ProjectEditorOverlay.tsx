@@ -1,15 +1,15 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import FormInput from '../Forms/FormInput';
-import EditorShellInline from '../Forms/EditorShellInline';
-import EditorShellForm from '../Forms/EditorShellForm';
-import FormInputText from '../Forms/FormInputText';
-import { Project } from './Projects';
-import AddProjectFormValues from './AddProjectFormValues';
-import FormInputTextarea from '../Forms/FormInputTextarea';
-import { useEditProjectMutation } from './ProjectsData';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { Project } from '../Projects';
+import EditorShellFloating from '../../Forms/EditorShellFloating';
+import AddProjectFormValues from '../AddProjectFormValues';
+import FormInputText from '../../Forms/FormInputText';
+import FormInputTextarea from '../../Forms/FormInputTextarea';
+import FormInput from '../../Forms/FormInput';
+import { useEditProjectMutation } from '../ProjectsData';
+import EditorShellForm from '../../Forms/EditorShellForm';
 
-const ProjectListItemEditor = (
+const ProjectEditorOverlay = (
     {
         project,
         setEditorIsOpen,
@@ -92,30 +92,25 @@ const ProjectListItemEditor = (
     };
 
     return (
-        <div style={{ paddingBottom: '1.5rem' }}>
-            <div
-                className="border border-gray-300 rounded-md shadow-md mx-auto p-4"
-                style={{ maxWidth: '600px' }}
-            >
-                <EditorShellInline
-                    isSaving={isSaving}
-                    setEditorIsOpen={setEditorIsOpen}
-                    errorMessage={errorMessage}
-                    saveHandler={() => {
-                        saveHandler(getValues());
-                    }}
-                >
-                    <EditorShellForm
-                        inputs={inputs}
-                        register={register}
-                        onSubmit={() => {
-                            saveHandler(getValues());
-                        }}
-                    />
-                </EditorShellInline>
-            </div>
-        </div>
+        <EditorShellFloating
+            title="Edit Project"
+            isSaving={isSaving}
+            submitButtonText="Update"
+            errorMessage={errorMessage}
+            saveHandler={() => {
+                saveHandler(getValues());
+            }}
+            setEditorIsOpen={setEditorIsOpen}
+        >
+            <EditorShellForm
+                inputs={inputs}
+                register={register}
+                onSubmit={() => {
+                    saveHandler(getValues());
+                }}
+            />
+        </EditorShellFloating>
     );
 };
 
-export default ProjectListItemEditor;
+export default ProjectEditorOverlay;

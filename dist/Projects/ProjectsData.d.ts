@@ -118,5 +118,5 @@ export declare const useAllProjectsData: () => {
     data: ProjectsWithViewOptions;
 };
 export declare const useAddProjectMutation: () => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
-export declare const useEditProjectMutation: (projectId: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
+export declare const useEditProjectMutation: (projectId: string, projectSlug: string) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, AddProjectFormValues>;
 export declare const useArchiveProjectMutation: (projectId: string, isArchive: boolean) => import("@tanstack/react-query/src/types").UseMutationResult<unknown, import("../Api/ApiError").default, unknown>;

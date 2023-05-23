@@ -31,6 +31,8 @@ var react_router_dom_1 = require("react-router-dom");
 var ProjectDetailsData_1 = require("./ProjectDetailsData");
 var PartialPageLoading_1 = __importDefault(require("../../PartialPageLoading"));
 var RouteContext_1 = require("../../RouteContext/RouteContext");
+var createPortal_1 = __importDefault(require("../../createPortal"));
+var ProjectEditorOverlay_1 = __importDefault(require("./ProjectEditorOverlay"));
 var statuses = {
     Active: 'text-green-700 bg-green-50 ring-green-600/20',
     Archived: 'text-yellow-800 bg-yellow-50 ring-yellow-600/20',
@@ -58,7 +60,8 @@ var ProjectDetailsPage = function () {
             href: "/projects/".concat(slug),
         },
     ]);
-    var _c = (0, ProjectDetailsData_1.useProjectDetailsData)(slug), status = _c.status, data = _c.data;
+    var _c = (0, react_1.useState)(false), editProjectIsOpen = _c[0], setEditProjectIsOpen = _c[1];
+    var _d = (0, ProjectDetailsData_1.useProjectDetailsData)(slug), status = _d.status, data = _d.data;
     if (status === 'loading') {
         return react_1.default.createElement(PartialPageLoading_1.default, null);
     }
@@ -70,7 +73,14 @@ var ProjectDetailsPage = function () {
     if (isArchive !== !project.isActive) {
         setIsArchive(true);
     }
+    var portals = function () {
+        if (editProjectIsOpen) {
+            return (0, createPortal_1.default)(react_1.default.createElement(ProjectEditorOverlay_1.default, { project: project, setEditorIsOpen: setEditProjectIsOpen }));
+        }
+        return null;
+    };
     return (react_1.default.createElement(react_1.default.Fragment, null,
+        portals(),
         react_1.default.createElement("div", { className: "border-b border-gray-200 pb-4" },
             react_1.default.createElement("div", { className: "md:flex md:items-center md:justify-between md:space-x-5" },
                 react_1.default.createElement("div", { className: "flex items-start space-x-5" },
@@ -91,7 +101,7 @@ var ProjectDetailsPage = function () {
                             return (react_1.default.createElement("p", { className: "text-sm font-medium text-gray-500" }, project.description));
                         })())),
                 react_1.default.createElement("div", { className: "mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-3 sm:space-y-0 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3" },
-                    react_1.default.createElement("button", { type: "button", className: "inline-flex items-center justify-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" }, "Edit Project")))),
+                    react_1.default.createElement("button", { type: "button", className: "inline-flex items-center justify-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600", onClick: function () { setEditProjectIsOpen(true); } }, "Edit Project")))),
         (0, ProjectDetailsData_1.getProjectDetailsSections)().map(function (section) { return (react_1.default.createElement("div", { className: "py-6", key: section.uniqueKey },
             react_1.default.createElement(section.render, { project: project }))); })));
 };

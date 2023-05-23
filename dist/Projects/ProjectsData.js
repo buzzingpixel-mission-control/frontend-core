@@ -104,10 +104,11 @@ var useAddProjectMutation = function () { return (0, useApiMutation_1.default)({
     }); },
 }); };
 exports.useAddProjectMutation = useAddProjectMutation;
-var useEditProjectMutation = function (projectId) {
+var useEditProjectMutation = function (projectId, projectSlug) {
     var queryClient = (0, react_query_1.useQueryClient)();
     return (0, useApiMutation_1.default)({
         invalidateQueryKeysOnSuccess: [
+            "/projects/".concat(projectSlug),
             '/projects/list',
             '/projects/list/archived',
         ],

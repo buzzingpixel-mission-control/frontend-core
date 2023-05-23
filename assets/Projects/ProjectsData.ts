@@ -86,12 +86,16 @@ export const useAddProjectMutation = () => useApiMutation<unknown, AddProjectFor
     },
 );
 
-export const useEditProjectMutation = (projectId: string) => {
+export const useEditProjectMutation = (
+    projectId: string,
+    projectSlug: string,
+) => {
     const queryClient = useQueryClient();
 
     return useApiMutation<unknown, AddProjectFormValues>(
         {
             invalidateQueryKeysOnSuccess: [
+                `/projects/${projectSlug}`,
                 '/projects/list',
                 '/projects/list/archived',
             ],
