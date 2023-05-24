@@ -60,11 +60,13 @@
         "react-component": "^0.0.0",
         "react-cookie": "^4.1.1",
         "react-dom": "^18.2.0",
+        "react-error-boundary": "^4.0.4",
         "react-hook-form": "^7.43.9",
         "react-router": "^6.10.0",
         "react-router-dom": "^6.10.0",
         "react-select": "^5.7.2",
         "sleep-promise": "^9.1.0",
+        "ts-md5": "^1.3.1",
         "uuid": "^9.0.0",
         "zod": "^3.21.4"
     }

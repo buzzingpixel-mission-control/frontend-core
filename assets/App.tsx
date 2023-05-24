@@ -10,6 +10,8 @@ import FrontEndCoreRoutes from './FrontEndCoreRoutes';
 import FrontEndCoreMenuItems from './FrontEndCoreMenuItems';
 import { RouteContextProvider } from './RouteContext/RouteContext';
 import FullPageLoading from './FullPageLoading';
+import ErrorBoundaryPage from './ErrorBoundary/ErrorBoundaryPage';
+import MissionControlErrorBoundary from './ErrorBoundary/MissionControlErrorBoundary';
 
 const queryClient = new QueryClient();
 
@@ -51,20 +53,22 @@ const App = (
                             ...appConfig.menuItems(),
                         ]}
                         >
-                            <Routes>
-                                {appConfig.routes()}
-                                {FrontEndCoreRoutes()}
-                            </Routes>
+                            <MissionControlErrorBoundary>
+                                <Routes>
+                                    {appConfig.routes()}
+                                    {FrontEndCoreRoutes()}
+                                </Routes>
+                            </MissionControlErrorBoundary>
                         </Shell>
                     </RouteContextProvider>
                 </Router>
             </Auth>
             {/*
-            By default, React Query Devtools are only included in
-            bundles when process.env.NODE_ENV === 'development', so you
-            don't need to worry about excluding them during a production
-            build. -- https://tanstack.com/query/v4/docs/devtools
-        */}
+                By default, React Query Devtools are only included in
+                bundles when process.env.NODE_ENV === 'development', so you
+                don't need to worry about excluding them during a production
+                build. -- https://tanstack.com/query/v4/docs/devtools
+            */}
             <ReactQueryDevtools />
         </QueryClientProvider>
     );

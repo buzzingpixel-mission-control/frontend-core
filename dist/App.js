@@ -46,6 +46,7 @@ var FrontEndCoreRoutes_1 = __importDefault(require("./FrontEndCoreRoutes"));
 var FrontEndCoreMenuItems_1 = __importDefault(require("./FrontEndCoreMenuItems"));
 var RouteContext_1 = require("./RouteContext/RouteContext");
 var FullPageLoading_1 = __importDefault(require("./FullPageLoading"));
+var MissionControlErrorBoundary_1 = __importDefault(require("./ErrorBoundary/MissionControlErrorBoundary"));
 var queryClient = new query_core_1.QueryClient();
 var App = function (_a) {
     var appConfig = _a.appConfig;
@@ -66,9 +67,10 @@ var App = function (_a) {
             react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
                 react_1.default.createElement(RouteContext_1.RouteContextProvider, null,
                     react_1.default.createElement(Shell_1.default, { menuItems: __spreadArray(__spreadArray([], (0, FrontEndCoreMenuItems_1.default)(), true), appConfig.menuItems(), true) },
-                        react_1.default.createElement(react_router_dom_1.Routes, null,
-                            appConfig.routes(),
-                            (0, FrontEndCoreRoutes_1.default)()))))),
+                        react_1.default.createElement(MissionControlErrorBoundary_1.default, null,
+                            react_1.default.createElement(react_router_dom_1.Routes, null,
+                                appConfig.routes(),
+                                (0, FrontEndCoreRoutes_1.default)())))))),
         react_1.default.createElement(react_query_devtools_1.ReactQueryDevtools, null)));
 };
 exports.default = App;
