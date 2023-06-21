@@ -16,7 +16,7 @@ const NotFoundPage = () => {
                 <Link to="/projects" className="text-sm font-semibold leading-7 text-cyan-600">
                     <span aria-hidden="true">&larr;</span>
                     {' '}
-                    Trying going to projects
+                    Try going to projects
                 </Link>
             </div>
         </div>

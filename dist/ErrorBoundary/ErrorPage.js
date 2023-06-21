@@ -15,6 +15,6 @@ var ErrorPage = function () {
             react_1.default.createElement(react_router_dom_1.Link, { to: "/projects", className: "text-sm font-semibold leading-7 text-cyan-600" },
                 react_1.default.createElement("span", { "aria-hidden": "true" }, "\u2190"),
                 ' ',
-                "Trying going to projects"))));
+                "Try going to projects"))));
 };
 exports.default = ErrorPage;
