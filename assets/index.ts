@@ -53,6 +53,7 @@ import {
     useSetBreadcrumbs,
     useBreadcrumbs,
 } from './RouteContext/RouteContext';
+import useUpdateQueryStringValueWithoutNav from './useUpdateQueryStringValueWithoutNav';
 
 export {
     App,
@@ -106,4 +107,5 @@ export {
     addProjectDetailsSection,
     EncodeQueryParamsFromObject,
     useApiQueryWithSignInRedirect,
+    useUpdateQueryStringValueWithoutNav,
 };

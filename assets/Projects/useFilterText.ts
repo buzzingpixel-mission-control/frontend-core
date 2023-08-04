@@ -1,27 +1,21 @@
 import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import useUpdateQueryStringValueWithoutNav from '../useUpdateQueryStringValueWithoutNav';
 
 const useFilterText = (): [
     string,
     (val: string) => void,
 ] => {
-    const [
-        searchParams,
-        setSearchParams,
-    ] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
-    const filterText = searchParams.get('filter') ?? '';
+    const [filterText, setFilterText] = useState(
+        searchParams.get('filter') ?? '',
+    );
 
-    const setFilterText = (val: string) => {
-        setSearchParams((params) => {
-            if (!val) {
-                params.delete('filter');
-            } else {
-                params.set('filter', val);
-            }
-
-            return params;
-        });
-    };
+    useUpdateQueryStringValueWithoutNav(
+        'filter',
+        filterText,
+    );
 
     return [
         filterText,
