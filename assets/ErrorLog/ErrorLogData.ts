@@ -1,11 +1,14 @@
 import { useQueryClient } from '@tanstack/react-query';
 import useApiQueryWithSignInRedirect from '../Api/useApiQueryWithSignInRedirect';
 import {
-    ErrorLog,
-    ErrorLogs, ErrorLogsSchema, ErrorLogsWithViewOptions, transformErrorLogs,
+    ErrorLogs,
+    ErrorLogsSchema,
+    ErrorLogsWithViewOptions,
+    transformErrorLogs,
 } from './ErrorLogs';
 import useApiMutation from '../Api/useApiMutation';
 import RequestMethod from '../Api/RequestMethod';
+import MinutesToMilliseconds from '../MinutesToMilliseconds';
 
 export const useErrorLogData = (): {
     status: 'loading' | 'error' | 'success';
@@ -18,7 +21,7 @@ export const useErrorLogData = (): {
         { uri },
         {
             zodValidator: ErrorLogsSchema,
-            staleTime: Infinity,
+            staleTime: MinutesToMilliseconds(1),
         },
     );
 

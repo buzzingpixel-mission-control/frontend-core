@@ -45,11 +45,12 @@ var useApiQueryWithSignInRedirect_1 = __importDefault(require("../Api/useApiQuer
 var ErrorLogs_1 = require("./ErrorLogs");
 var useApiMutation_1 = __importDefault(require("../Api/useApiMutation"));
 var RequestMethod_1 = __importDefault(require("../Api/RequestMethod"));
+var MinutesToMilliseconds_1 = __importDefault(require("../MinutesToMilliseconds"));
 var useErrorLogData = function () {
     var uri = '/error-logs/list';
     var response = (0, useApiQueryWithSignInRedirect_1.default)([uri], { uri: uri }, {
         zodValidator: ErrorLogs_1.ErrorLogsSchema,
-        staleTime: Infinity,
+        staleTime: (0, MinutesToMilliseconds_1.default)(1),
     });
     return {
         status: response.status,
