@@ -4,6 +4,7 @@ import { Menu, Transition } from '@headlessui/react';
 import phpDateFormat from 'locutus/php/datetime/date';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 import { ErrorLogWithViewOptions } from './ErrorLogs';
+import { useDeleteErrorLogMutation } from './ErrorLogData';
 
 function classNames (...classes: Array<string>) {
     return classes.filter(Boolean).join(' ');
@@ -22,6 +23,8 @@ const ErrorLogListItem = (
         };
     },
 ) => {
+    const deleteMutation = useDeleteErrorLogMutation(item.id);
+
     let isSelected = false;
 
     if (selectedItemsManager?.selectedItems.indexOf(item.id) > -1) {
@@ -95,7 +98,7 @@ const ErrorLogListItem = (
                                                 'cursor-pointer block px-3 py-1 text-sm leading-6 text-gray-900',
                                             )}
                                             onClick={() => {
-                                                // archiveMutation.mutate(undefined);
+                                                deleteMutation.mutate(undefined);
                                             }}
                                         >
                                             Delete

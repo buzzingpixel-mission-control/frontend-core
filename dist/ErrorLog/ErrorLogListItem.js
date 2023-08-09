@@ -31,6 +31,7 @@ var react_router_dom_1 = require("react-router-dom");
 var react_2 = require("@headlessui/react");
 var date_1 = __importDefault(require("locutus/php/datetime/date"));
 var solid_1 = require("@heroicons/react/20/solid");
+var ErrorLogData_1 = require("./ErrorLogData");
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -40,6 +41,7 @@ function classNames() {
 }
 var ErrorLogListItem = function (_a) {
     var item = _a.item, selectedItemsManager = _a.selectedItemsManager;
+    var deleteMutation = (0, ErrorLogData_1.useDeleteErrorLogMutation)(item.id);
     var isSelected = false;
     if ((selectedItemsManager === null || selectedItemsManager === void 0 ? void 0 : selectedItemsManager.selectedItems.indexOf(item.id)) > -1) {
         isSelected = true;
@@ -77,7 +79,7 @@ var ErrorLogListItem = function (_a) {
                             react_1.default.createElement(react_2.Menu.Item, null, function (_a) {
                                 var active = _a.active;
                                 return (react_1.default.createElement("span", { className: classNames(active ? 'bg-gray-50' : '', 'cursor-pointer block px-3 py-1 text-sm leading-6 text-gray-900'), onClick: function () {
-                                        // archiveMutation.mutate(undefined);
+                                        deleteMutation.mutate(undefined);
                                     } }, "Delete"));
                             })))),
                 (function () {
