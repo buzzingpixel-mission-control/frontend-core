@@ -21,7 +21,7 @@ var FrontEndCoreMenuItems = function () { return [
         requiresAdminPrivileges: true,
     },
     {
-        name: 'ErrorLog',
+        name: 'Error Logs',
         href: '/error-logs',
         icon: outline_1.ExclamationTriangleIcon,
         requiresAdminPrivileges: true,

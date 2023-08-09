@@ -11,7 +11,7 @@ function classNames (...classes: Array<string>) {
 }
 
 const ErrorLogPage = () => {
-    usePageTitle('Error Log');
+    usePageTitle('Error Logs');
 
     const [
         selectedItems,

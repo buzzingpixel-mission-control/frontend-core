@@ -50,7 +50,7 @@ function classNames() {
     return classes.filter(Boolean).join(' ');
 }
 var ErrorLogPage = function () {
-    (0, RouteContext_1.usePageTitle)('Error Log');
+    (0, RouteContext_1.usePageTitle)('Error Logs');
     var _a = (0, react_1.useState)([]), selectedItems = _a[0], setSelectedItems = _a[1];
     var _b = (0, ErrorLogData_1.useErrorLogData)(), status = _b.status, data = _b.data;
     if (status === 'loading') {

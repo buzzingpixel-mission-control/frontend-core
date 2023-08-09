@@ -27,7 +27,7 @@ const FrontEndCoreMenuItems = (): Array<MenuItem> => [
         requiresAdminPrivileges: true,
     },
     {
-        name: 'ErrorLog',
+        name: 'Error Logs',
         href: '/error-logs',
         icon: ExclamationTriangleIcon,
         requiresAdminPrivileges: true,
