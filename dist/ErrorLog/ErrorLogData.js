@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDeleteErrorLogMutation = exports.useErrorLogData = void 0;
+exports.useDeleteSelectedErrorLogsMutation = exports.useDeleteErrorLogMutation = exports.useErrorLogData = void 0;
 var react_query_1 = require("@tanstack/react-query");
 var useApiQueryWithSignInRedirect_1 = __importDefault(require("../Api/useApiQueryWithSignInRedirect"));
 var ErrorLogs_1 = require("./ErrorLogs");
@@ -104,3 +104,19 @@ var useDeleteErrorLogMutation = function (errorLogId) {
     });
 };
 exports.useDeleteErrorLogMutation = useDeleteErrorLogMutation;
+var useDeleteSelectedErrorLogsMutation = function (errorLogs) {
+    var errorLogIds = errorLogs.map(function (errorLog) { return errorLog.id; });
+    var invalidateQueryKeysOnSuccess = ['/error-logs/list'];
+    errorLogIds.forEach(function (id) {
+        invalidateQueryKeysOnSuccess.push("/error-logs/".concat(id));
+    });
+    return (0, useApiMutation_1.default)({
+        invalidateQueryKeysOnSuccess: invalidateQueryKeysOnSuccess,
+        prepareApiParams: function () { return ({
+            uri: '/error-logs',
+            method: RequestMethod_1.default.DELETE,
+            payload: { errorLogIds: errorLogIds },
+        }); },
+    });
+};
+exports.useDeleteSelectedErrorLogsMutation = useDeleteSelectedErrorLogsMutation;

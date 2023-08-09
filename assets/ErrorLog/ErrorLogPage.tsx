@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { usePageTitle } from '../RouteContext/RouteContext';
 import ErrorLogListItem from './ErrorLogListItem';
-import { useErrorLogData } from './ErrorLogData';
+import { useDeleteSelectedErrorLogsMutation, useErrorLogData } from './ErrorLogData';
 import PartialPageLoading from '../PartialPageLoading';
 
 function classNames (...classes: Array<string>) {
@@ -19,6 +19,10 @@ const ErrorLogPage = () => {
     ] = useState<Array<string>>([]);
 
     const { status, data } = useErrorLogData();
+
+    const deleteSelectedMutation = useDeleteSelectedErrorLogsMutation(
+        data.filter((i) => selectedItems.indexOf(i.id) > -1),
+    );
 
     if (status === 'loading') {
         return <PartialPageLoading />;
@@ -56,13 +60,12 @@ const ErrorLogPage = () => {
         ? 'pointer-events-none'
         : 'pointer-events-auto';
 
-    const archiveSelected = () => {
+    const deleteSelected = () => {
         if (selectedItems.length < 1) {
             return;
         }
 
-        // archiveSelectedPingsMutation.mutate({});
-        console.log('todo');
+        deleteSelectedMutation.mutate(undefined);
     };
 
     return (
@@ -116,7 +119,7 @@ const ErrorLogPage = () => {
                                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                 'block px-4 py-2 text-sm cursor-pointer',
                                             )}
-                                            onClick={archiveSelected}
+                                            onClick={deleteSelected}
                                         >
                                             Delete
                                         </span>

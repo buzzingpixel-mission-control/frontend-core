@@ -72,3 +72,22 @@ export const useDeleteErrorLogMutation = (errorLogId: string) => {
         },
     });
 };
+
+export const useDeleteSelectedErrorLogsMutation = (errorLogs: ErrorLogs) => {
+    const errorLogIds = errorLogs.map((errorLog) => errorLog.id);
+
+    const invalidateQueryKeysOnSuccess = ['/error-logs/list'];
+
+    errorLogIds.forEach((id) => {
+        invalidateQueryKeysOnSuccess.push(`/error-logs/${id}`);
+    });
+
+    return useApiMutation({
+        invalidateQueryKeysOnSuccess,
+        prepareApiParams: () => ({
+            uri: '/error-logs',
+            method: RequestMethod.DELETE,
+            payload: { errorLogIds },
+        }),
+    });
+};

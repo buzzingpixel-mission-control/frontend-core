@@ -53,6 +53,7 @@ var ErrorLogPage = function () {
     (0, RouteContext_1.usePageTitle)('Error Logs');
     var _a = (0, react_1.useState)([]), selectedItems = _a[0], setSelectedItems = _a[1];
     var _b = (0, ErrorLogData_1.useErrorLogData)(), status = _b.status, data = _b.data;
+    var deleteSelectedMutation = (0, ErrorLogData_1.useDeleteSelectedErrorLogsMutation)(data.filter(function (i) { return selectedItems.indexOf(i.id) > -1; }));
     if (status === 'loading') {
         return react_1.default.createElement(PartialPageLoading_1.default, null);
     }
@@ -79,12 +80,11 @@ var ErrorLogPage = function () {
     var withSelectedPointerEvents = withSelectedDisabled
         ? 'pointer-events-none'
         : 'pointer-events-auto';
-    var archiveSelected = function () {
+    var deleteSelected = function () {
         if (selectedItems.length < 1) {
             return;
         }
-        // archiveSelectedPingsMutation.mutate({});
-        console.log('todo');
+        deleteSelectedMutation.mutate(undefined);
     };
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("div", { className: "text-right pr-4 mb-4" },
@@ -107,7 +107,7 @@ var ErrorLogPage = function () {
                         react_1.default.createElement("div", { className: "py-1" },
                             react_1.default.createElement(react_2.Menu.Item, { disabled: withSelectedDisabled }, function (_a) {
                                 var active = _a.active;
-                                return (react_1.default.createElement("span", { className: classNames(active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm cursor-pointer'), onClick: archiveSelected }, "Delete"));
+                                return (react_1.default.createElement("span", { className: classNames(active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm cursor-pointer'), onClick: deleteSelected }, "Delete"));
                             })))))),
         react_1.default.createElement("div", { className: "bg-white rounded-md shadow-sm" },
             react_1.default.createElement("ul", { className: "divide-y divide-gray-100" }, data.map(function (item) { return (react_1.default.createElement(ErrorLogListItem_1.default, { key: item.id, item: item, selectedItemsManager: selectedItemsManager })); })))));
