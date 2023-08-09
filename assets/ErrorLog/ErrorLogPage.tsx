@@ -1,10 +1,12 @@
 import React, { useState, Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { usePageTitle } from '../RouteContext/RouteContext';
 import ErrorLogListItem from './ErrorLogListItem';
 import { useDeleteSelectedErrorLogsMutation, useErrorLogData } from './ErrorLogData';
 import PartialPageLoading from '../PartialPageLoading';
+import NoResultsAddItem from '../NoResultsAddItem';
 
 function classNames (...classes: Array<string>) {
     return classes.filter(Boolean).join(' ');
@@ -26,6 +28,15 @@ const ErrorLogPage = () => {
 
     if (status === 'loading') {
         return <PartialPageLoading />;
+    }
+
+    if (data.length < 1) {
+        return (
+            <NoResultsAddItem
+                icon={<CheckCircleIcon />}
+                headline="No Error Logs"
+            />
+        );
     }
 
     const selectedItemsManager = {

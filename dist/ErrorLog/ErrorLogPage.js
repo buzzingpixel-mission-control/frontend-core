@@ -38,10 +38,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var react_2 = require("@headlessui/react");
 var solid_1 = require("@heroicons/react/20/solid");
+var outline_1 = require("@heroicons/react/24/outline");
 var RouteContext_1 = require("../RouteContext/RouteContext");
 var ErrorLogListItem_1 = __importDefault(require("./ErrorLogListItem"));
 var ErrorLogData_1 = require("./ErrorLogData");
 var PartialPageLoading_1 = __importDefault(require("../PartialPageLoading"));
+var NoResultsAddItem_1 = __importDefault(require("../NoResultsAddItem"));
 function classNames() {
     var classes = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -56,6 +58,9 @@ var ErrorLogPage = function () {
     var deleteSelectedMutation = (0, ErrorLogData_1.useDeleteSelectedErrorLogsMutation)(data.filter(function (i) { return selectedItems.indexOf(i.id) > -1; }));
     if (status === 'loading') {
         return react_1.default.createElement(PartialPageLoading_1.default, null);
+    }
+    if (data.length < 1) {
+        return (react_1.default.createElement(NoResultsAddItem_1.default, { icon: react_1.default.createElement(outline_1.CheckCircleIcon, null), headline: "No Error Logs" }));
     }
     var selectedItemsManager = {
         selectedItems: selectedItems,
