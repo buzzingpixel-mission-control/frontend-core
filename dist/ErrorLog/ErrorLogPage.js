@@ -109,7 +109,7 @@ var ErrorLogPage = function () {
                                 var active = _a.active;
                                 return (react_1.default.createElement("span", { className: classNames(active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm cursor-pointer'), onClick: archiveSelected }, "Delete"));
                             })))))),
-        react_1.default.createElement("div", { className: "bg-white rounded-md shadow-sm overflow-hidden" },
+        react_1.default.createElement("div", { className: "bg-white rounded-md shadow-sm" },
             react_1.default.createElement("ul", { className: "divide-y divide-gray-100" }, data.map(function (item) { return (react_1.default.createElement(ErrorLogListItem_1.default, { key: item.id, item: item, selectedItemsManager: selectedItemsManager })); })))));
 };
 exports.default = ErrorLogPage;

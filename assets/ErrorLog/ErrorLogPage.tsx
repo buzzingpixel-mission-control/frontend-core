@@ -127,7 +127,7 @@ const ErrorLogPage = () => {
                     </Transition>
                 </Menu>
             </div>
-            <div className="bg-white rounded-md shadow-sm overflow-hidden">
+            <div className="bg-white rounded-md shadow-sm">
                 <ul className="divide-y divide-gray-100">
                     {data.map((item) => (
                         <ErrorLogListItem
