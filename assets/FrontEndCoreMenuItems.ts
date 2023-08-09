@@ -3,6 +3,7 @@ import {
     ClipboardDocumentListIcon,
     UserGroupIcon,
     QueueListIcon,
+    ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
 import MenuItem from './MenuItem';
 
@@ -23,6 +24,12 @@ const FrontEndCoreMenuItems = (): Array<MenuItem> => [
         name: 'Schedule Admin',
         href: '/schedule-admin',
         icon: CalendarIcon,
+        requiresAdminPrivileges: true,
+    },
+    {
+        name: 'ErrorLog',
+        href: '/error-logs',
+        icon: ExclamationTriangleIcon,
         requiresAdminPrivileges: true,
     },
     {
