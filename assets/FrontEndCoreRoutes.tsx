@@ -10,6 +10,7 @@ import QueueAdminPage from './QueueAdmin/QueueAdminPage';
 import QueueDetailsPage from './QueueAdmin/QueueDetails/QueueDetailsPage';
 import ScheduleAdminPage from './ScheduleAdmin/ScheduleAdminPage';
 import ErrorLogPage from './ErrorLog/ErrorLogPage';
+import ErrorLogDetailsPage from './ErrorLog/ErrorLogDetails/ErrorLogDetailsPage';
 
 const FrontEndCoreRoutes = () => (
     <>
@@ -22,6 +23,7 @@ const FrontEndCoreRoutes = () => (
         <Route path="/queue-admin/:queueName" element={<RequireAdmin><QueueDetailsPage /></RequireAdmin>} />
         <Route path="/schedule-admin" element={<RequireAdmin><ScheduleAdminPage /></RequireAdmin>} />
         <Route path="/error-logs" element={<RequireAdmin><ErrorLogPage /></RequireAdmin>} />
+        <Route path="/error-logs/:id" element={<RequireAdmin><ErrorLogDetailsPage /></RequireAdmin>} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="*" element={<NotFoundPage />} />
     </>

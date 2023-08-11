@@ -15,6 +15,7 @@ var QueueAdminPage_1 = __importDefault(require("./QueueAdmin/QueueAdminPage"));
 var QueueDetailsPage_1 = __importDefault(require("./QueueAdmin/QueueDetails/QueueDetailsPage"));
 var ScheduleAdminPage_1 = __importDefault(require("./ScheduleAdmin/ScheduleAdminPage"));
 var ErrorLogPage_1 = __importDefault(require("./ErrorLog/ErrorLogPage"));
+var ErrorLogDetailsPage_1 = __importDefault(require("./ErrorLog/ErrorLogDetails/ErrorLogDetailsPage"));
 var FrontEndCoreRoutes = function () { return (react_1.default.createElement(react_1.default.Fragment, null,
     react_1.default.createElement(react_router_dom_1.Route, { path: "/", element: react_1.default.createElement(react_router_dom_1.Navigate, { to: "/projects" }) }),
     react_1.default.createElement(react_router_dom_1.Route, { path: "/projects", element: react_1.default.createElement(ProjectsPage_1.default, null) }),
@@ -30,6 +31,8 @@ var FrontEndCoreRoutes = function () { return (react_1.default.createElement(rea
             react_1.default.createElement(ScheduleAdminPage_1.default, null)) }),
     react_1.default.createElement(react_router_dom_1.Route, { path: "/error-logs", element: react_1.default.createElement(RequireAdmin_1.default, null,
             react_1.default.createElement(ErrorLogPage_1.default, null)) }),
+    react_1.default.createElement(react_router_dom_1.Route, { path: "/error-logs/:id", element: react_1.default.createElement(RequireAdmin_1.default, null,
+            react_1.default.createElement(ErrorLogDetailsPage_1.default, null)) }),
     react_1.default.createElement(react_router_dom_1.Route, { path: "/account", element: react_1.default.createElement(AccountPage_1.default, null) }),
     react_1.default.createElement(react_router_dom_1.Route, { path: "*", element: react_1.default.createElement(NotFoundPage_1.default, null) }))); };
 exports.default = FrontEndCoreRoutes;
