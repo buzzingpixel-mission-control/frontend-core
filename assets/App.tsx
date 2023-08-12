@@ -10,7 +10,6 @@ import FrontEndCoreRoutes from './FrontEndCoreRoutes';
 import FrontEndCoreMenuItems from './FrontEndCoreMenuItems';
 import { RouteContextProvider } from './RouteContext/RouteContext';
 import FullPageLoading from './FullPageLoading';
-import ErrorBoundaryPage from './ErrorBoundary/ErrorBoundaryPage';
 import MissionControlErrorBoundary from './ErrorBoundary/MissionControlErrorBoundary';
 
 const queryClient = new QueryClient();
