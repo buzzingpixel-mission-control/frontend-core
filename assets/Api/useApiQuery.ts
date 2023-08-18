@@ -26,6 +26,10 @@ const useApiQuery = <Props>(
         options.retry = false;
     }
 
+    if (options.useErrorBoundary === undefined) {
+        options.useErrorBoundary = true;
+    }
+
     const { zodValidator } = options;
 
     if (zodValidator) {
@@ -67,7 +71,7 @@ const useApiQuery = <Props>(
                 return Promise.reject(error);
             }
         },
-        { ...options, useErrorBoundary: true },
+        { ...options },
     );
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

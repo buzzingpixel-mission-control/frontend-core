@@ -60,6 +60,9 @@ var useApiQuery = function (queryKey, apiParams, options) {
     if (options.retry === undefined) {
         options.retry = false;
     }
+    if (options.useErrorBoundary === undefined) {
+        options.useErrorBoundary = true;
+    }
     var zodValidator = options.zodValidator;
     if (zodValidator) {
         var originalOnSuccess_1 = options.onSuccess;
@@ -98,7 +101,7 @@ var useApiQuery = function (queryKey, apiParams, options) {
                 case 3: return [2 /*return*/];
             }
         });
-    }); }, __assign(__assign({}, options), { useErrorBoundary: true }));
+    }); }, __assign({}, options));
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     var accessDenied = ((_a = useQueryResult.data) === null || _a === void 0 ? void 0 : _a.error) === 'access_denied';
