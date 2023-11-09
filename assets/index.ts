@@ -38,6 +38,11 @@ import EncodeQueryParamsFromObject from './EncodeQueryParamsFromObject';
 import useApiQueryWithSignInRedirect from './Api/useApiQueryWithSignInRedirect';
 import { addProjectDetailsSection } from './Projects/ProjectDetails/ProjectDetailsData';
 import {
+    ActiveStatus,
+    AdminStatus,
+    useUsersData,
+} from './Users/UsersData';
+import {
     Project,
     Projects,
     ProjectWithViewOptions,
@@ -67,14 +72,17 @@ export {
     AppConfig,
     ApiParams,
     FormInput,
+    AdminStatus,
     QueryParams,
     useUserData,
     useApiQuery,
+    ActiveStatus,
     EditorParams,
     createPortal,
     NotFoundPage,
     RequireAdmin,
     usePageTitle,
+    useUsersData,
     FormInputText,
     RequestMethod,
     MakeApiRequest,
