@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 declare const EditorShellFloating: {
     ({ title, children, isSaving, saveHandler, errorMessage, setEditorIsOpen, submitButtonText, }: {
         title: string;
@@ -8,7 +8,7 @@ declare const EditorShellFloating: {
         setEditorIsOpen: Dispatch<SetStateAction<boolean>>;
         submitButtonText?: string;
         children: JSX.Element | JSX.Element[] | string | string[];
-    }): JSX.Element;
+    }): React.JSX.Element;
     defaultProps: {
         submitButtonText: any;
     };

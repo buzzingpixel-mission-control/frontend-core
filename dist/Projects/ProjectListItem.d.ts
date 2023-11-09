@@ -1,7 +1,7 @@
-/// <reference types="react" />
+import React from 'react';
 import { ProjectWithViewOptions } from './Projects';
 declare const ProjectListItem: ({ isArchive, project, }: {
     isArchive: boolean;
     project: ProjectWithViewOptions;
-}) => JSX.Element;
+}) => React.JSX.Element;
 export default ProjectListItem;

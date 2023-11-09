@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 declare const NoResultsAddItem: {
     ({ icon, headline, content, actionText, actionUsesPlusIcon, actionButtonOnClick, }: {
         icon?: JSX.Element;
@@ -7,7 +7,7 @@ declare const NoResultsAddItem: {
         actionText?: string | JSX.Element;
         actionUsesPlusIcon?: boolean;
         actionButtonOnClick?: MouseEventHandler<HTMLButtonElement> | undefined;
-    }): JSX.Element;
+    }): React.JSX.Element;
     defaultProps: {
         icon: any;
         headline: any;

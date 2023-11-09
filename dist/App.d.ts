@@ -1,6 +1,6 @@
-/// <reference types="react" />
+import React from 'react';
 import AppConfig from './AppConfig';
 declare const App: ({ appConfig, }: {
     appConfig: AppConfig;
-}) => JSX.Element;
+}) => React.JSX.Element;
 export default App;

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 declare const EditorShellInline: {
     ({ children, isSaving, saveHandler, errorMessage, setEditorIsOpen, submitButtonText, }: {
         isSaving: boolean;
@@ -7,7 +7,7 @@ declare const EditorShellInline: {
         setEditorIsOpen: Dispatch<SetStateAction<boolean>>;
         submitButtonText?: string;
         children: JSX.Element | JSX.Element[] | string | string[];
-    }): JSX.Element;
+    }): React.JSX.Element;
     defaultProps: {
         errorMessage: any;
         submitButtonText: any;

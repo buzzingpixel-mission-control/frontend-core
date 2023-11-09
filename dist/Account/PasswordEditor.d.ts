@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import EditorParams from './EditorParams';
-declare const PasswordEditor: ({ setEditorIsOpen, item, }: EditorParams) => JSX.Element;
+declare const PasswordEditor: ({ setEditorIsOpen, item, }: EditorParams) => React.JSX.Element;
 export default PasswordEditor;

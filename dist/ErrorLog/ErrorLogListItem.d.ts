@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { ErrorLogWithViewOptions } from './ErrorLogs';
 declare const ErrorLogListItem: {
     ({ item, selectedItemsManager, }: {
@@ -8,7 +8,7 @@ declare const ErrorLogListItem: {
             addSelectedItem?: (id: string) => void;
             removeSelectedItem?: (id: string) => void;
         };
-    }): JSX.Element;
+    }): React.JSX.Element;
     defaultProps: {
         selectedItemsManager: any;
     };

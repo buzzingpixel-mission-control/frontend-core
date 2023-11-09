@@ -13,13 +13,13 @@ var ActiveStatus;
     ActiveStatus["ALL"] = "all";
     ActiveStatus["ACTIVE"] = "active";
     ActiveStatus["INACTIVE"] = "inactive";
-})(ActiveStatus = exports.ActiveStatus || (exports.ActiveStatus = {}));
+})(ActiveStatus || (exports.ActiveStatus = ActiveStatus = {}));
 var AdminStatus;
 (function (AdminStatus) {
     AdminStatus["ALL"] = "all";
     AdminStatus["IS_ADMIN"] = "is_admin";
     AdminStatus["IS_NOT_ADMIN"] = "is_not_admin";
-})(AdminStatus = exports.AdminStatus || (exports.AdminStatus = {}));
+})(AdminStatus || (exports.AdminStatus = AdminStatus = {}));
 var useUsersData = function (active_status, admin_status) {
     if (active_status === void 0) { active_status = ActiveStatus.ALL; }
     if (admin_status === void 0) { admin_status = AdminStatus.ALL; }

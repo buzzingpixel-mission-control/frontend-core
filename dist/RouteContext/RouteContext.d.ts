@@ -18,5 +18,5 @@ export declare const useSetBreadcrumbs: () => (breadcrumbs: Array<Breadcrumb>) =
 export declare const useBreadcrumbs: (breadcrumbs: Array<Breadcrumb>) => void;
 export declare const RouteContextProvider: (props: {
     children: JSX.Element | JSX.Element[] | string | string[];
-}) => JSX.Element;
+}) => React.JSX.Element;
 export {};

@@ -1,8 +1,8 @@
-/// <reference types="react" />
+import React from 'react';
 declare const ProjectsPage: {
     ({ isArchive, }: {
         isArchive?: boolean;
-    }): JSX.Element;
+    }): React.JSX.Element;
     defaultProps: {
         isArchive: boolean;
     };

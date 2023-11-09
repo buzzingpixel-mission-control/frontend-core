@@ -1,3 +1,3 @@
-/// <reference types="react" />
-declare const ErrorLogPage: () => JSX.Element;
+import React from 'react';
+declare const ErrorLogPage: () => React.JSX.Element;
 export default ErrorLogPage;

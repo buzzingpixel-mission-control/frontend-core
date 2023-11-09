@@ -1,3 +1,3 @@
-/// <reference types="react" />
-declare const NotFoundPage: () => JSX.Element;
+import React from 'react';
+declare const NotFoundPage: () => React.JSX.Element;
 export default NotFoundPage;

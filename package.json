@@ -5,7 +5,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "yarn tsc && rm -rf ../dev/frontend/node_modules/buzzingpixel-mission-control-frontend-core/dist/* && cp -r dist/ ../dev/frontend/node_modules/buzzingpixel-mission-control-frontend-core/dist/ && cd ../dev/frontend && yarn build"
+        "build": "pnpm tsc && rm -rf ../dev/frontend/node_modules/buzzingpixel-mission-control-frontend-core/dist/* && cp -r dist/ ../dev/frontend/node_modules/buzzingpixel-mission-control-frontend-core/dist/ && cd ../dev/frontend && pnpm build"
     },
     "repository": {
         "type": "git",

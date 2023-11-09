@@ -1,10 +1,10 @@
-/// <reference types="react" />
+import React from 'react';
 import MenuItem from './MenuItem';
 declare const Shell: {
     ({ menuItems, children, }: {
         menuItems?: Array<MenuItem>;
         children: JSX.Element | JSX.Element[] | string | string[];
-    }): JSX.Element;
+    }): React.JSX.Element;
     defaultProps: {
         menuItems: any[];
     };

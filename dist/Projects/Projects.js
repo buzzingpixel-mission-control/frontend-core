@@ -26,7 +26,7 @@ var ProjectViewOptionsStatus;
 (function (ProjectViewOptionsStatus) {
     ProjectViewOptionsStatus["Active"] = "Active";
     ProjectViewOptionsStatus["Archived"] = "Archived";
-})(ProjectViewOptionsStatus = exports.ProjectViewOptionsStatus || (exports.ProjectViewOptionsStatus = {}));
+})(ProjectViewOptionsStatus || (exports.ProjectViewOptionsStatus = ProjectViewOptionsStatus = {}));
 var transformProject = function (project) { return (__assign(__assign({}, project), { href: "/projects/".concat(project.slug), status: project.isActive
         ? ProjectViewOptionsStatus.Active
         : ProjectViewOptionsStatus.Archived, createdAtDate: new Date(project.createdAt) })); };

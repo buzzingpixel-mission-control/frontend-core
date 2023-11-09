@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import EditorParams from './EditorParams';
-declare const SingleInputEditor: ({ setEditorIsOpen, item, setContent, }: EditorParams) => JSX.Element;
+declare const SingleInputEditor: ({ setEditorIsOpen, item, setContent, }: EditorParams) => React.JSX.Element;
 export default SingleInputEditor;

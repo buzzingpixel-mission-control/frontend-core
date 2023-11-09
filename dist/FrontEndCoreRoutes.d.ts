@@ -1,3 +1,3 @@
-/// <reference types="react" />
-declare const FrontEndCoreRoutes: () => JSX.Element;
+import React from 'react';
+declare const FrontEndCoreRoutes: () => React.JSX.Element;
 export default FrontEndCoreRoutes;

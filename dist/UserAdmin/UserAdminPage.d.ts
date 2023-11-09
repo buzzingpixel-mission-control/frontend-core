@@ -1,3 +1,3 @@
-/// <reference types="react" />
-declare const UserAdminPage: () => JSX.Element;
+import React from 'react';
+declare const UserAdminPage: () => React.JSX.Element;
 export default UserAdminPage;

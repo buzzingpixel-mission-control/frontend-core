@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
 import { Tab } from './Tab';
 declare const PageTabs: {
     ({ tabs, rightHandButtons, }: {
@@ -8,7 +8,7 @@ declare const PageTabs: {
             text: string | JSX.Element;
             onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
         }>;
-    }): JSX.Element;
+    }): React.JSX.Element;
     defaultProps: {
         rightHandButtons: any;
     };

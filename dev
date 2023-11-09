@@ -3,9 +3,9 @@
 # Ensure CLI is installed
 # shellcheck disable=SC2164
 cd ./cli
-if ! yarn check --integrity 2>/dev/null | grep -q 'success Folder in sync.'; then
+if [[ ! -d node_modules ]]; then
     echo "Installing the cli...";
-    yarn install;
+    pnpm install;
     echo "";
 fi
 cd ../;
@@ -14,14 +14,14 @@ cd ../;
 if [[ "${1}" = "build" ]]; then
     # shellcheck disable=SC2164
     cd ./cli;
-    yarn build;
+    pnpm build;
     exit;
 fi
 
 # Run eslint if requested
 if [[ "${1}" = "eslint" ]]; then
     cd ./cli;
-    NODE_OPTIONS="--trace-warnings" yarn lint --max-warnings=0;
+    NODE_OPTIONS="--trace-warnings" pnpm lint --max-warnings=0;
     exit;
 fi
 
@@ -41,7 +41,7 @@ LATEST_SRC_DIR_HASH=$(find cli/src/ -type f -exec md5sum {} \; | md5sum);
 if [[ "${LATEST_SRC_DIR_HASH}" != "${LATEST_BUILD_HASH}" ]]; then
     cd ./cli;
     echo 'CLI source files have changed since last build. Building a fresh CLI now…';
-    yarn build;
+    pnpm build;
     echo "${LATEST_SRC_DIR_HASH}" > "${LATEST_BUILD_HASH_FILE}";
     echo '';
     cd ../;

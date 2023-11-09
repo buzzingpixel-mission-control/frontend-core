@@ -1,3 +1,3 @@
-/// <reference types="react" />
-declare const FullPageLoading: () => JSX.Element;
+import React from 'react';
+declare const FullPageLoading: () => React.JSX.Element;
 export default FullPageLoading;

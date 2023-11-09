@@ -7,8 +7,12 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Install node dependencies
-        run: yarn
+        run: pnpm install
       - name: Run ESLint
         run: npx eslint assets/*
       - name: Setup PHP

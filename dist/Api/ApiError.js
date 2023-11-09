@@ -19,8 +19,8 @@ var defaultMessage = 'There was an error communicating with the API.';
 var ApiError = /** @class */ (function (_super) {
     __extends(ApiError, _super);
     function ApiError(response, statusCode, statusText, message) {
-        if (message === void 0) { message = defaultMessage; }
         var _this = this;
+        if (message === void 0) { message = defaultMessage; }
         if (statusCode === 404 && message === defaultMessage) {
             message = 'Page not found';
         }

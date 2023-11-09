@@ -1,5 +1,5 @@
-/// <reference types="react" />
+import React from 'react';
 declare const RequireAdmin: ({ children, }: {
     children: JSX.Element | JSX.Element[] | string | string[];
-}) => JSX.Element;
+}) => React.JSX.Element;
 export default RequireAdmin;
