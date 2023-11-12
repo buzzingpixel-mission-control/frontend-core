@@ -4,6 +4,7 @@ import Auth from './Auth/Auth';
 import MenuItem from './MenuItem';
 import AppConfig from './AppConfig';
 import { Tab } from './PageTabs/Tab';
+import Users from './UserAdmin/Users';
 import ApiParams from './Api/ApiParams';
 import QueryParams from './QueryParams';
 import createPortal from './createPortal';
@@ -59,12 +60,15 @@ import {
     useBreadcrumbs,
 } from './RouteContext/RouteContext';
 import useUpdateQueryStringValueWithoutNav from './useUpdateQueryStringValueWithoutNav';
+import User from './UserAdmin/User';
 
 export {
     App,
     Tab,
     Auth,
+    User,
     Shell,
+    Users,
     Project,
     Projects,
     MenuItem,
